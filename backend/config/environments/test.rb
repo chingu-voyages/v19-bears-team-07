@@ -6,9 +6,11 @@
 Rails.application.configure do
   #!!! START Manual configs
 
-  #!!! THIS NEEDS TO BE UPDATED FOR PROD ENVIRON
+  #!!! THIS NEEDS TO BE UPDATED FOR Test ENVIRON
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  #!! Update for Test
+  config.client_root = 'localhost:8000'
   #!!! END Manual configs
 
   # Settings specified here will take precedence over those in config/application.rb.

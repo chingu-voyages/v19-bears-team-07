@@ -1,6 +1,11 @@
 Rails.application.configure do
   #!!! START Manual configs
+
+  # For devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # host
+  config.client_root = 'localhost:8000'
   #!!! END Manual configs
 
   # Settings specified here will take precedence over those in config/application.rb.

@@ -8,6 +8,14 @@ Bundler.require(*Rails.groups)
 
 module Backend
   class Application < Rails::Application
+    #!! Set up cors handling to protect against cross-site forgery attacks
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'localhost:8000'
+        resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options]
+      end
+    end
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
@@ -15,5 +23,7 @@ module Backend
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+
   end
 end
