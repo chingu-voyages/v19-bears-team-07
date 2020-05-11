@@ -1,6 +1,6 @@
 import React from "react"
 import { Field } from "formik"
-import { Col, Row, Label, Input, FormFeedback } from "reactstrap"
+import { Col, Row, Label, Input, FormFeedback, FormGroup } from "reactstrap"
 
 const BasicInput = ({
   componentName,
@@ -10,24 +10,26 @@ const BasicInput = ({
   touched,
   placeholder = "",
 }) => (
-  <Row>
-    <Col md="2">
-      <Label for={componentName} style={{ marginTop: ".4em" }}>
-        {label}
-      </Label>
-    </Col>
-    <Col md="10">
-      <Input
-        type={type}
-        name={componentName}
-        tag={Field}
-        invalid={error && touched}
-        autoComplete="off"
-        placeholder={placeholder}
-      />
-      <FormFeedback>{error}</FormFeedback>
-    </Col>
-  </Row>
+  <FormGroup>
+    <Row>
+      <Col md="1">
+        <Label for={componentName} style={{ marginTop: ".4em" }}>
+          {label}
+        </Label>
+      </Col>
+      <Col md="11">
+        <Input
+          type={type}
+          name={componentName}
+          tag={Field}
+          component={type === "textarea" && type}
+          invalid={error && touched}
+          placeholder={placeholder}
+        />
+        <FormFeedback>{error}</FormFeedback>
+      </Col>
+    </Row>
+  </FormGroup>
 )
 
 export default BasicInput

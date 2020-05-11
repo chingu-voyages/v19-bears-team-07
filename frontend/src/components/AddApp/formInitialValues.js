@@ -1,7 +1,8 @@
 export default {
   name: "",
+  image: "",
   tags: "",
-  desc: "",
+  description: "",
   appUrl: "",
   github: "",
 }
