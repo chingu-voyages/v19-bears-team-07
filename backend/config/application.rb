@@ -11,8 +11,8 @@ module Backend
     #!! Set up cors handling to protect against cross-site forgery attacks
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'localhost:8000'
-        resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options]
+        origins Rails.application.config.client_root
+        resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options], credentials: true
       end
     end
 
