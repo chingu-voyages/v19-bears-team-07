@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 import { Formik, Form } from "formik"
 import { FormGroup, Col, Container, Button, Modal, ModalBody } from "reactstrap"
 
@@ -12,7 +12,8 @@ import DescriptionInput from "./DescriptionInput/DescriptionInput"
 import AppUrlInput from "./AppUrlInput/AppUrlInput"
 import Github from "./GithubInput/GithubInput"
 
-const AddApp = props => {
+const AddApp = () => {
+  const [successModal, setSucessModal] = useState(false)
   const imageRef = useRef(null)
   return (
     <Formik
@@ -22,12 +23,16 @@ const AddApp = props => {
         console.log(imageRef)
         try {
           console.log(values)
+          setSucessModal(true)
         } catch (e) {
           console.log(e)
         }
         resetForm(formInitialValues)
         imageRef.current.value = ""
         setSubmitting(false)
+        setTimeout(() => {
+          setSucessModal(false)
+        }, 700)
       }}
     >
       {({ errors, touched, isSubmitting, setFieldValue }) => (
@@ -35,9 +40,9 @@ const AddApp = props => {
           <FormGroup>
             <Container>
               <input type="hidden" value="for disrupting autocomplete" />
-              <Modal isOpen={props.successModal} centered={true}>
+              <Modal isOpen={successModal} centered={true}>
                 <ModalBody style={{ fontSize: "3em", textAlign: "center" }}>
-                  Ok!
+                  Submitted
                 </ModalBody>
               </Modal>
               <br />
