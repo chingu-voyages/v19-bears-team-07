@@ -4,14 +4,16 @@ import "./layout.css"
 import SideBar from "./Sidebar/SideBar"
 import Content from "./Content/Content"
 
-export default props => {
-  const [isOpen, setOpen] = useState(true)
-  const toggle = () => setOpen(!isOpen)
+const Layout = () => {
+  const [sidebarIsOpen, setSidebarOpen] = useState(true)
+  const toggleSidebar = () => setSidebarOpen(!sidebarIsOpen)
 
   return (
     <div className="App wrapper">
-      <SideBar toggle={toggle} isOpen={isOpen} />
-      <Content toggle={toggle} isOpen={isOpen} {...props} />
+      <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
+      <Content toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen} />
     </div>
   )
 }
+
+export default Layout
