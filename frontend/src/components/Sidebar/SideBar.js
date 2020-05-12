@@ -16,26 +16,7 @@ const SideBar = props => (
       <Nav vertical className="list-unstyled pb-3">
         <p>Dashboard</p>
         <SubMenu title="Basic" items={basicMenu} />
-        <NavItem>
-          <NavLink tag={Link} to={"/about"}>
-            About
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink tag={Link} to={"/pages"}>
-            Portfolio
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink tag={Link} to={"/faq"}>
-            FAQ
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink tag={Link} to={"/contact"}>
-            Contact
-          </NavLink>
-        </NavItem>
+        <SubMenu title="Developer" items={developerMenu} />
       </Nav>
     </div>
   </div>
@@ -65,33 +46,6 @@ const developerMenu = [
     title: "+ New App",
     target: "new-app",
   },
-]
-
-const submenus = [
-  [
-    {
-      title: "Home 1",
-      target: "Home-1",
-    },
-    {
-      title: "Home 2",
-      target: "Home-2",
-    },
-    {
-      itle: "Home 3",
-      target: "Home-3",
-    },
-  ],
-  [
-    {
-      title: "Page 1",
-      target: "Page-1",
-    },
-    {
-      title: "Page 2",
-      target: "Page-2",
-    },
-  ],
 ]
 
 export default SideBar
