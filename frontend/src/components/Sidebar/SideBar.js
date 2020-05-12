@@ -1,7 +1,6 @@
 import React from "react"
-import { NavItem, NavLink, Nav } from "reactstrap"
+import { Nav } from "reactstrap"
 import classNames from "classnames"
-import { Link } from "gatsby"
 import SubMenu from "./SubMenu"
 
 const SideBar = props => (
