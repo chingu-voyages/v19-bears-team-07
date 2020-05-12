@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/Layout/Layout"
 import SEO from "../components/seo"
 
-const IndexPage = () => {
+const LoginPage = () => {
   const [loggedIn, setLoggedIn] = React.useState(false)
 
   React.useEffect(() => {
@@ -39,7 +39,7 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage
+export default LoginPage
 
 export const BACKEND_HOST = "http://localhost:3000"
 export const SIGN_IN_URL = `${BACKEND_HOST}/users/sign_in`
