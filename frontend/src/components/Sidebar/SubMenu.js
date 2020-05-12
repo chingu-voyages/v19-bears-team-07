@@ -4,7 +4,7 @@ import classNames from "classnames"
 import { Link } from "gatsby"
 
 const SubMenu = props => {
-  const [collapsed, setCollapsed] = useState(true)
+  const [collapsed, setCollapsed] = useState(false)
   const toggleNavbar = () => setCollapsed(!collapsed)
   const { title, items } = props
 
