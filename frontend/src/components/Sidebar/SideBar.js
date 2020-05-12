@@ -1,7 +1,8 @@
 import React from "react"
 import { Nav } from "reactstrap"
-import classNames from "classnames"
 import { Link } from "gatsby"
+import classNames from "classnames"
+
 import SubMenu from "./SubMenu"
 
 const SideBar = ({ isOpen, toggle }) => (
