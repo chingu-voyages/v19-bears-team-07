@@ -1,15 +1,18 @@
 import React from "react"
 import { Nav } from "reactstrap"
 import classNames from "classnames"
+import { Link } from "gatsby"
 import SubMenu from "./SubMenu"
 
-const SideBar = props => (
-  <div className={classNames("sidebar", { "is-open": props.isOpen })}>
+const SideBar = ({ isOpen, toggle }) => (
+  <div className={classNames("sidebar", { "is-open": isOpen })}>
     <div className="sidebar-header">
-      <span color="info" onClick={props.toggle} style={{ color: "#fff" }}>
+      <span color="info" onClick={toggle} style={{ color: "#fff" }}>
         &times;
       </span>
-      <h3>Our app</h3>
+      <h3>
+        <Link to="/">Our app</Link>
+      </h3>
     </div>
     <div className="side-menu">
       <Nav vertical className="list-unstyled pb-3">
