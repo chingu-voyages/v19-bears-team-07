@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import "bootstrap/dist/css/bootstrap.min.css"
 
+import { AppGrid } from "../components/app-grid"
 import { AppCarousel } from "../components/app-carousel"
 
 const IndexPage = () => {
@@ -20,6 +21,7 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <AppCarousel apps={apps}></AppCarousel>
+      <AppGrid apps={apps}></AppGrid>
     </Layout>
   )
 }
