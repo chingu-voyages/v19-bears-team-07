@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 
   # Done as part of setup for Devise auth
-  root to: "app#index"
+  root to: "apps#index"
 
   # CRUD for Apps, Users, & Tags
   resources :apps, :users, :tags
