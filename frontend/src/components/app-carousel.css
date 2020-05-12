@@ -1,0 +1,10 @@
+.AppCarousel-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 1vw;
+  row-gap: 20px;
+}
+
+.AppCarousel-Card:hover {
+  cursor: pointer;
+}
