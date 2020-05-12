@@ -1,6 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -8,24 +6,20 @@ const IndexPage = () => {
   const [loggedIn, setLoggedIn] = React.useState(false)
 
   React.useEffect(() => {
-    checkLoggedIn()
-      .then(response => {
-        console.log("received response")
-        console.log(response)
-        return response.json()
-      })
-      .then(obj => {
-        console.log("RESPONSE: " + JSON.stringify(obj))
-        if (obj.is_logged_in !== undefined) {
-          setLoggedIn(obj.is_logged_in)
+    ;(async () => {
+      try {
+        const response = await checkLoggedIn()
+        const parsedResponse = await response.json()
+        if (typeof parsedResponse.is_logged_in === "boolean") {
+          setLoggedIn(parsedResponse.is_logged_in)
         } else {
           setLoggedIn(false)
         }
-      })
-      .catch(reason => {
-        console.log(reason)
+      } catch (error) {
+        console.log(error)
         setLoggedIn(false)
-      })
+      }
+    })()
   }, [])
 
   return (
@@ -38,7 +32,7 @@ const IndexPage = () => {
         <p>{loggedIn.toString()}</p>
       </div>
 
-      <a href={signup}>
+      <a href={SIGNUP}>
         <button onClick={() => {}}>Login Page</button>
       </a>
     </Layout>
@@ -47,12 +41,12 @@ const IndexPage = () => {
 
 export default IndexPage
 
-const backend_host = "http://localhost:3000"
-const signup = `${backend_host}/users/sign_in`
-const check = `${backend_host}/test_login/is_logged_in`
+export const BACKEND_HOST = "http://localhost:3000"
+export const SIGNUP = `${BACKEND_HOST}/users/sign_in`
+export const CHECK = `${BACKEND_HOST}/test_login/is_logged_in`
 
 const checkLoggedIn = () => {
-  const req = new Request(check, {
+  const req = new Request(CHECK, {
     method: "GET",
     credentials: "include",
   })
