@@ -4,7 +4,7 @@ import { faAlignLeft } from "@fortawesome/free-solid-svg-icons"
 import { Navbar, Button, Nav, NavItem, NavLink } from "reactstrap"
 import { Link } from "gatsby"
 
-export default ({ toggle }) => {
+const Topbar = ({ toggle }) => {
   return (
     <Navbar
       color="light"
@@ -25,3 +25,5 @@ export default ({ toggle }) => {
     </Navbar>
   )
 }
+
+export default Topbar
