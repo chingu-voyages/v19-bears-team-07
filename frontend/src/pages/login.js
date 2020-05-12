@@ -32,7 +32,7 @@ const IndexPage = () => {
         <p>{loggedIn.toString()}</p>
       </div>
 
-      <a href={SIGNUP}>
+      <a href={SIGN_IN_URL}>
         <button onClick={() => {}}>Login Page</button>
       </a>
     </Layout>
@@ -42,11 +42,11 @@ const IndexPage = () => {
 export default IndexPage
 
 export const BACKEND_HOST = "http://localhost:3000"
-export const SIGNUP = `${BACKEND_HOST}/users/sign_in`
-export const CHECK = `${BACKEND_HOST}/test_login/is_logged_in`
+export const SIGN_IN_URL = `${BACKEND_HOST}/users/sign_in`
+export const CHECK_LOGGED_IN_URL = `${BACKEND_HOST}/test_login/is_logged_in`
 
 const checkLoggedIn = () => {
-  const req = new Request(CHECK, {
+  const req = new Request(CHECK_LOGGED_IN_URL, {
     method: "GET",
     credentials: "include",
   })
