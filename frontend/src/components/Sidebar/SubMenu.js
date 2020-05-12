@@ -3,10 +3,9 @@ import { Collapse, NavItem, NavLink } from "reactstrap"
 import classNames from "classnames"
 import { Link } from "gatsby"
 
-const SubMenu = props => {
+const SubMenu = ({ title, items }) => {
   const [collapsed, setCollapsed] = useState(false)
   const toggleNavbar = () => setCollapsed(!collapsed)
-  const { title, items } = props
 
   return (
     <div>
