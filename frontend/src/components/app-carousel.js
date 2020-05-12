@@ -60,7 +60,9 @@ export const AppCarousel = props => {
   })
 
   return (
-    <div className={"AppCarousel-container"}>
+    <div
+      className={"AppCarousel-container" + (className ? " " + className : "")}
+    >
       <Carousel activeIndex={activeIndex} next={next} previous={previous}>
         <CarouselIndicators
           items={items}
