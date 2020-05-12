@@ -3,6 +3,7 @@ import { Nav } from "reactstrap"
 import { Link } from "gatsby"
 import classNames from "classnames"
 
+import { basicMenu, developerMenu } from "./menus"
 import SubMenu from "./SubMenu"
 
 const SideBar = ({ isOpen, toggle }) => (
@@ -24,31 +25,5 @@ const SideBar = ({ isOpen, toggle }) => (
     </div>
   </div>
 )
-
-const basicMenu = [
-  {
-    title: "Favorite Apps",
-    target: "favorite-apps",
-  },
-  {
-    title: "Settings",
-    target: "settings",
-  },
-]
-
-const developerMenu = [
-  {
-    title: "Profile page",
-    target: "profile-page",
-  },
-  {
-    title: "Manage apps",
-    target: "manage-apps",
-  },
-  {
-    title: "+ New App",
-    target: "new-app",
-  },
-]
 
 export default SideBar
