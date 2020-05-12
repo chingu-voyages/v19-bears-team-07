@@ -5,12 +5,12 @@ import { Link } from "gatsby"
 
 const SubMenu = ({ title, items }) => {
   const [collapsed, setCollapsed] = useState(false)
-  const toggleNavbar = () => setCollapsed(!collapsed)
+  const toggle = () => setCollapsed(!collapsed)
 
   return (
     <div>
       <NavItem
-        onClick={toggleNavbar}
+        onClick={toggle}
         className={classNames({ "menu-open": !collapsed })}
       >
         <NavLink className="dropdown-toggle">{title}</NavLink>
