@@ -4,7 +4,7 @@ import { Container } from "reactstrap"
 
 import Topbar from "./Topbar"
 
-const Content = ({ sidebarIsOpen, toggleSidebar }) => (
+const Content = ({ sidebarIsOpen, toggleSidebar, children }) => (
   <Container
     fluid
     className={classNames("content", { "is-open": sidebarIsOpen })}
