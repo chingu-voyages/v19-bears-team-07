@@ -19,3 +19,24 @@ export const mapApp = appData => {
       : "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
   }
 }
+
+export const mapUser = userData => {
+  const {
+    name,
+    img,
+    isDev,
+    bio,
+    twitter,
+    github,
+    linkedin,
+    portfolio,
+    id,
+  } = userData
+
+  return {
+    image: img,
+    name: name,
+    bio: bio,
+    url: `portfolios/${id}`,
+  }
+}

@@ -91,3 +91,13 @@ export async function fetchAPortfolio(userId) {
     return { apps: allTestApps }
   }
 }
+
+export const ALL_USERS = `${BACKEND_HOST}/users`
+export async function fetchAllUsers() {
+  const req = new Request(ALL_USERS, {
+    method: "GET",
+    credentials: "include",
+  })
+
+  return fetchJsonAndParse(req)
+}
