@@ -1,0 +1,33 @@
+.AppCarousel-container {
+  margin: 20px;
+}
+
+@media (max-width: 400px) {
+  .AppCarousel-Item {
+    min-height: 50vh;
+    max-height: 75vh;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 700px) {
+  .AppCarousel-Item {
+    min-height: 50vh;
+    max-height: 60vh;
+  }
+}
+
+@media (min-width: 700px) {
+  .AppCarousel-Item {
+    min-height: 50vh;
+    max-height: 50vh;
+  }
+}
+
+.AppCarousel-ItemImage {
+  object-fit: cover;
+  height: 100%;
+  -o-object-fit: cover;
+}
+
+.AppCarousel-Caption:hover {
+}
