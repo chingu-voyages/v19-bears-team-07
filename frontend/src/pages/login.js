@@ -2,53 +2,25 @@ import React from "react"
 import Layout from "../components/Layout/Layout"
 import SEO from "../components/seo"
 
-const LoginPage = () => {
-  const [loggedIn, setLoggedIn] = React.useState(false)
+import { UserContext } from "../shared/UserContext"
+import { SIGN_IN_URL } from "../shared/urls"
 
-  React.useEffect(() => {
-    ;(async () => {
-      try {
-        const response = await checkLoggedIn()
-        const parsedResponse = await response.json()
-        if (typeof parsedResponse.is_logged_in === "boolean") {
-          setLoggedIn(parsedResponse.is_logged_in)
-        } else {
-          setLoggedIn(false)
-        }
-      } catch (error) {
-        console.log(error)
-        setLoggedIn(false)
-      }
-    })()
-  }, [])
+const LoginPage = () => (
+  <Layout>
+    <SEO title="Login" />
+    <h1>Login</h1>
 
-  return (
-    <Layout>
-      <SEO title="Login" />
-      <h1>Login</h1>
+    <div>
+      <p>Am I already logged in?</p>
+      <UserContext.Consumer>
+        {({ loggedIn }) => <p>{loggedIn.toString()}</p>}
+      </UserContext.Consumer>
+    </div>
 
-      <div>
-        <p>Am I already logged in?</p>
-        <p>{loggedIn.toString()}</p>
-      </div>
-
-      <a href={SIGN_IN_URL}>
-        <button onClick={() => {}}>Login Page</button>
-      </a>
-    </Layout>
-  )
-}
+    <a href={SIGN_IN_URL}>
+      <button onClick={() => {}}>Login Page</button>
+    </a>
+  </Layout>
+)
 
 export default LoginPage
-
-export const BACKEND_HOST = "http://localhost:3000"
-export const SIGN_IN_URL = `${BACKEND_HOST}/users/sign_in`
-export const CHECK_LOGGED_IN_URL = `${BACKEND_HOST}/test_login/is_logged_in`
-
-const checkLoggedIn = () => {
-  const req = new Request(CHECK_LOGGED_IN_URL, {
-    method: "GET",
-    credentials: "include",
-  })
-  return fetch(req)
-}

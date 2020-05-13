@@ -1,6 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 
+import UserContextProvider from "../../shared/UserContext"
 import SideBar from "./Sidebar/SideBar"
 import Content from "./Content/Content"
 import "./Layout.css"
@@ -11,12 +12,14 @@ const Layout = props => {
 
   return (
     <div className="App wrapper">
-      <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
-      <Content
-        toggleSidebar={toggleSidebar}
-        sidebarIsOpen={sidebarIsOpen}
-        {...props}
-      />
+      <UserContextProvider>
+        <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
+        <Content
+          toggleSidebar={toggleSidebar}
+          sidebarIsOpen={sidebarIsOpen}
+          {...props}
+        />
+      </UserContextProvider>
     </div>
   )
 }
