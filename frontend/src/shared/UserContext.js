@@ -7,33 +7,28 @@ const UserContextProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
-    ;(async () => {
-      try {
-        const response = await checkLoggedIn()
-        const parsedResponse = await response.json()
-        if (typeof parsedResponse.is_logged_in === "boolean") {
-          setLoggedIn(parsedResponse.is_logged_in)
-        } else {
-          setLoggedIn(false)
-        }
-      } catch (error) {
-        console.log(error)
-        setLoggedIn(false)
-      }
-    })()
+    checkLoggedIn()
   }, [])
 
-  const logout = async () => {
+  const checkLoggedIn = async () => {
     try {
-      await logout()
-      const response = await checkLoggedIn()
+      const response = await checkLoggedInRequest()
       const parsedResponse = await response.json()
       if (typeof parsedResponse.is_logged_in === "boolean") {
         setLoggedIn(parsedResponse.is_logged_in)
       } else {
         setLoggedIn(false)
       }
+    } catch (error) {
+      console.log(error)
       setLoggedIn(false)
+    }
+  }
+
+  const logout = async () => {
+    try {
+      await logoutRequest()
+      checkLoggedIn()
     } catch (error) {
       console.log(error)
     }
@@ -46,7 +41,7 @@ const UserContextProvider = ({ children }) => {
   )
 }
 
-const checkLoggedIn = () => {
+const checkLoggedInRequest = () => {
   const request = new Request(CHECK_LOGGED_IN_URL, {
     method: "GET",
     credentials: "include",
@@ -54,7 +49,7 @@ const checkLoggedIn = () => {
   return fetch(request)
 }
 
-const logout = () => {
+const logoutRequest = () => {
   const request = new Request(LOG_OUT_URL, {
     method: "DELETE",
     credentials: "include",
