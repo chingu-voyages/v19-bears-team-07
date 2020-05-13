@@ -84,3 +84,5 @@ export const AppCarousel = props => {
     </div>
   )
 }
+
+export default AppCarousel
