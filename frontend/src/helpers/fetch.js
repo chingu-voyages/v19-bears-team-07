@@ -1,6 +1,7 @@
 // URLs
 export const BACKEND_HOST = "http://localhost:3000"
 
+// TODO: Figure out how to configure fetching logic according to environment : dev, test, or prod
 const allTestApps = [
   {
     name: "Facebook",
@@ -75,4 +76,18 @@ export async function fetchLoggedInUser() {
     credentials: "include",
   })
   return fetchJsonAndParse(req)
+}
+
+export const A_PORTFOLIO = userId => `${BACKEND_HOST}/users/${userId}/portfolio`
+export async function fetchAPortfolio(userId) {
+  try {
+    const req = new Request(A_PORTFOLIO(userId), {
+      method: "GET",
+      credentials: "include",
+    })
+
+    return fetchJsonAndParse(req)
+  } catch (e) {
+    return { apps: allTestApps }
+  }
 }
