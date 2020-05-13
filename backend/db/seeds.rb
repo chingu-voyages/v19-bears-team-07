@@ -6,8 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-App.create([{ name: 'Facebook', description: 'Social Network'}])
-App.create([{ name: 'Twitter', description: 'Tweets'}])
-
-Tag.create([{ name: 'Games', description: 'Play Time'}])
-Tag.create([{ name: 'Productivity', description: 'Work Stuff'}])
+5.times do |i|
+  App.create(name: "App ##{i}", description: "An app.")
+end
