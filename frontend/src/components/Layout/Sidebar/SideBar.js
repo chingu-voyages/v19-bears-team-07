@@ -3,7 +3,8 @@ import { Nav } from "reactstrap"
 import { Link } from "gatsby"
 import classNames from "classnames"
 
-import { basicMenu, developerMenu } from "./menus"
+import { asDeveloperMenus, asLoggedOutMenus } from "./menus"
+import { UserContext } from "../../../shared/UserContext"
 import SubMenu from "./SubMenu"
 
 const SideBar = ({ isOpen, toggle }) => (
@@ -19,8 +20,18 @@ const SideBar = ({ isOpen, toggle }) => (
     <div className="side-menu">
       <Nav vertical className="list-unstyled pb-3">
         <p>Dashboard</p>
-        <SubMenu title="Basic" items={basicMenu} />
-        <SubMenu title="Developer" items={developerMenu} />
+        <UserContext.Consumer>
+          {({ loggedIn }) => {
+            if (loggedIn) {
+              return asDeveloperMenus.map(menu => (
+                <SubMenu title={menu.title} items={menu.items} />
+              ))
+            }
+            return asLoggedOutMenus.map(menu => (
+              <SubMenu title={menu.title} items={menu.items} />
+            ))
+          }}
+        </UserContext.Consumer>
       </Nav>
     </div>
   </div>
