@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Create users
+
 5.times do |i|
-  App.create(name: "App ##{i}", description: "An app.")
+  user = User.create!(name: "User #{i}", email: "example#{i}@example.com", password: "my_solid_password")
+  app = App.create!(name: "App #{i}", description: "An app.", user: user)
+  tag = Tag.create!(name: "Games #{i}", description: "Fun fun fun", app: app)
 end
