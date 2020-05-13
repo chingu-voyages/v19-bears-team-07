@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react"
-import { CHECK_LOGGED_IN_URL } from "./urls"
+import { CHECK_LOGGED_IN_URL, LOG_OUT_URL } from "./urls"
 
 export const UserContext = createContext()
 
@@ -23,17 +23,43 @@ const UserContextProvider = ({ children }) => {
     })()
   }, [])
 
+  const logout = async () => {
+    try {
+      await logout()
+      const response = await checkLoggedIn()
+      const parsedResponse = await response.json()
+      if (typeof parsedResponse.is_logged_in === "boolean") {
+        setLoggedIn(parsedResponse.is_logged_in)
+      } else {
+        setLoggedIn(false)
+      }
+      setLoggedIn(false)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
-    <UserContext.Provider value={{ loggedIn }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ loggedIn, logout }}>
+      {children}
+    </UserContext.Provider>
   )
 }
 
 const checkLoggedIn = () => {
-  const req = new Request(CHECK_LOGGED_IN_URL, {
+  const request = new Request(CHECK_LOGGED_IN_URL, {
     method: "GET",
     credentials: "include",
   })
-  return fetch(req)
+  return fetch(request)
+}
+
+const logout = () => {
+  const request = new Request(LOG_OUT_URL, {
+    method: "DELETE",
+    credentials: "include",
+  })
+  return fetch(request)
 }
 
 export default UserContextProvider

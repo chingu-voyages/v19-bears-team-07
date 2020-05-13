@@ -2,7 +2,8 @@ import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAlignLeft } from "@fortawesome/free-solid-svg-icons"
 import { Navbar, Button, Nav, NavItem, NavLink } from "reactstrap"
-import { Link } from "gatsby"
+
+import LoginLink from "./LoginLink"
 
 const Topbar = ({ toggleSidebar }) => (
   <Navbar
@@ -16,9 +17,7 @@ const Topbar = ({ toggleSidebar }) => (
     </Button>
     <Nav className="ml-auto" navbar>
       <NavItem>
-        <NavLink tag={Link} to={"/login"}>
-          sign up / login
-        </NavLink>
+        <LoginLink />
       </NavItem>
     </Nav>
   </Navbar>
