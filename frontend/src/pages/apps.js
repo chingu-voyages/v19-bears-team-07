@@ -7,6 +7,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import AnAppPage from "../client-pages/AnAppPage"
 import { AppGrid } from "../components/app-grid"
+import { mapApp } from "../helpers/mappers"
 
 const AppPage = () => {
   return (
@@ -36,64 +37,40 @@ const AllApps = () => {
 }
 
 const fetchApps = async () => {
-  return apps
+  return apps.map(app => mapApp(app))
 }
 
 const apps = [
   {
     name: "Facebook",
-    imageUrl:
-      "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-    image: undefined,
     description: "The world's leading social media platform",
-    url: "/apps/1",
+    image: undefined,
+    github_url: "http://www.github.com",
+    app_url: "http://www.app.com",
+    id: 1,
   },
   {
     name: "Facebook",
-    imageUrl:
-      "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-    image: undefined,
     description: "The world's leading social media platform",
-    url: "/apps/1",
+    image: undefined,
+    github_url: "http://www.github.com",
+    app_url: "http://www.app.com",
+    id: 1,
   },
   {
     name: "Facebook",
-    imageUrl:
-      "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-    image: undefined,
     description: "The world's leading social media platform",
-    url: "/apps/1",
+    image: undefined,
+    github_url: "http://www.github.com",
+    app_url: "http://www.app.com",
+    id: 1,
   },
   {
     name: "Facebook",
-    imageUrl:
-      "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-    image: undefined,
     description: "The world's leading social media platform",
-    url: "/apps/1",
-  },
-  {
-    name: "Facebook",
-    imageUrl:
-      "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
     image: undefined,
-    description: "The world's leading social media platform",
-    url: "/apps/1",
-  },
-  {
-    name: "Facebook",
-    imageUrl:
-      "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-    image: undefined,
-    description: "The world's leading social media platform",
-    url: "/apps/1",
-  },
-  {
-    name: "Facebook",
-    imageUrl:
-      "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-    image: undefined,
-    description: "The world's leading social media platform",
-    url: "/apps/1",
+    github_url: "http://www.github.com",
+    app_url: "http://www.app.com",
+    id: 1,
   },
 ]
