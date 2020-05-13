@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-apps = App.create([{ name: 'Facebook', description: 'Social Network'}, { name: 'Twitter', description: 'Tweets'}])
+App.create([{ name: 'Facebook', description: 'Social Network'}])
+App.create([{ name: 'Twitter', description: 'Tweets'}])
 
-tags = Tag.create([{ name: 'Games', description: 'Play Time'}, { name: 'Productivity', description: 'Work Stuff'}])
+Tag.create([{ name: 'Games', description: 'Play Time'}])
+Tag.create([{ name: 'Productivity', description: 'Work Stuff'}])
