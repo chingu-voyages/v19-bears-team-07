@@ -7,6 +7,21 @@ import { asDeveloperMenus, asLoggedOutMenus } from "./menus"
 import { UserContext } from "../../../shared/UserContext"
 import SubMenu from "./SubMenu"
 
+const RenderSubMenus = () => (
+  <UserContext.Consumer>
+    {({ loggedIn }) => {
+      if (loggedIn) {
+        return asDeveloperMenus.map(menu => (
+          <SubMenu title={menu.title} items={menu.items} />
+        ))
+      }
+      return asLoggedOutMenus.map(menu => (
+        <SubMenu title={menu.title} items={menu.items} />
+      ))
+    }}
+  </UserContext.Consumer>
+)
+
 const SideBar = ({ isOpen, toggle }) => (
   <div className={classNames("sidebar", { "is-open": isOpen })}>
     <div className="sidebar-header">
@@ -20,18 +35,7 @@ const SideBar = ({ isOpen, toggle }) => (
     <div className="side-menu">
       <Nav vertical className="list-unstyled pb-3">
         <p>Dashboard</p>
-        <UserContext.Consumer>
-          {({ loggedIn }) => {
-            if (loggedIn) {
-              return asDeveloperMenus.map(menu => (
-                <SubMenu title={menu.title} items={menu.items} />
-              ))
-            }
-            return asLoggedOutMenus.map(menu => (
-              <SubMenu title={menu.title} items={menu.items} />
-            ))
-          }}
-        </UserContext.Consumer>
+        <RenderSubMenus />
       </Nav>
     </div>
   </div>
