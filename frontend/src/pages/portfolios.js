@@ -13,8 +13,8 @@ const PortfolioPage = () => {
 
   return (
     <Layout>
-      <SEO title="Portfolio" />
-      <Router basepath={"/portfolio"}>
+      <SEO title="Portfolios" />
+      <Router basepath={"/portfolios"}>
         <APortfolioPage path={"/:userId"}></APortfolioPage>
       </Router>
       <div>Hi there</div>
