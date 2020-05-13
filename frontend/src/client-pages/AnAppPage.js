@@ -3,6 +3,7 @@ import AppCarousel from "../components/app-carousel"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Jumbotron, Container } from "reactstrap"
 import { mapApp } from "../helpers/mappers"
+import { fetchAnApp } from "../helpers/fetch"
 
 const AnAppPage = props => {
   const { appId } = props
@@ -35,16 +36,8 @@ const AnAppPage = props => {
 
 export default AnAppPage
 
-// TODO: This needs to fetch data from the server. To minimize client processing, we should query for the specific app id.
 const fetchApp = async appId => {
-  const appData = {
-    name: "Facebook",
-    description: "The world's leading social media platform",
-    image: undefined,
-    github_url: "http://www.github.com",
-    app_url: "http://www.app.com",
-    id: 1,
-  }
+  const appData = await fetchAnApp(appId)
 
   return mapApp(appData)
 }

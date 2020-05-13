@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 import { AppGrid } from "../components/app-grid"
 import { AppCarousel } from "../components/app-carousel"
+import { fetchAllApps } from "../helpers/fetch"
+import { mapApp } from "../helpers/mappers"
 
 const IndexPage = () => {
   const [apps, setApps] = React.useState([])
@@ -29,64 +31,6 @@ const IndexPage = () => {
 export default IndexPage
 
 const fetchApps = async () => {
-  return apps
+  const apps = await fetchAllApps()
+  return apps.map(mapApp)
 }
-
-const apps = [
-  {
-    name: "Facebook",
-    imageUrl:
-      "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-    image: undefined,
-    description: "The world's leading social media platform",
-    url: "/apps/1",
-  },
-  {
-    name: "Facebook",
-    imageUrl:
-      "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-    image: undefined,
-    description: "The world's leading social media platform",
-    url: "/apps/1",
-  },
-  {
-    name: "Facebook",
-    imageUrl:
-      "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-    image: undefined,
-    description: "The world's leading social media platform",
-    url: "/apps/1",
-  },
-  {
-    name: "Facebook",
-    imageUrl:
-      "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-    image: undefined,
-    description: "The world's leading social media platform",
-    url: "/apps/1",
-  },
-  {
-    name: "Facebook",
-    imageUrl:
-      "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-    image: undefined,
-    description: "The world's leading social media platform",
-    url: "/apps/1",
-  },
-  {
-    name: "Facebook",
-    imageUrl:
-      "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-    image: undefined,
-    description: "The world's leading social media platform",
-    url: "/apps/1",
-  },
-  {
-    name: "Facebook",
-    imageUrl:
-      "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-    image: undefined,
-    description: "The world's leading social media platform",
-    url: "/apps/1",
-  },
-]
