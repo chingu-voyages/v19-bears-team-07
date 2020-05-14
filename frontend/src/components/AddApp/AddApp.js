@@ -3,7 +3,6 @@ import { Formik, Form } from "formik"
 import { FormGroup, Col, Container, Button, Modal, ModalBody } from "reactstrap"
 
 import formInitialValues from "./formInitialValues"
-import formSchema from "./formSchema"
 
 import NameInput from "./NameInput/NameInput"
 import ImageInput from "./ImageInput/ImageInput"
@@ -11,6 +10,7 @@ import TagsInput from "./TagsInput/TagsInput"
 import DescriptionInput from "./DescriptionInput/DescriptionInput"
 import AppUrlInput from "./AppUrlInput/AppUrlInput"
 import Github from "./GithubInput/GithubInput"
+import { AddAppSchema } from "./formSchema"
 
 const AddApp = () => {
   const [successModal, setSucessModal] = useState(false)
@@ -18,7 +18,7 @@ const AddApp = () => {
   return (
     <Formik
       initialValues={formInitialValues}
-      validationSchema={formSchema}
+      validationSchema={AddAppSchema}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         try {
           console.log(values)
