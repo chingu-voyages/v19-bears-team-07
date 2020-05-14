@@ -35,6 +35,16 @@ const IndexPage = () => {
       <a href={SIGN_IN_URL}>
         <button onClick={() => {}}>Login Page</button>
       </a>
+
+      <br></br>
+
+      <button
+        onClick={() => {
+          logout()
+        }}
+      >
+        Log out
+      </button>
     </Layout>
   )
 }
@@ -42,3 +52,14 @@ const IndexPage = () => {
 export default IndexPage
 
 export const SIGN_IN_URL = `${BACKEND_HOST}/users/sign_in`
+
+export const LOG_OUT_URL = `${BACKEND_HOST}/users/sign_out`
+
+const logout = async () => {
+  const req = new Request(LOG_OUT_URL, {
+    method: "DELETE",
+    credentials: "include",
+  })
+
+  return fetch(req)
+}
