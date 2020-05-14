@@ -107,6 +107,8 @@ const BioInput = props => (
   <BasicInput componentName="bio" label="bio" type="textarea" {...props} />
 )
 
+// Note that `componentName` is the name of the field in the object the form submits...
+// It isn't safe to leave it as the label, since the label may change in the future.
 const UrlInput = props => {
   const { label, ...rest } = props
   return (
