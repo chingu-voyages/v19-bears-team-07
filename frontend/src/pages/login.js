@@ -17,9 +17,22 @@ const LoginPage = () => (
       </UserContext.Consumer>
     </div>
 
-    <a href={SIGN_IN_URL}>
-      <button onClick={() => {}}>Login Page</button>
-    </a>
+    <UserContext.Consumer>
+      {({ logout }) => (
+        <React.Fragment>
+          <a href={SIGN_IN_URL}>
+            <button onClick={() => {}}>Login Page</button>
+          </a>
+          <button
+            onClick={() => {
+              logout()
+            }}
+          >
+            Log out
+          </button>
+        </React.Fragment>
+      )}
+    </UserContext.Consumer>
   </Layout>
 )
 

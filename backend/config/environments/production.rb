@@ -6,6 +6,7 @@ Rails.application.configure do
 
   #!! Update for Prod
   config.client_root = 'localhost:8000'
+  config.server_root = 'localhost:3000'
   #!!! END Manual configs
 
   # Settings specified here will take precedence over those in config/application.rb.

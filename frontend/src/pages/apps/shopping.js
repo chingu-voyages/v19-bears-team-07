@@ -1,13 +1,11 @@
 import React from "react"
-
-import Layout from "../../components/Layout/Layout"
 import SEO from "../../components/seo"
 
 const ShoppingPage = () => (
-  <Layout>
+  <React.Fragment>
     <SEO title="shopping" />
     <h1>shopping</h1>
-  </Layout>
+  </React.Fragment>
 )
 
 export default ShoppingPage

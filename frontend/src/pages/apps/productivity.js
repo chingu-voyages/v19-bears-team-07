@@ -1,13 +1,11 @@
 import React from "react"
-
-import Layout from "../../components/Layout/Layout"
 import SEO from "../../components/seo"
 
 const ProductivityPage = () => (
-  <Layout>
+  <React.Fragment>
     <SEO title="productivity" />
     <h1>productivity</h1>
-  </Layout>
+  </React.Fragment>
 )
 
 export default ProductivityPage

@@ -1,5 +1,7 @@
+Portfolio = Struct.new(:apps)
+
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy, :portfolio]
 
 
   # GET /users
@@ -30,6 +32,12 @@ class UsersController < ApplicationController
     @user.destroy
     head :no_content
   end
+
+  # GET /users/:id/portfolio
+  def portfolio
+    portfolio = Portfolio.new(@user.apps)
+    json_response(portfolio)
+  end 
 
   private
 
