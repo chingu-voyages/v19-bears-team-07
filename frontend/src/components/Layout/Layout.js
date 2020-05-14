@@ -8,7 +8,7 @@ import "./Layout.css"
 
 const Layout = props => {
   const [sidebarIsOpen, setSidebarOpen] = useState(true)
-  const toggleSidebar = () => setSidebarOpen(!sidebarIsOpen)
+  const toggleSidebar = () => setSidebarOpen(sidebarIsOpen => !sidebarIsOpen)
 
   return (
     <div className="App wrapper">

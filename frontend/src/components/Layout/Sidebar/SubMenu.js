@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 
 const SubMenu = ({ title, items }) => {
   const [collapsed, setCollapsed] = useState(false)
-  const toggle = () => setCollapsed(!collapsed)
+  const toggle = () => setCollapsed(collapsed => !collapsed)
 
   return (
     <div>
