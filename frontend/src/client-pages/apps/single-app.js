@@ -3,15 +3,14 @@ import AppCarousel from "../../components/app-carousel"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Jumbotron, Container } from "reactstrap"
 import { mapApp } from "../../shared/mappers"
-import { fetchAnApp } from "../../shared/fetch"
+import { fetchApp } from "../../shared/fetch"
 
-const AnAppPage = props => {
-  const { appId } = props
+const SingleApp = ({ appId }) => {
   const [app, setApp] = React.useState(null)
 
   React.useEffect(() => {
     ;(async () => {
-      const app = await fetchApp(appId)
+      const app = mapApp(await fetchApp(appId))
       setApp(app)
     })()
   }, [])
@@ -34,10 +33,4 @@ const AnAppPage = props => {
   return null
 }
 
-export default AnAppPage
-
-const fetchApp = async appId => {
-  const appData = await fetchAnApp(appId)
-
-  return mapApp(appData)
-}
+export default SingleApp

@@ -25,7 +25,7 @@ export const mapApp = ({
 
 export const mapUser = ({ name, img, bio, id }) => ({
   image: img,
-  name: name,
-  bio: bio,
+  name,
+  bio,
   url: `portfolios/${id}`,
 })

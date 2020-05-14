@@ -54,9 +54,9 @@ export async function fetchAllApps() {
   }
 }
 
-export async function fetchAnApp(appId) {
+export async function fetchApp(appId) {
   try {
-    const req = new Request(Url.AN_APP(appId), {
+    const req = new Request(Url.singleApp(appId), {
       method: "GET",
       credentials: "include",
     })
@@ -74,14 +74,14 @@ export async function fetchLoggedInUser() {
   return fetchJsonAndParse(req)
 }
 
-export async function fetchAPortfolio(userId) {
+export async function fetchPortfolio(userId) {
   try {
-    const req = new Request(Url.A_PORTFOLIO(userId), {
+    const req = new Request(Url.singlePortfolio(userId), {
       method: "GET",
       credentials: "include",
     })
 
-    return fetchJsonAndParse(req)
+    return await fetchJsonAndParse(req)
   } catch (e) {
     return { apps: allTestApps }
   }

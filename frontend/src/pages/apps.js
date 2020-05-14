@@ -5,7 +5,7 @@ import { Router } from "@reach/router"
 
 import Layout from "../components/Layout/Layout"
 import SEO from "../components/seo"
-import AnAppPage from "../client-pages/apps/AnAppPage"
+import SingleApp from "../client-pages/apps/single-app"
 import { AppGrid } from "../components/app-grid"
 import { mapApp } from "../shared/mappers"
 import { fetchAllApps } from "../shared/fetch"
@@ -22,7 +22,7 @@ const AppPage = () => {
         <GamesPage path={"/games"}></GamesPage>
         <ShoppingPage path={"/shopping"}></ShoppingPage>
         <ProductivityPage path={"/productivity"}></ProductivityPage>
-        <AnAppPage path={"/:appId"}></AnAppPage>
+        <SingleApp path={"/:appId"}></SingleApp>
       </Router>
     </Layout>
   )

@@ -1,16 +1,16 @@
 import React from "react"
 import { AppGrid } from "../components/app-grid"
-import { fetchAPortfolio } from "../shared/fetch"
+import { fetchPortfolio } from "../shared/fetch"
 import { mapApp } from "../shared/mappers"
 
-const APortfolioPage = props => {
+const SinglePortfolio = props => {
   const { userId } = props
 
   const [apps, setApps] = React.useState([])
 
   React.useEffect(() => {
     ;(async () => {
-      const apps = await fetchPortfolioForUser(userId)
+      const apps = (await fetchPortfolio(userId)).apps.map(mapApp)
       setApps(apps)
     })()
   }, [])
@@ -23,10 +23,4 @@ const APortfolioPage = props => {
   )
 }
 
-export default APortfolioPage
-
-const fetchPortfolioForUser = async userId => {
-  const portfolio = await fetchAPortfolio(userId)
-  console.log(portfolio)
-  return portfolio.apps.map(mapApp)
-}
+export default SinglePortfolio
