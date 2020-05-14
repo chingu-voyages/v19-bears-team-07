@@ -1,17 +1,16 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import { Router } from "@reach/router"
 
 import Layout from "../components/Layout/Layout"
 import SEO from "../components/seo"
-import AnAppPage from "../client-pages/apps/AnAppPage"
+import SingleApp from "./apps/single-app"
 import { AppGrid } from "../components/app-grid"
 import { mapApp } from "../shared/mappers"
 import { fetchAllApps } from "../shared/fetch"
-import GamesPage from "../client-pages/apps/games"
-import ShoppingPage from "../client-pages/apps/shopping"
-import ProductivityPage from "../client-pages/apps/productivity"
+import GamesPage from "./apps/games"
+import ShoppingPage from "./apps/shopping"
+import ProductivityPage from "./apps/productivity"
 
 const AppPage = () => {
   return (
@@ -22,7 +21,7 @@ const AppPage = () => {
         <GamesPage path={"/games"}></GamesPage>
         <ShoppingPage path={"/shopping"}></ShoppingPage>
         <ProductivityPage path={"/productivity"}></ProductivityPage>
-        <AnAppPage path={"/:appId"}></AnAppPage>
+        <SingleApp path={"/:appId"}></SingleApp>
       </Router>
     </Layout>
   )

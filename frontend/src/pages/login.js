@@ -1,7 +1,6 @@
 import React from "react"
 import Layout from "../components/Layout/Layout"
 import SEO from "../components/seo"
-import { fetchLoggedInUser, BACKEND_HOST } from "../shared/fetch"
 
 import { UserContext } from "../shared/UserContext"
 import { SIGN_IN_URL } from "../shared/urls"
