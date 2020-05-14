@@ -20,7 +20,6 @@ const AddApp = () => {
       initialValues={formInitialValues}
       validationSchema={formSchema}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
-        console.log(imageRef)
         try {
           console.log(values)
           setSucessModal(true)
