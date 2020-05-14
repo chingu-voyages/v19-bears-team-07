@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from "react"
-import { CHECK_LOGGED_IN_URL, LOG_OUT_URL } from "./urls"
 import { checkLoggedInRequest, logoutRequest } from "./fetch"
 
 export const UserContext = createContext()
