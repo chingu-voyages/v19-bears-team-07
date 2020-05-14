@@ -1,5 +1,4 @@
-// URLs
-export const BACKEND_HOST = "http://localhost:3000"
+import * as Url from "./urls"
 
 // TODO: Figure out how to configure fetching logic according to environment : dev, test, or prod
 const allTestApps = [
@@ -43,10 +42,9 @@ async function fetchJsonAndParse(req) {
   return parsed
 }
 
-export const ALL_APPS = `${BACKEND_HOST}/apps`
 export async function fetchAllApps() {
   try {
-    const req = new Request(ALL_APPS, {
+    const req = new Request(Url.ALL_APPS, {
       method: "GET",
       credentials: "include",
     })
@@ -56,10 +54,9 @@ export async function fetchAllApps() {
   }
 }
 
-export const AN_APP = appId => `${BACKEND_HOST}/apps/${appId}`
 export async function fetchAnApp(appId) {
   try {
-    const req = new Request(AN_APP(appId), {
+    const req = new Request(Url.AN_APP(appId), {
       method: "GET",
       credentials: "include",
     })
@@ -69,19 +66,17 @@ export async function fetchAnApp(appId) {
   }
 }
 
-export const CHECK_LOGGED_IN_URL = `${BACKEND_HOST}/test_login/is_logged_in`
 export async function fetchLoggedInUser() {
-  const req = new Request(CHECK_LOGGED_IN_URL, {
+  const req = new Request(Url.CHECK_LOGGED_IN_URL, {
     method: "GET",
     credentials: "include",
   })
   return fetchJsonAndParse(req)
 }
 
-export const A_PORTFOLIO = userId => `${BACKEND_HOST}/users/${userId}/portfolio`
 export async function fetchAPortfolio(userId) {
   try {
-    const req = new Request(A_PORTFOLIO(userId), {
+    const req = new Request(Url.A_PORTFOLIO(userId), {
       method: "GET",
       credentials: "include",
     })
@@ -92,12 +87,28 @@ export async function fetchAPortfolio(userId) {
   }
 }
 
-export const ALL_USERS = `${BACKEND_HOST}/users`
 export async function fetchAllUsers() {
-  const req = new Request(ALL_USERS, {
+  const req = new Request(Url.ALL_USERS, {
     method: "GET",
     credentials: "include",
   })
 
   return fetchJsonAndParse(req)
+}
+
+export const checkLoggedInRequest = () => {
+  const request = new Request(Url.CHECK_LOGGED_IN_URL, {
+    method: "GET",
+    credentials: "include",
+  })
+  return fetchJsonAndParse(request)
+}
+
+export const logoutRequest = () => {
+  const request = new Request(Url.LOG_OUT_URL, {
+    method: "DELETE",
+    credentials: "include",
+  })
+  //No meaningful response currently expected.
+  return fetch(request)
 }

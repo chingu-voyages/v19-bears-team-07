@@ -1,9 +1,9 @@
 import React from "react"
-import AppCarousel from "../components/app-carousel"
+import AppCarousel from "../../components/app-carousel"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Jumbotron, Container } from "reactstrap"
-import { mapApp } from "../helpers/mappers"
-import { fetchAnApp } from "../helpers/fetch"
+import { mapApp } from "../../shared/mappers"
+import { fetchAnApp } from "../../shared/fetch"
 
 const AnAppPage = props => {
   const { appId } = props

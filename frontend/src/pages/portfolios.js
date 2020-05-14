@@ -7,9 +7,9 @@ import Layout from "../components/Layout/Layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 import APortfolioPage from "../client-pages/APortfolioPage"
-import { fetchAllApps, fetchAllUsers } from "../helpers/fetch"
+import { fetchAllApps, fetchAllUsers } from "../shared/fetch"
 import { UserGrid } from "../components/user-grid"
-import { mapUser } from "../helpers/mappers"
+import { mapUser } from "../shared/mappers"
 
 const PortfolioPage = () => {
   console.log(<APortfolioPage path={"/:userId"}></APortfolioPage>)

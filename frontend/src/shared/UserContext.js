@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react"
 import { CHECK_LOGGED_IN_URL, LOG_OUT_URL } from "./urls"
+import { checkLoggedInRequest, logoutRequest } from "./fetch"
 
 export const UserContext = createContext()
 
@@ -12,8 +13,7 @@ const UserContextProvider = ({ children }) => {
 
   const checkLoggedIn = async () => {
     try {
-      const response = await checkLoggedInRequest()
-      const parsedResponse = await response.json()
+      const parsedResponse = await checkLoggedInRequest()
       if (typeof parsedResponse.is_logged_in === "boolean") {
         setLoggedIn(parsedResponse.is_logged_in)
       } else {
@@ -39,22 +39,6 @@ const UserContextProvider = ({ children }) => {
       {children}
     </UserContext.Provider>
   )
-}
-
-const checkLoggedInRequest = () => {
-  const request = new Request(CHECK_LOGGED_IN_URL, {
-    method: "GET",
-    credentials: "include",
-  })
-  return fetch(request)
-}
-
-const logoutRequest = () => {
-  const request = new Request(LOG_OUT_URL, {
-    method: "DELETE",
-    credentials: "include",
-  })
-  return fetch(request)
 }
 
 export default UserContextProvider

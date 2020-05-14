@@ -1,7 +1,7 @@
 import React from "react"
 import { AppGrid } from "../components/app-grid"
-import { fetchAPortfolio } from "../helpers/fetch"
-import { mapApp } from "../helpers/mappers"
+import { fetchAPortfolio } from "../shared/fetch"
+import { mapApp } from "../shared/mappers"
 
 const APortfolioPage = props => {
   const { userId } = props

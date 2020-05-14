@@ -5,10 +5,13 @@ import { Router } from "@reach/router"
 
 import Layout from "../components/Layout/Layout"
 import SEO from "../components/seo"
-import AnAppPage from "../client-pages/AnAppPage"
+import AnAppPage from "../client-pages/apps/AnAppPage"
 import { AppGrid } from "../components/app-grid"
-import { mapApp } from "../helpers/mappers"
-import { fetchAllApps } from "../helpers/fetch"
+import { mapApp } from "../shared/mappers"
+import { fetchAllApps } from "../shared/fetch"
+import GamesPage from "../client-pages/apps/games"
+import ShoppingPage from "../client-pages/apps/shopping"
+import ProductivityPage from "../client-pages/apps/productivity"
 
 const AppPage = () => {
   return (
@@ -16,6 +19,9 @@ const AppPage = () => {
       <SEO title="Apps" />
       <Router basepath={"/apps"}>
         <AllApps path={"/"}></AllApps>
+        <GamesPage path={"/games"}></GamesPage>
+        <ShoppingPage path={"/shopping"}></ShoppingPage>
+        <ProductivityPage path={"/productivity"}></ProductivityPage>
         <AnAppPage path={"/:appId"}></AnAppPage>
       </Router>
     </Layout>
