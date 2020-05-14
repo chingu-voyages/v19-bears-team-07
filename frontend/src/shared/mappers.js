@@ -3,40 +3,29 @@
  * data used in the views.
  */
 
-export const mapApp = appData => {
-  const { name, description, img, app_url, github_url, id } = appData
+export const mapApp = ({
+  name,
+  description,
+  img,
+  app_url,
+  github_url,
+  id,
+}) => ({
+  name,
+  description,
+  image: img,
+  appUrl: app_url,
+  githubUrl: github_url,
 
-  return {
-    name: name,
-    description: description,
-    image: img,
-    appUrl: app_url,
-    githubUrl: github_url,
+  url: `/apps/${id}`,
+  imageUrl: img
+    ? ""
+    : "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
+})
 
-    url: `/apps/${id}`,
-    imageUrl: img
-      ? ""
-      : "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-  }
-}
-
-export const mapUser = userData => {
-  const {
-    name,
-    img,
-    isDev,
-    bio,
-    twitter,
-    github,
-    linkedin,
-    portfolio,
-    id,
-  } = userData
-
-  return {
-    image: img,
-    name: name,
-    bio: bio,
-    url: `portfolios/${id}`,
-  }
-}
+export const mapUser = ({ name, img, bio, id }) => ({
+  image: img,
+  name: name,
+  bio: bio,
+  url: `portfolios/${id}`,
+})
