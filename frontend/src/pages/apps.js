@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 
 import { Router } from "@reach/router"
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout/Layout"
 import SEO from "../components/seo"
 import AnAppPage from "../client-pages/AnAppPage"
 import { AppGrid } from "../components/app-grid"
