@@ -13,7 +13,7 @@ const SingleApp = ({ appId }) => {
       const app = mapApp(await fetchApp(appId))
       setApp(app)
     })()
-  }, [])
+  }, [appId])
 
   if (app) {
     const { name, description } = app

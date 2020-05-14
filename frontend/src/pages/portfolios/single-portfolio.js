@@ -13,7 +13,7 @@ const SinglePortfolio = props => {
       const apps = (await fetchPortfolio(userId)).apps.map(mapApp)
       setApps(apps)
     })()
-  }, [])
+  }, [userId])
 
   return (
     <div className={"APortfolioPage-container"}>

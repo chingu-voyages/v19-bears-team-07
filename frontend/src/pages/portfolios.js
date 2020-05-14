@@ -1,13 +1,11 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import { Router } from "@reach/router"
 
 import Layout from "../components/Layout/Layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 import SinglePortfolio from "./portfolios/single-portfolio"
-import { fetchAllApps, fetchAllUsers } from "../shared/fetch"
+import { fetchAllUsers } from "../shared/fetch"
 import { UserGrid } from "../components/user-grid"
 import { mapUser } from "../shared/mappers"
 
