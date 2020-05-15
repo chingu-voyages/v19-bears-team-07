@@ -2,6 +2,7 @@ Portfolio = Struct.new(:apps)
 
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy, :portfolio]
+  before_action :authenticate_user!, except: [:index, :show, :portfolio]
 
 
   # GET /users

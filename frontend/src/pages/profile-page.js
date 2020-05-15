@@ -19,13 +19,14 @@ const ProfilePage = () => {
   const userId = 1
 
   const [initialValues, setInitialValues] = React.useState(initial)
+  const [refreshCount, setRefreshCount] = React.useState(0)
 
   React.useEffect(() => {
     ;(async () => {
       const user = await fetchUser(userId)
       setInitialValues(user)
     })()
-  }, [])
+  }, [refreshCount])
 
   return (
     <Layout>
@@ -35,6 +36,9 @@ const ProfilePage = () => {
         <EditDevForm
           initialValues={initialValues}
           userId={userId}
+          onSubmit={() => {
+            setRefreshCount(old => old + 1)
+          }}
         ></EditDevForm>
       </div>
     </Layout>

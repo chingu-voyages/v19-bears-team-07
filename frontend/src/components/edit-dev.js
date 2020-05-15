@@ -17,9 +17,7 @@ const initial = {
   linkedin: "",
 }
 
-export const EditDevForm = props => {
-  const { initialValues, userId } = props
-
+export const EditDevForm = ({ initialValues, userId, onSubmit }) => {
   const imageRef = useRef(null)
   return (
     <Formik
@@ -31,9 +29,9 @@ export const EditDevForm = props => {
         } catch (e) {
           console.log(e)
         }
-        resetForm(initial)
         imageRef.current.value = ""
         setSubmitting(false)
+        onSubmit()
       }}
       validationSchema={EditDevSchema}
     >
