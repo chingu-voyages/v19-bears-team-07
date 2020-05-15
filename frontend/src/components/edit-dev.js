@@ -3,10 +3,10 @@ import { Formik, Form } from "formik"
 import { FormGroup, Col, Container, Button, Modal, ModalBody } from "reactstrap"
 
 import "bootstrap/dist/css/bootstrap.min.css"
-import BasicInput from "../components/AddApp/BasicInput/BasicInput"
-import ImageInput from "../components/AddApp/ImageInput/ImageInput"
-import { EditDevSchema } from "../components/AddApp/formSchema"
-import { BACKEND_HOST } from "./login"
+import BasicInput from "./AddApp/BasicInput/BasicInput"
+import ImageInput from "./AddApp/ImageInput/ImageInput"
+import { EditDevSchema } from "./AddApp/formSchema"
+import { BACKEND_HOST } from "../shared/urls"
 
 const initial = {
   name: "",
@@ -17,29 +17,7 @@ const initial = {
   linkedin: "",
 }
 
-const EditDevPage = () => {
-  const userId = 1
-
-  const [initialValues, setInitialValues] = useState(initial)
-
-  React.useEffect(() => {
-    ;(async () => {
-      const user = await fetchUser(userId)
-      console.log(user)
-      setInitialValues(user)
-    })()
-  }, [])
-
-  return (
-    <div>
-      <EditDevForm initialValues={initialValues} userId={userId}></EditDevForm>
-    </div>
-  )
-}
-
-export default EditDevPage
-
-const EditDevForm = props => {
+export const EditDevForm = props => {
   const { initialValues, userId } = props
 
   const imageRef = useRef(null)
@@ -50,7 +28,6 @@ const EditDevForm = props => {
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         try {
           await submit(values, userId)
-          console.log(values)
         } catch (e) {
           console.log(e)
         }
@@ -116,28 +93,6 @@ const UrlInput = props => {
   )
 }
 
-const mapAsUser = async userData => {
-  return {
-    name: userData.name ? userData.name : "",
-    image: userData.img ? userData.img : "",
-    bio: userData.dev_bio ? userData.dev_bio : "",
-    twitter: userData.dev_twitter ? userData.dev_twitter : "",
-    github: userData.dev_github ? userData.dev_github : "",
-    linkedin: userData.dev_linkedin ? userData.dev_linkedin : "",
-  }
-}
-
-const fetchUser = async userId => {
-  const url = `${BACKEND_HOST}/users/${userId}`
-  const req = new Request(url, {
-    method: "GET",
-    credentials: "include",
-  })
-  const response = await fetch(req)
-  const parsed = await response.json()
-  return mapAsUser(parsed)
-}
-
 const mapFromUser = async user => {
   return {
     name: user.name,
@@ -157,7 +112,12 @@ const submit = async (values, userId) => {
     method: "PATCH",
     credentials: "include",
     body: JSON.stringify(mapped),
+    headers: {
+      "Content-Type": "application/json",
+    },
   })
 
   return fetch(req)
 }
+
+export default EditDevForm
