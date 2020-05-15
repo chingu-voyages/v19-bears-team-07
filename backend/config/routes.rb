@@ -14,4 +14,6 @@ Rails.application.routes.draw do
 
   # CRUD for Apps, Users, & Tags
   resources :apps, :users, :tags
+
+  get 'users/:id/portfolio', to: 'users#portfolio'
 end
