@@ -1,21 +1,36 @@
 import React from "react"
-import { Link } from "gatsby"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
+import Layout from "../components/Layout/Layout"
 import SEO from "../components/seo"
+import "bootstrap/dist/css/bootstrap.min.css"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+import { AppGrid } from "../components/app-grid"
+import { AppCarousel } from "../components/app-carousel"
+import { fetchAllApps } from "../shared/fetch"
+import { mapApp } from "../shared/mappers"
+
+const IndexPage = () => {
+  const [apps, setApps] = React.useState([])
+
+  React.useEffect(() => {
+    ;(async () => {
+      const apps = await fetchApps()
+      setApps(apps)
+    })()
+  }, [])
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <AppCarousel apps={apps}></AppCarousel>
+      <AppGrid apps={apps}></AppGrid>
+    </Layout>
+  )
+}
 
 export default IndexPage
+
+const fetchApps = async () => {
+  const apps = await fetchAllApps()
+  return apps.map(mapApp)
+}
