@@ -35,7 +35,7 @@ export const EditDevForm = ({ initialValues, userId, onSubmit }) => {
       }}
       validationSchema={EditDevSchema}
     >
-      {({ errors, touched, isSubmitting, setFieldValue }) => (
+      {({ values, errors, touched, isSubmitting, setFieldValue }) => (
         <Form>
           <FormGroup>
             <Container>
@@ -92,9 +92,25 @@ const UrlInput = props => {
 }
 
 const mapFromUser = async user => {
+  const result = await new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = event => {
+      resolve(event.target.result)
+    }
+    reader.onabort = event => {
+      resolve(null)
+    }
+    reader.onerror = event => {
+      resolve(null)
+    }
+
+    reader.readAsDataURL(user.image)
+  })
+
   return {
     name: user.name,
-    img: user.image.text ? await user.image.text() : "",
+    //img: user.image,
+    img: result ? result : "",
     dev_bio: user.bio,
     dev_twitter: user.twitter,
     dev_github: user.github,
@@ -105,7 +121,6 @@ const mapFromUser = async user => {
 const url = userId => `${BACKEND_HOST}/users/${userId}`
 const submit = async (values, userId) => {
   const mapped = await mapFromUser(values)
-  console.log(mapped)
   const req = new Request(url(userId), {
     method: "PATCH",
     credentials: "include",

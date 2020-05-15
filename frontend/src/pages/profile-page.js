@@ -5,6 +5,8 @@ import SEO from "../components/seo"
 
 import { BACKEND_HOST } from "../shared/urls"
 import { EditDevForm } from "../components/edit-dev"
+import { Container, Media } from "reactstrap"
+import { UserContext } from "../shared/UserContext"
 
 const initial = {
   name: "",
@@ -16,22 +18,33 @@ const initial = {
 }
 
 const ProfilePage = () => {
-  const userId = 1
+  // TODO: the user id should be available through the context
+  const { userId, loggedIn } = React.useContext(UserContext)
+  console.log(userId)
+  console.log(loggedIn)
 
   const [initialValues, setInitialValues] = React.useState(initial)
   const [refreshCount, setRefreshCount] = React.useState(0)
 
   React.useEffect(() => {
     ;(async () => {
-      const user = await fetchUser(userId)
-      setInitialValues(user)
+      if (loggedIn && userId) {
+        const user = await fetchUser(userId)
+        setInitialValues(user)
+      }
     })()
-  }, [refreshCount])
+  }, [refreshCount, userId, loggedIn])
+
+  if (!loggedIn || !userId) {
+    // If we're not logged in, this page doesn't display. Or it should show an error
+    return <Layout></Layout>
+  }
 
   return (
     <Layout>
       <SEO title="Profile Page" />
       <h1>profile page</h1>
+      <Container>{renderImage()}</Container>
       <div>
         <EditDevForm
           initialValues={initialValues}
@@ -43,6 +56,21 @@ const ProfilePage = () => {
       </div>
     </Layout>
   )
+
+  function renderImage() {
+    if (initialValues.image) {
+      return (
+        <img
+          src={initialValues.image}
+          alt={"Your profile image"}
+          width={200}
+          height={200}
+        ></img>
+      )
+    } else {
+      return null
+    }
+  }
 }
 
 export default ProfilePage
