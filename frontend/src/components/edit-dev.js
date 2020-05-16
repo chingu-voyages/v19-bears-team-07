@@ -8,15 +8,6 @@ import ImageInput from "./AddApp/ImageInput/ImageInput"
 import { EditDevSchema } from "./AddApp/formSchema"
 import { BACKEND_HOST } from "../shared/urls"
 
-const initial = {
-  name: "",
-  bio: "",
-  image: "",
-  github: "",
-  twitter: "",
-  linkedin: "",
-}
-
 export const EditDevForm = ({ initialValues, userId, onSubmit }) => {
   const imageRef = useRef(null)
   return (
@@ -35,7 +26,7 @@ export const EditDevForm = ({ initialValues, userId, onSubmit }) => {
       }}
       validationSchema={EditDevSchema}
     >
-      {({ values, errors, touched, isSubmitting, setFieldValue }) => (
+      {({ errors, touched, isSubmitting, setFieldValue }) => (
         <Form>
           <FormGroup>
             <Container>
@@ -66,12 +57,21 @@ export const EditDevForm = ({ initialValues, userId, onSubmit }) => {
               <Button type="submit" color="primary" disabled={isSubmitting}>
                 Submit
               </Button>
+              {renderProgress(isSubmitting)}
             </Container>
           </FormGroup>
         </Form>
       )}
     </Formik>
   )
+
+  function renderProgress(isSubmitting) {
+    if (isSubmitting) {
+      return <div>Submitting...</div>
+    } else {
+      return <div>Done submitting</div>
+    }
+  }
 }
 
 const NameInput = props => (
@@ -104,13 +104,16 @@ const mapFromUser = async user => {
       resolve(null)
     }
 
-    reader.readAsDataURL(user.image)
+    try {
+      reader.readAsDataURL(user.image)
+    } catch (e) {
+      resolve(null)
+    }
   })
 
   return {
     name: user.name,
-    //img: user.image,
-    img: result ? result : "",
+    img: result ? result : undefined,
     dev_bio: user.bio,
     dev_twitter: user.twitter,
     dev_github: user.github,

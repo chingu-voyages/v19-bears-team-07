@@ -1,7 +1,6 @@
 import React, { createContext, useState, useEffect } from "react"
 import { checkLoggedInRequest, logoutRequest } from "./fetch"
 
-// TODO: Set up the userId for the logged in user from the backend.
 export const UserContext = createContext({
   loggedIn: false,
   logout: () => {},
