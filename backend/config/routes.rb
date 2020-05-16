@@ -13,5 +13,11 @@ Rails.application.routes.draw do
   root to: "test_login#index"
 
   # CRUD for Apps, Users, & Tags
-  resources :apps, :users, :tags
+  resources :users do
+    resources :apps 
+  end
+
+  resources :apps do
+    resources :tags
+  end
 end

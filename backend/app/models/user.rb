@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :apps
+  has_many :apps #, tags
   # belongs_to :teams, optional: true
 
   # Include default devise modules. Others available are:

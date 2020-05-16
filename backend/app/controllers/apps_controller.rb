@@ -1,33 +1,55 @@
 class AppsController < ApplicationController
-  before_action :set_app, only: [:show, :update, :destroy]
+  #before_action :set_app, only: [:show, :update, :destroy]
 
 
-  # GET /apps
+  # GET /users/:user_id/apps
   def index
-    @apps = App.all
+    @user = User.find(params[:user_id])
+    @app = @user.apps.all
+    #@apps = App.all
     json_response(@apps)
   end
 
-  # GET /app/:id
+  # GET /users/:user_id/apps/:id
   def show
+    @user = User.find(params[:user_id])
+    @app = @user.apps.find(params[:id])
     json_response(@app)
   end
 
-  # POST /apps
+  # POST /users/:user_id/apps
   def create
-    @app = App.create(app_params)
+    @user = User.find(params[:user_id])
+    @app = @user.apps.create(app_params)
+    redirect_to user_path(@user)
+    #@app = App.create(app_params)
     json_response(@app, :created)
   end
 
-  # PUT /apps/:id
+  def edit
+
+  end
+
+  # PUT /users/:user_id/apps/:id
   def update
-    @app.update!(app_params)
+    @user = User.find(params[:user_id])
+    @app = @user.apps.find(params[:id])
+    if(@app.update(app_params))
+      redirect_to @app
+    else
+      render 'edit'
+    end
+    #@app.update!(app_params)
     head :no_content
   end
 
   # DELETE /apps/:id
   def destroy
-    @app.destroy
+    @user = User.find(params[:user_id])
+    @app = @user.apps.find(params[:id])
+    @app.destory
+    redirect_to user_path(@user)
+    #@app.destroy
     head :no_content
   end
 
@@ -38,7 +60,9 @@ class AppsController < ApplicationController
     params.permit(:name, :description, :img, :app_url, :github_url)
   end
 
-  def set_app
-    @app = App.find(params[:id])
-  end
+  
+  # def set_app
+  #   @app = App.find(params[:id])
+  # end
+
 end

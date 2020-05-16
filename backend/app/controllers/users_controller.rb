@@ -16,18 +16,33 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.create(user_params)
+    if(@user.save)
+      redirect_to @user
+    else
+      render 'new'
+    end
     json_response(@user, :created)
+  end
+
+  def edit
+  
   end
 
   # PUT /users/:id
   def update
-    @user.update!(user_params)
+        if(@user.update(user_params))
+            redirect_to @user
+        else
+            render 'edit'
+        end
+    #@user.update!(user_params)
     head :no_content
   end
 
   # DELETE /users/:id
   def destroy
     @user.destroy
+    redirect_to users_path
     head :no_content
   end
 
