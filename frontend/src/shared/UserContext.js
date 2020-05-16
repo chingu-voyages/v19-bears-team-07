@@ -1,10 +1,15 @@
 import React, { createContext, useState, useEffect } from "react"
 import { checkLoggedInRequest, logoutRequest } from "./fetch"
 
-export const UserContext = createContext()
+export const UserContext = createContext({
+  loggedIn: false,
+  logout: () => {},
+  userId: null,
+})
 
-const UserContextProvider = ({ children }) => {
+export const UserContextProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false)
+  const [userId, setUserId] = useState(null)
 
   useEffect(() => {
     checkLoggedIn()
@@ -14,13 +19,16 @@ const UserContextProvider = ({ children }) => {
     try {
       const parsedResponse = await checkLoggedInRequest()
       if (typeof parsedResponse.is_logged_in === "boolean") {
+        console.log(parsedResponse)
+        console.log("setting context")
         setLoggedIn(parsedResponse.is_logged_in)
+        setUserId(parsedResponse.user_id.toString())
       } else {
-        setLoggedIn(false)
+        setLoggedOut()
       }
     } catch (error) {
       console.log(error)
-      setLoggedIn(false)
+      setLoggedOut()
     }
   }
 
@@ -33,8 +41,13 @@ const UserContextProvider = ({ children }) => {
     }
   }
 
+  const setLoggedOut = () => {
+    setLoggedIn(false)
+    setUserId(null)
+  }
+
   return (
-    <UserContext.Provider value={{ loggedIn, logout }}>
+    <UserContext.Provider value={{ loggedIn, logout, userId }}>
       {children}
     </UserContext.Provider>
   )

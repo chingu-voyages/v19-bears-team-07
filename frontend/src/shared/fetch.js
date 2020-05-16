@@ -112,3 +112,24 @@ export const logoutRequest = () => {
   //No meaningful response currently expected.
   return fetch(request)
 }
+
+export const fetchUser = async userId => {
+  const req = new Request(Url.singleUser(userId), {
+    method: "GET",
+    credentials: "include",
+  })
+  return fetchJsonAndParse(req)
+}
+
+export const updateProfileRequest = async (values, userId) => {
+  const req = new Request(Url.singleUser(userId), {
+    method: "PATCH",
+    credentials: "include",
+    body: JSON.stringify(values),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  return fetch(req)
+}

@@ -1,5 +1,6 @@
 .AppCarousel-container {
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 400px) {
@@ -26,6 +27,7 @@
 .AppCarousel-ItemImage {
   object-fit: cover;
   height: 100%;
+  max-width: 100%;
   -o-object-fit: cover;
 }
 
