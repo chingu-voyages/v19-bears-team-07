@@ -23,9 +23,24 @@ export const mapApp = ({
     : "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
 })
 
-export const mapUser = ({ name, img, bio, id }) => ({
-  image: img,
-  name,
-  bio,
-  url: `portfolios/${id}`,
-})
+export const mapUser = async userData => {
+  const {
+    name,
+    img,
+    dev_bio,
+    dev_twitter,
+    dev_github,
+    dev_linkedin,
+    id,
+  } = userData
+
+  return {
+    name: name ? name : "",
+    image: img ? img : "",
+    bio: dev_bio ? dev_bio : "",
+    twitter: dev_twitter ? dev_twitter : "",
+    github: dev_github ? dev_github : "",
+    linkedin: dev_linkedin ? dev_linkedin : "",
+    url: `portfolios/${id}`,
+  }
+}

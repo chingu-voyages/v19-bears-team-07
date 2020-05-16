@@ -6,4 +6,5 @@ export const ALL_APPS = `${BACKEND_HOST}/apps`
 export const singleApp = appId => `${BACKEND_HOST}/apps/${appId}`
 export const singlePortfolio = userId =>
   `${BACKEND_HOST}/users/${userId}/portfolio`
+export const singleUser = userId => `${BACKEND_HOST}/users/${userId}`
 export const ALL_USERS = `${BACKEND_HOST}/users`
