@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import { Jumbotron, Container } from "reactstrap"
 import { mapApp } from "../../shared/mappers"
 import { fetchApp } from "../../shared/fetch"
+import ShareSocial from "../../components/share-social"
 
 const SingleApp = ({ appId }) => {
   const [app, setApp] = React.useState(null)
@@ -24,6 +25,7 @@ const SingleApp = ({ appId }) => {
           <Container fluid>
             <h1 className={"display-3"}>{name}</h1>
             <p className={"lead"}>{description}</p>
+            <ShareSocial></ShareSocial>
           </Container>
         </Jumbotron>
       </div>
