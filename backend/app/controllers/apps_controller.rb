@@ -1,11 +1,11 @@
 class AppsController < ApplicationController
-  #before_action :set_app, only: [:show, :update, :destroy]
+  before_action :set_app, only: [:show, :update, :destroy]
 
 
   # GET /users/:user_id/apps
   def index
     @user = User.find(params[:user_id])
-    @app = @user.apps.all
+    @apps = @user.apps.all
     #@apps = App.all
     json_response(@apps)
   end
@@ -61,8 +61,8 @@ class AppsController < ApplicationController
   end
 
   
-  # def set_app
-  #   @app = App.find(params[:id])
-  # end
+  def set_app
+    @app = App.find(params[:id])
+  end
 
 end
