@@ -17,10 +17,10 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if(@user.save)
-      redirect_to @user
-    else
-      render 'new'
-    end
+    #   redirect_to @user
+    # else
+    #   render 'new'
+    # end
     json_response(@user, :created)
   end
 
@@ -30,19 +30,19 @@ class UsersController < ApplicationController
 
   # PUT /users/:id
   def update
-        if(@user.update(user_params))
-            redirect_to @user
-        else
-            render 'edit'
-        end
-    #@user.update!(user_params)
+        # if(@user.update(user_params))
+        #     redirect_to @user
+        # else
+        #     render 'edit'
+        # end
+    @user.update!(user_params)
     head :no_content
   end
 
   # DELETE /users/:id
   def destroy
     @user.destroy
-    redirect_to users_path
+    # redirect_to users_path
     head :no_content
   end
 

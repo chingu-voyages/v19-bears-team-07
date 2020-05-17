@@ -1,17 +1,27 @@
 class AppsController < ApplicationController
   before_action :set_app, only: [:show, :update, :destroy]
-
+  
+  # GET /apps
+  def index
+    @apps = App.all.order("created_at DESC")
+    json_response(@apps)
+  end
 
   # GET /users/:user_id/apps
-  def index
+  def user_apps
     @user = User.find(params[:user_id])
     @apps = @user.apps.all
     #@apps = App.all
     json_response(@apps)
   end
 
-  # GET /users/:user_id/apps/:id
+  # GET /apps/:id
   def show
+    json_response(@app)
+  end
+
+  # GET /users/:user_id/apps/:id
+  def show_app
     @user = User.find(params[:user_id])
     @app = @user.apps.find(params[:id])
     json_response(@app)
@@ -21,7 +31,7 @@ class AppsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @app = @user.apps.create(app_params)
-    redirect_to user_path(@user)
+    #redirect_to user_path(@user)
     #@app = App.create(app_params)
     json_response(@app, :created)
   end
@@ -34,11 +44,13 @@ class AppsController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @app = @user.apps.find(params[:id])
-    if(@app.update(app_params))
-      redirect_to @app
-    else
-      render 'edit'
-    end
+    # if(@app.update(app_params))
+    #   redirect_to @app
+    # else
+    #   render 'edit'
+    # end
+    json_response(@app, :edited)
+
     #@app.update!(app_params)
     head :no_content
   end
@@ -48,7 +60,7 @@ class AppsController < ApplicationController
     @user = User.find(params[:user_id])
     @app = @user.apps.find(params[:id])
     @app.destory
-    redirect_to user_path(@user)
+    #redirect_to user_path(@user)
     #@app.destroy
     head :no_content
   end
