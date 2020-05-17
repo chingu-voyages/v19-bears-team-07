@@ -4,8 +4,8 @@ import Layout from "../components/Layout/Layout"
 import SEO from "../components/seo"
 import AppGrid from "../components/app-grid"
 import { UserContext } from "../shared/UserContext"
-import { fetchAllApps } from "../shared/fetch"
-import { mapAppAuth } from "../shared/mappers"
+import { fetchMyApps } from "../shared/fetch"
+import { mapApp_authenticated } from "../shared/mappers"
 
 const ManageAppsPage = () => {
   const { userId, loggedIn } = React.useContext(UserContext)
@@ -14,7 +14,9 @@ const ManageAppsPage = () => {
   React.useEffect(() => {
     // Fetches all the apps that are authenticated for this user.
     ;(async () => {
-      const apps = (await fetchAllApps()).map(mapAppAuth)
+      const appData = await fetchMyApps()
+      console.log(appData)
+      const apps = appData.map(mapApp_authenticated)
       setApps(apps)
     })()
   }, [userId])

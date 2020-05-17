@@ -54,6 +54,14 @@ export async function fetchAllApps() {
   }
 }
 
+export async function fetchMyApps() {
+  const req = new Request(Url.MY_APPS, {
+    method: "GET",
+    credentials: "include",
+  })
+  return fetchJsonAndParse(req)
+}
+
 export async function fetchApp(appId) {
   try {
     const req = new Request(Url.singleApp(appId), {
