@@ -11,7 +11,6 @@ class AppsController < ApplicationController
   def user_apps
     @user = User.find(params[:user_id])
     @apps = @user.apps.all
-    #@apps = App.all
     json_response(@apps)
   end
 
@@ -31,8 +30,6 @@ class AppsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @app = @user.apps.create(app_params)
-    #redirect_to user_path(@user)
-    #@app = App.create(app_params)
     json_response(@app, :created)
   end
 
@@ -44,11 +41,6 @@ class AppsController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @app = @user.apps.find(params[:id])
-    # if(@app.update(app_params))
-    #   redirect_to @app
-    # else
-    #   render 'edit'
-    # end
     json_response(@app, :edited)
 
     #@app.update!(app_params)
@@ -60,8 +52,6 @@ class AppsController < ApplicationController
     @user = User.find(params[:user_id])
     @app = @user.apps.find(params[:id])
     @app.destory
-    #redirect_to user_path(@user)
-    #@app.destroy
     head :no_content
   end
 
