@@ -6,7 +6,7 @@ import "./app-grid.css"
 
 import { Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap"
 
-export const AppGrid = ({ apps, className }) => {
+export const AppGrid = ({ apps, className, urlSelector }) => {
   return (
     <div className={"AppGrid-container" + (className ? " " + className : "")}>
       {renderApps()}
@@ -15,7 +15,8 @@ export const AppGrid = ({ apps, className }) => {
 
   function renderApps() {
     const cards = apps.map((app, index) => {
-      const { image, imageUrl, name, description, url } = app
+      const { image, imageUrl, name, description, url: defaultUrl } = app
+      const url = urlSelector ? urlSelector(app) : defaultUrl
       return (
         <Card
           onClick={() => navigate(url)}

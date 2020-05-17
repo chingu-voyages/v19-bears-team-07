@@ -40,7 +40,7 @@ const ManageAppsPage = () => {
 
   function renderApps() {
     if (apps && apps.length > 0) {
-      return <AppGrid apps={apps}></AppGrid>
+      return <AppGrid apps={apps} urlSelector={app => app.manageUrl}></AppGrid>
     } else {
       return <h2>You do not have any apps</h2>
     }
