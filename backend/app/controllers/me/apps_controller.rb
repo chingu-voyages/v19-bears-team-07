@@ -3,13 +3,13 @@ class Me::AppsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_app, only: [:show, :update, :destroy]
 
-    # GET /apps
+    # GET me/apps
     def index 
         @apps = App.where(user: current_user)
         json_response(@apps);
     end
 
-    # POST /apps
+    # POST me/apps
     def create 
         @app = App.new(app_params);
         @app.user = current_user;
@@ -21,7 +21,7 @@ class Me::AppsController < ApplicationController
         end
     end
 
-    # GET /app/:id
+    # GET me/apps/:id
     def show
         if @app
             json_response(@app)
@@ -30,7 +30,7 @@ class Me::AppsController < ApplicationController
         end
     end
 
-    # PATCH or PUT /apps/:id
+    # PATCH or PUT me/apps/:id
     def update 
         if @app 
             @app.update(app_params)
@@ -45,7 +45,7 @@ class Me::AppsController < ApplicationController
         end
     end
 
-    # DELETE /apps/:id
+    # DELETE me/apps/:id
     def destroy 
         if @app 
             @app.destroy
