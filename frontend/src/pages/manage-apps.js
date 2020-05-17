@@ -34,10 +34,17 @@ const ManageAppsPage = () => {
     <Layout>
       <SEO title="Manage Apps" />
       <h1>manage apps</h1>
-
-      <AppGrid apps={apps}></AppGrid>
+      {renderApps()}
     </Layout>
   )
+
+  function renderApps() {
+    if (apps && apps.length > 0) {
+      return <AppGrid apps={apps}></AppGrid>
+    } else {
+      return <h2>You do not have any apps</h2>
+    }
+  }
 }
 
 export default ManageAppsPage
