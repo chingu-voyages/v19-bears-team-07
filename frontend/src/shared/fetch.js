@@ -48,7 +48,7 @@ export async function fetchAllApps() {
       method: "GET",
       credentials: "include",
     })
-    return fetchJsonAndParse(req)
+    return await fetchJsonAndParse(req)
   } catch (e) {
     return allTestApps
   }
@@ -60,7 +60,7 @@ export async function fetchApp(appId) {
       method: "GET",
       credentials: "include",
     })
-    return fetchJsonAndParse(req)
+    return await fetchJsonAndParse(req)
   } catch (e) {
     return allTestApps[0]
   }

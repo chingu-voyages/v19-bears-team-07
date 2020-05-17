@@ -23,6 +23,12 @@ export const mapApp = ({
     : "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
 })
 
+export const mapAppAuth = appData => {
+  const mapped = mapApp(appData)
+  mapped.manageUrl = `/apps/${appData.id}`
+  return mapped
+}
+
 export const mapUser = async userData => {
   const {
     name,

@@ -6,9 +6,7 @@ import "./app-grid.css"
 
 import { Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap"
 
-export const AppGrid = props => {
-  const { apps, className } = props
-
+export const AppGrid = ({ apps, className }) => {
   return (
     <div className={"AppGrid-container" + (className ? " " + className : "")}>
       {renderApps()}
@@ -35,3 +33,5 @@ export const AppGrid = props => {
     return <React.Fragment>{cards}</React.Fragment>
   }
 }
+
+export default AppGrid
