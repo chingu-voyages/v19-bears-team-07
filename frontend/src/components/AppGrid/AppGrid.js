@@ -1,8 +1,7 @@
 import React from "react"
 import { navigate } from "gatsby"
 
-import "bootstrap/dist/css/bootstrap.min.css"
-import "./app-grid.css"
+import "./AppGrid.css"
 
 import { Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap"
 

@@ -1,11 +1,11 @@
 import React from "react"
-
 import { Router } from "@reach/router"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 import Layout from "../components/Layout/Layout"
 import SEO from "../components/seo"
 import SingleApp from "./apps/single-app"
-import { AppGrid } from "../components/app-grid"
+import { AppGrid } from "../components/AppGrid/AppGrid"
 import { mapApp } from "../shared/mappers"
 import { fetchAllApps } from "../shared/fetch"
 import GamesPage from "./apps/games"

@@ -1,5 +1,5 @@
 import React from "react"
-import { AppGrid } from "../../components/app-grid"
+import { AppGrid } from "../../components/AppGrid/AppGrid"
 import { fetchPortfolio } from "../../shared/fetch"
 import { mapApp } from "../../shared/mappers"
 

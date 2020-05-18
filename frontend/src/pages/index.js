@@ -4,8 +4,8 @@ import Layout from "../components/Layout/Layout"
 import SEO from "../components/seo"
 import "bootstrap/dist/css/bootstrap.min.css"
 
-import { AppGrid } from "../components/app-grid"
-import { AppCarousel } from "../components/app-carousel"
+import { AppGrid } from "../components/AppGrid/AppGrid"
+import { AppCarousel } from "../components/AppCarousel/AppCarousel"
 import { fetchAllApps } from "../shared/fetch"
 import { mapApp } from "../shared/mappers"
 

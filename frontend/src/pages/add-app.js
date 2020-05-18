@@ -1,7 +1,7 @@
 import React from "react"
-import AddApp from "../components/AddApp/AddApp"
-
 import "bootstrap/dist/css/bootstrap.min.css"
+
+import AddApp from "../components/AddApp/AddApp"
 
 const Page2 = () => (
   <div>

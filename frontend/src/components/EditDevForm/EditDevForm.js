@@ -1,12 +1,12 @@
 import React, { useRef } from "react"
 import { Formik, Form } from "formik"
 import { FormGroup, Container, Button } from "reactstrap"
-
 import "bootstrap/dist/css/bootstrap.min.css"
-import BasicInput from "./AddApp/BasicInput/BasicInput"
-import ImageInput from "./AddApp/ImageInput/ImageInput"
-import { EditDevSchema } from "./AddApp/formSchema"
-import { updateProfileRequest } from "../shared/fetch"
+
+import BasicInput from "../AddApp/BasicInput/BasicInput"
+import ImageInput from "../AddApp/ImageInput/ImageInput"
+import { EditDevSchema } from "../AddApp/formSchema"
+import { updateProfileRequest } from "../../shared/fetch"
 
 export const EditDevForm = ({ initialValues, userId, onSubmit }) => {
   const imageRef = useRef(null)

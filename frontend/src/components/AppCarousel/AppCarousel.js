@@ -1,9 +1,5 @@
 import React, { useState } from "react"
 import { navigate } from "gatsby"
-
-import "bootstrap/dist/css/bootstrap.min.css"
-import "./app-carousel.css"
-
 import {
   Carousel,
   CarouselItem,
@@ -11,6 +7,9 @@ import {
   CarouselIndicators,
   CarouselCaption,
 } from "reactstrap"
+
+import "bootstrap/dist/css/bootstrap.min.css"
+import "./AppCarousel.css"
 
 export const AppCarousel = props => {
   const { apps: items, className } = props

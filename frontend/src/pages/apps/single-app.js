@@ -1,5 +1,5 @@
 import React from "react"
-import AppCarousel from "../../components/app-carousel"
+import AppCarousel from "../../components/AppCarousel/AppCarousel"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Jumbotron, Container } from "reactstrap"
 import { mapApp } from "../../shared/mappers"

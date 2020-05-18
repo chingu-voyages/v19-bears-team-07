@@ -6,7 +6,7 @@ import Layout from "../components/Layout/Layout"
 import SEO from "../components/seo"
 import SinglePortfolio from "./portfolios/single-portfolio"
 import { fetchAllUsers } from "../shared/fetch"
-import { UserGrid } from "../components/user-grid"
+import { UserGrid } from "../components/UserGrid/UserGrid"
 import { mapUser } from "../shared/mappers"
 
 const PortfolioPage = () => {
