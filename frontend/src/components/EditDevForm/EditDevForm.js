@@ -3,12 +3,14 @@ import { Formik, Form } from "formik"
 import { FormGroup, Container, Button } from "reactstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 
-import BasicInput from "../formInputs/BasicInput/BasicInput"
+import BioInput from "../formInputs/BioInput/BioInput"
+import NameInput from "../formInputs/NameInput/NameInput"
 import ImageInput from "../formInputs/ImageInput/ImageInput"
+import UrlInput from "../formInputs/UrlInput/UrlInput"
 import validationSchema from "./validationSchema"
 import { updateProfileRequest } from "../../shared/fetch"
 
-export const EditDevForm = ({ initialValues, userId, onSubmit }) => {
+const EditDevForm = ({ initialValues, userId, onSubmit }) => {
   const imageRef = useRef(null)
   return (
     <Formik
@@ -74,22 +76,8 @@ export const EditDevForm = ({ initialValues, userId, onSubmit }) => {
   }
 }
 
-const NameInput = props => (
-  <BasicInput componentName="name" label="name" type="text" {...props} />
-)
-
-const BioInput = props => (
-  <BasicInput componentName="bio" label="bio" type="textarea" {...props} />
-)
-
 // Note that `componentName` is the name of the field in the object the form submits...
 // It isn't safe to leave it as the label, since the label may change in the future.
-const UrlInput = props => {
-  const { label, ...rest } = props
-  return (
-    <BasicInput componentName={label} label={label} type="text" {...rest} />
-  )
-}
 
 const mapFromUser = async user => {
   const result = await new Promise((resolve, reject) => {

@@ -3,7 +3,7 @@ import React from "react"
 import Layout from "../components/Layout/Layout"
 import SEO from "../components/Seo"
 
-import { EditDevForm } from "../components/EditDevForm/EditDevForm"
+import EditDevForm from "../components/EditDevForm/EditDevForm"
 import { Container } from "reactstrap"
 import { UserContext } from "../shared/UserContext"
 import { mapUser } from "../shared/mappers"
