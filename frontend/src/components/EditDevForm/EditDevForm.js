@@ -3,10 +3,10 @@ import { Formik, Form } from "formik"
 import { FormGroup, Container, Button } from "reactstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 
+import BasicInput from "../formInputs/BasicInput/BasicInput"
 import BioInput from "../formInputs/BioInput/BioInput"
 import NameInput from "../formInputs/NameInput/NameInput"
 import ImageInput from "../formInputs/ImageInput/ImageInput"
-import UrlInput from "../formInputs/UrlInput/UrlInput"
 import validationSchema from "./validationSchema"
 import { updateProfileRequest } from "../../shared/fetch"
 
@@ -41,21 +41,24 @@ const EditDevForm = ({ initialValues, userId, onSubmit }) => {
                 errors={errors.picture}
                 touched={touched.picture}
               />
-              <UrlInput
-                label={"github"}
+              <BasicInput
+                componentName="github"
+                label="github"
                 error={errors.github}
                 touched={touched.github}
-              ></UrlInput>
-              <UrlInput
-                label={"twitter"}
+              ></BasicInput>
+              <BasicInput
+                componentName="twitter"
+                label="twitter"
                 error={errors.twitter}
                 touched={touched.twitter}
-              ></UrlInput>
-              <UrlInput
-                label={"linkedin"}
+              ></BasicInput>
+              <BasicInput
+                componentName="linkedin"
+                label="linkedin"
                 error={errors.linkedin}
                 touched={touched.linkedin}
-              ></UrlInput>
+              ></BasicInput>
               <Button type="submit" color="primary" disabled={isSubmitting}>
                 Submit
               </Button>
@@ -75,9 +78,6 @@ const EditDevForm = ({ initialValues, userId, onSubmit }) => {
     }
   }
 }
-
-// Note that `componentName` is the name of the field in the object the form submits...
-// It isn't safe to leave it as the label, since the label may change in the future.
 
 const mapFromUser = async user => {
   const result = await new Promise((resolve, reject) => {
