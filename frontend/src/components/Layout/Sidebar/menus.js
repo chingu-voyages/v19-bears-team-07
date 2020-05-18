@@ -20,7 +20,7 @@ const developerMenu = [
   },
   {
     title: "+ New App",
-    target: "new-app",
+    target: "add-app",
   },
 ]
 

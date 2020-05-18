@@ -2,14 +2,13 @@ import React, { useRef, useState } from "react"
 import { Formik, Form } from "formik"
 import { FormGroup, Col, Container, Button, Modal, ModalBody } from "reactstrap"
 
-import formInitialValues from "./formInitialValues"
-
 import NameInput from "../formInputs/NameInput/NameInput"
 import ImageInput from "../formInputs/ImageInput/ImageInput"
 import TagsInput from "../formInputs/TagsInput/TagsInput"
 import DescriptionInput from "../formInputs/DescriptionInput/DescriptionInput"
 import AppUrlInput from "../formInputs/AppUrlInput/AppUrlInput"
 import Github from "../formInputs/GithubInput/GithubInput"
+import formInitialValues from "./formInitialValues"
 import validationSchema from "./validationSchema"
 
 const AddApp = () => {
