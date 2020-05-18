@@ -4,8 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import { Jumbotron, Container } from "reactstrap"
 import { mapApp } from "../../shared/mappers"
 import { fetchApp } from "../../shared/fetch"
+import PaginatedComments from "../../components/Comments/PaginatedComments"
 
-const SingleApp = ({ appId }) => {
+export const SingleApp = ({ appId }) => {
   const [app, setApp] = React.useState(null)
 
   React.useEffect(() => {
@@ -26,6 +27,7 @@ const SingleApp = ({ appId }) => {
             <p className={"lead"}>{description}</p>
           </Container>
         </Jumbotron>
+        <PaginatedComments comments={exampleComments}></PaginatedComments>
       </div>
     )
   }
@@ -34,3 +36,56 @@ const SingleApp = ({ appId }) => {
 }
 
 export default SingleApp
+
+let ex = [
+  {
+    username: "Micah",
+    text: "Left FB for this",
+    timestamp: new Date(),
+    avatar:
+      "https://www.kirkleescollege.ac.uk/wp-content/uploads/2015/09/default-avatar.png",
+    user_id: 2,
+  },
+  {
+    username: "Jeremiah",
+    text: "Left FB for this",
+    timestamp: new Date(),
+    avatar:
+      "https://www.kirkleescollege.ac.uk/wp-content/uploads/2015/09/default-avatar.png",
+    user_id: 2,
+  },
+  {
+    username: "Michael",
+    text: "Left FB for this",
+    timestamp: new Date(),
+    avatar:
+      "https://www.kirkleescollege.ac.uk/wp-content/uploads/2015/09/default-avatar.png",
+    user_id: 2,
+  },
+  {
+    username: "Jeremiad",
+    text: "Left FB for this",
+    timestamp: new Date(),
+    avatar:
+      "https://www.kirkleescollege.ac.uk/wp-content/uploads/2015/09/default-avatar.png",
+    user_id: 2,
+  },
+  {
+    username: "Mica",
+    text: "Left FB for this",
+    timestamp: new Date(),
+    avatar:
+      "https://www.kirkleescollege.ac.uk/wp-content/uploads/2015/09/default-avatar.png",
+    user_id: 2,
+  },
+  {
+    username: "Jeremy",
+    text: "Left FB for this",
+    timestamp: new Date(),
+    avatar:
+      "https://www.kirkleescollege.ac.uk/wp-content/uploads/2015/09/default-avatar.png",
+    user_id: 2,
+  },
+]
+
+const exampleComments = ex.concat(ex).concat(ex).concat(ex).concat(ex)
