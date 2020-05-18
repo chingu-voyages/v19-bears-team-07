@@ -3,7 +3,7 @@ import { Router } from "@reach/router"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 import Layout from "../components/Layout/Layout"
-import SEO from "../components/seo"
+import SEO from "../components/Seo"
 import SingleApp from "./apps/single-app"
 import { AppGrid } from "../components/AppGrid/AppGrid"
 import { mapApp } from "../shared/mappers"

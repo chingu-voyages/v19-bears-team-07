@@ -3,7 +3,7 @@ import React from "react"
 import { Router } from "@reach/router"
 
 import Layout from "../components/Layout/Layout"
-import SEO from "../components/seo"
+import SEO from "../components/Seo"
 import SinglePortfolio from "./portfolios/single-portfolio"
 import { fetchAllUsers } from "../shared/fetch"
 import { UserGrid } from "../components/UserGrid/UserGrid"
