@@ -1,6 +1,6 @@
 import React from "react"
 
-import * as classNames from "classNames"
+import * as classNames from "classnames"
 
 import "./PaginatedComments.css"
 import * as R from "ramda"
