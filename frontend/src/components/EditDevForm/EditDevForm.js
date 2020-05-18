@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 import BasicInput from "../formInputs/BasicInput/BasicInput"
 import ImageInput from "../formInputs/ImageInput/ImageInput"
-import { EditDevSchema } from "../AddApp/formSchema"
+import validationSchema from "./validationSchema"
 import { updateProfileRequest } from "../../shared/fetch"
 
 export const EditDevForm = ({ initialValues, userId, onSubmit }) => {
@@ -24,7 +24,7 @@ export const EditDevForm = ({ initialValues, userId, onSubmit }) => {
         setSubmitting(false)
         onSubmit()
       }}
-      validationSchema={EditDevSchema}
+      validationSchema={validationSchema}
     >
       {({ errors, touched, isSubmitting, setFieldValue }) => (
         <Form>

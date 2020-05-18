@@ -10,7 +10,7 @@ import TagsInput from "../formInputs/TagsInput/TagsInput"
 import DescriptionInput from "../formInputs/DescriptionInput/DescriptionInput"
 import AppUrlInput from "../formInputs/AppUrlInput/AppUrlInput"
 import Github from "../formInputs/GithubInput/GithubInput"
-import { AddAppSchema } from "./formSchema"
+import validationSchema from "./validationSchema"
 
 const AddApp = () => {
   const [successModal, setSucessModal] = useState(false)
@@ -18,7 +18,7 @@ const AddApp = () => {
   return (
     <Formik
       initialValues={formInitialValues}
-      validationSchema={AddAppSchema}
+      validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         try {
           console.log(values)
