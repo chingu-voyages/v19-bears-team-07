@@ -3,8 +3,8 @@ import { Formik, Form } from "formik"
 import { FormGroup, Container, Button } from "reactstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 
-import BasicInput from "../AddApp/BasicInput/BasicInput"
-import ImageInput from "../AddApp/ImageInput/ImageInput"
+import BasicInput from "../formInputs/BasicInput/BasicInput"
+import ImageInput from "../formInputs/ImageInput/ImageInput"
 import { EditDevSchema } from "../AddApp/formSchema"
 import { updateProfileRequest } from "../../shared/fetch"
 

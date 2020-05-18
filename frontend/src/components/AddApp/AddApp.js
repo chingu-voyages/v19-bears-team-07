@@ -4,12 +4,12 @@ import { FormGroup, Col, Container, Button, Modal, ModalBody } from "reactstrap"
 
 import formInitialValues from "./formInitialValues"
 
-import NameInput from "./NameInput/NameInput"
-import ImageInput from "./ImageInput/ImageInput"
-import TagsInput from "./TagsInput/TagsInput"
-import DescriptionInput from "./DescriptionInput/DescriptionInput"
-import AppUrlInput from "./AppUrlInput/AppUrlInput"
-import Github from "./GithubInput/GithubInput"
+import NameInput from "../formInputs/NameInput/NameInput"
+import ImageInput from "../formInputs/ImageInput/ImageInput"
+import TagsInput from "../formInputs/TagsInput/TagsInput"
+import DescriptionInput from "../formInputs/DescriptionInput/DescriptionInput"
+import AppUrlInput from "../formInputs/AppUrlInput/AppUrlInput"
+import Github from "../formInputs/GithubInput/GithubInput"
 import { AddAppSchema } from "./formSchema"
 
 const AddApp = () => {
