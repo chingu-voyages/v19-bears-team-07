@@ -1,7 +1,6 @@
 import React, { useRef } from "react"
 import { Formik, Form } from "formik"
 import { FormGroup, Container, Button } from "reactstrap"
-import "bootstrap/dist/css/bootstrap.min.css"
 
 import NameInput from "../formInputs/NameInput/NameInput"
 import BioInput from "../formInputs/BioInput/BioInput"
@@ -11,22 +10,24 @@ import LinkedinInput from "../formInputs/LinkedinInput/LinkedinInput"
 import ImageInput from "../formInputs/ImageInput/ImageInput"
 import validationSchema from "./validationSchema"
 import updateProfile from "../../shared/fetchActions/updateProfile"
+import * as forBackend from "../../shared/convertForBackend"
 
-const EditDevForm = ({ initialValues, userId, onSubmit }) => {
+const EditDevForm = ({ initialValues, userId, refreshUserData }) => {
   const imageRef = useRef(null)
   return (
     <Formik
       enableReinitialize
       initialValues={initialValues}
-      onSubmit={async (values, { setSubmitting, resetForm }) => {
+      onSubmit={async (values, { setSubmitting }) => {
         try {
-          await updateProfile(await mapFromUser(values), userId)
+          const updatedUser = await forBackend.convertUser(values)
+          await updateProfile(updatedUser, userId)
         } catch (e) {
           console.log(e)
         }
         imageRef.current.value = ""
         setSubmitting(false)
-        onSubmit()
+        refreshUserData()
       }}
       validationSchema={validationSchema}
     >
@@ -52,51 +53,13 @@ const EditDevForm = ({ initialValues, userId, onSubmit }) => {
               <Button type="submit" color="primary" disabled={isSubmitting}>
                 Submit
               </Button>
-              {renderProgress(isSubmitting)}
+              {isSubmitting ? <div>Submitting...</div> : <div></div>}
             </Container>
           </FormGroup>
         </Form>
       )}
     </Formik>
   )
-
-  function renderProgress(isSubmitting) {
-    if (isSubmitting) {
-      return <div>Submitting...</div>
-    } else {
-      return <div>Done submitting</div>
-    }
-  }
-}
-
-const mapFromUser = async user => {
-  const result = await new Promise((resolve, reject) => {
-    const reader = new FileReader()
-    reader.onload = event => {
-      resolve(event.target.result)
-    }
-    reader.onabort = event => {
-      resolve(null)
-    }
-    reader.onerror = event => {
-      resolve(null)
-    }
-
-    try {
-      reader.readAsDataURL(user.image)
-    } catch (e) {
-      resolve(null)
-    }
-  })
-
-  return {
-    name: user.name,
-    img: result ? result : undefined,
-    dev_bio: user.bio,
-    dev_twitter: user.twitter,
-    dev_github: user.github,
-    dev_linkedin: user.linkedin,
-  }
 }
 
 export default EditDevForm
