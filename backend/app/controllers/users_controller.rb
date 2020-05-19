@@ -1,5 +1,8 @@
+Portfolio = Struct.new(:apps)
+
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy, :portfolio]
+  before_action :authenticate_user!, except: [:index, :show, :portfolio]
 
 
   # GET /users
@@ -19,7 +22,7 @@ class UsersController < ApplicationController
     json_response(@user, :created)
   end
 
-  # PUT /users/:id
+  # PATCH or PUT /users/:id
   def update
     @user.update!(user_params)
     head :no_content
@@ -31,11 +34,17 @@ class UsersController < ApplicationController
     head :no_content
   end
 
+  # GET /users/:id/portfolio
+  def portfolio
+    portfolio = Portfolio.new(@user.apps)
+    json_response(portfolio)
+  end 
+
   private
 
   def user_params
     # whitelist params
-    params.permit(:name, :img, :is_dev, :dev_bio, :dev_twitter, :dev_github, :dev_linkedin, :dev_portfolio)
+    params.permit(:id, :name, :img, :is_dev, :dev_bio, :dev_twitter, :dev_github, :dev_linkedin, :dev_portfolio)
   end
 
   def set_user

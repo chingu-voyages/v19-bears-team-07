@@ -1,6 +1,6 @@
 import * as Yup from "yup"
 
-const FormSchema = Yup.object().shape({
+export const AddAppSchema = Yup.object().shape({
   name: Yup.string(),
   tags: Yup.string(),
   description: Yup.string(),
@@ -8,4 +8,10 @@ const FormSchema = Yup.object().shape({
   github: Yup.string(),
 })
 
-export default FormSchema
+export const EditDevSchema = Yup.object().shape({
+  name: Yup.string(),
+  bio: Yup.string(),
+  github: Yup.string(),
+  twitter: Yup.string(),
+  linkedin: Yup.string(),
+})

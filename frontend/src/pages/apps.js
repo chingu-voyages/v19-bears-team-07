@@ -1,13 +1,16 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import { Router } from "@reach/router"
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout/Layout"
 import SEO from "../components/seo"
-import AnAppPage from "../client-pages/AnAppPage"
+import SingleApp from "./apps/single-app"
 import { AppGrid } from "../components/app-grid"
-import { mapApp } from "../helpers/mappers"
+import { mapApp } from "../shared/mappers"
+import { fetchAllApps } from "../shared/fetch"
+import GamesPage from "./apps/games"
+import ShoppingPage from "./apps/shopping"
+import ProductivityPage from "./apps/productivity"
 
 const AppPage = () => {
   return (
@@ -15,7 +18,10 @@ const AppPage = () => {
       <SEO title="Apps" />
       <Router basepath={"/apps"}>
         <AllApps path={"/"}></AllApps>
-        <AnAppPage path={"/:appId"}></AnAppPage>
+        <GamesPage path={"/games"}></GamesPage>
+        <ShoppingPage path={"/shopping"}></ShoppingPage>
+        <ProductivityPage path={"/productivity"}></ProductivityPage>
+        <SingleApp path={"/:appId"}></SingleApp>
       </Router>
     </Layout>
   )
@@ -37,40 +43,6 @@ const AllApps = () => {
 }
 
 const fetchApps = async () => {
+  const apps = await fetchAllApps()
   return apps.map(app => mapApp(app))
 }
-
-const apps = [
-  {
-    name: "Facebook",
-    description: "The world's leading social media platform",
-    image: undefined,
-    github_url: "http://www.github.com",
-    app_url: "http://www.app.com",
-    id: 1,
-  },
-  {
-    name: "Facebook",
-    description: "The world's leading social media platform",
-    image: undefined,
-    github_url: "http://www.github.com",
-    app_url: "http://www.app.com",
-    id: 1,
-  },
-  {
-    name: "Facebook",
-    description: "The world's leading social media platform",
-    image: undefined,
-    github_url: "http://www.github.com",
-    app_url: "http://www.app.com",
-    id: 1,
-  },
-  {
-    name: "Facebook",
-    description: "The world's leading social media platform",
-    image: undefined,
-    github_url: "http://www.github.com",
-    app_url: "http://www.app.com",
-    id: 1,
-  },
-]
