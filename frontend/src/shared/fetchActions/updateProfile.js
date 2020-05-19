@@ -1,6 +1,6 @@
 import * as Url from "../urls"
 
-export const updateProfileRequest = async (values, userId) => {
+const updateProfile = async (values, userId) => {
   const req = new Request(Url.singleUser(userId), {
     method: "PATCH",
     credentials: "include",
@@ -14,4 +14,4 @@ export const updateProfileRequest = async (values, userId) => {
   return response
 }
 
-export default updateProfileRequest
+export default updateProfile
