@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_204139) do
+ActiveRecord::Schema.define(version: 2020_05_19_183920) do
 
   create_table "apps", force: :cascade do |t|
     t.string "name"
@@ -54,6 +54,6 @@ ActiveRecord::Schema.define(version: 2020_05_13_204139) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "apps", "users"
-  add_foreign_key "tags", "apps"
+  add_foreign_key "apps", "users", on_delete: :cascade
+  add_foreign_key "tags", "apps", on_delete: :cascade
 end
