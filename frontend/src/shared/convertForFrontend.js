@@ -1,3 +1,5 @@
+// use `import * as forFrontend from "./convertForFrontend"
+
 export const convertApp = ({
   name,
   description,
