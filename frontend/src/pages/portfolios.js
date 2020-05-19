@@ -1,45 +1,38 @@
 import React from "react"
-
 import { Router } from "@reach/router"
 
 import Layout from "../components/Layout/Layout"
-import SEO from "../components/seo"
+import SEO from "../components/Seo/Seo"
+import UserGrid from "../components/UserGrid/UserGrid"
 import SinglePortfolio from "./portfolios/single-portfolio"
-import { fetchAllUsers } from "../shared/fetch"
-import { UserGrid } from "../components/user-grid"
-import { mapUser } from "../shared/mappers"
+
+import getAllUsers from "../shared/fetchActions/getAllUsers"
+import * as forFrontend from "../shared/convertForFrontend"
 
 const PortfolioPage = () => {
-  console.log(<SinglePortfolio path={"/:userId"}></SinglePortfolio>)
-
   return (
     <Layout>
       <SEO title="Portfolios" />
       <Router basepath={"/portfolios"}>
-        <AllPortfolios path={"/"}></AllPortfolios>
-        <SinglePortfolio path={"/:userId"}></SinglePortfolio>
+        <RenderAllPortfolios path={"/"} />
+        <SinglePortfolio path={"/:userId"} />
       </Router>
     </Layout>
   )
 }
 
-export default PortfolioPage
-
-const AllPortfolios = () => {
+const RenderAllPortfolios = () => {
   const [users, setUsers] = React.useState([])
 
   React.useEffect(() => {
     ;(async () => {
-      const users = await fetchUsers()
+      const usersData = await getAllUsers()
+      const users = usersData.map(forFrontend.convertUser)
       setUsers(users)
     })()
   }, [])
 
-  return <UserGrid users={users}></UserGrid>
+  return <UserGrid users={users} />
 }
 
-async function fetchUsers() {
-  const users = await fetchAllUsers()
-
-  return users.map(mapUser)
-}
+export default PortfolioPage

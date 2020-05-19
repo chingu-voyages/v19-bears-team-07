@@ -3,7 +3,7 @@ import React from "react"
 import { NavLink } from "reactstrap"
 import { Link } from "gatsby"
 
-import { UserContext } from "../../../shared/UserContext"
+import UserContext from "../../../shared/UserContext"
 
 const LoginLink = () => (
   <UserContext.Consumer>
