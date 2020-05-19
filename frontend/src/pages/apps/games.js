@@ -1,5 +1,5 @@
 import React from "react"
-import SEO from "../../components/Seo"
+import SEO from "../../components/Seo/Seo"
 
 const GamesPage = () => (
   <React.Fragment>

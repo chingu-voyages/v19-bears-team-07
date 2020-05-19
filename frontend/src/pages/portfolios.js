@@ -2,7 +2,7 @@ import React from "react"
 import { Router } from "@reach/router"
 
 import Layout from "../components/Layout/Layout"
-import SEO from "../components/Seo"
+import SEO from "../components/Seo/Seo"
 import UserGrid from "../components/UserGrid/UserGrid"
 import SinglePortfolio from "./portfolios/single-portfolio"
 
