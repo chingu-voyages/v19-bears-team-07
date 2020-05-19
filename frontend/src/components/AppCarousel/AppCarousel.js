@@ -8,11 +8,9 @@ import {
   CarouselCaption,
 } from "reactstrap"
 
-import "bootstrap/dist/css/bootstrap.min.css"
 import "./AppCarousel.css"
 
-export const AppCarousel = props => {
-  const { apps: items, className } = props
+export const AppCarousel = ({ items }) => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [animating, setAnimating] = useState(false)
 
@@ -33,11 +31,10 @@ export const AppCarousel = props => {
     setActiveIndex(newIndex)
   }
 
-  const slides = items.map((item, index) => {
-    const { image, imageUrl, name, description, url } = item
-    return (
+  const slides = items.map(
+    ({ image, imageUrl, name, description, url }, index) => (
       <CarouselItem
-        className={"AppCarousel-Item"}
+        className="AppCarousel-Item"
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
         key={index.toString() + "-" + url}
@@ -46,22 +43,20 @@ export const AppCarousel = props => {
         <img
           src={image ? image : imageUrl}
           alt={name}
-          className={"AppCarousel-ItemImage"}
+          className="AppCarousel-ItemImage"
         />
         <CarouselCaption
           captionText={description}
           captionHeader={name}
           onClick={() => navigate(url)}
-          className={"AppCarousel-Caption"}
+          className="AppCarousel-Caption"
         />
       </CarouselItem>
     )
-  })
+  )
 
   return (
-    <div
-      className={"AppCarousel-container" + (className ? " " + className : "")}
-    >
+    <div className="AppCarousel-container">
       <Carousel activeIndex={activeIndex} next={next} previous={previous}>
         <CarouselIndicators
           items={items}
