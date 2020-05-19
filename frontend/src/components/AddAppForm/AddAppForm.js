@@ -49,8 +49,8 @@ const AddApp = () => {
               <ImageInput
                 ref={imageRef}
                 setFieldValue={setFieldValue}
-                errors={errors.picture}
-                touched={touched.picture}
+                errors={errors.image}
+                touched={touched.image}
               />
               <br />
               <TagsInput error={errors.tags} touched={touched.tags} />
