@@ -1,11 +1,9 @@
 import React from "react"
 import { navigate } from "gatsby"
-
+import { Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap"
 import "./AppGrid.css"
 
-import { Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap"
-
-export const AppGrid = props => {
+const AppGrid = props => {
   const { apps, className } = props
 
   return (
@@ -34,3 +32,5 @@ export const AppGrid = props => {
     return <React.Fragment>{cards}</React.Fragment>
   }
 }
+
+export default AppGrid

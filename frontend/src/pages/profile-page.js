@@ -1,13 +1,12 @@
 import React from "react"
+import { Container } from "reactstrap"
 
 import Layout from "../components/Layout/Layout"
 import SEO from "../components/Seo"
-
 import EditDevForm from "../components/EditDevForm/EditDevForm"
-import { Container } from "reactstrap"
-import { UserContext } from "../shared/UserContext"
+import UserContext from "../shared/UserContext"
 import { mapUser } from "../shared/mappers"
-import { fetchUser } from "../shared/fetch"
+import getSingleUser from "../shared/fetchActions/getSingleUser"
 
 const initial = {
   name: "",
@@ -27,7 +26,7 @@ const ProfilePage = () => {
   React.useEffect(() => {
     ;(async () => {
       if (loggedIn && userId) {
-        const user = await mapUser(await fetchUser(userId))
+        const user = await mapUser(await getSingleUser(userId))
         console.log(user)
         setInitialValues(user)
       }

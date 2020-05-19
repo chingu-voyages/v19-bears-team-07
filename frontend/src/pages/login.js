@@ -2,8 +2,8 @@ import React from "react"
 import Layout from "../components/Layout/Layout"
 import SEO from "../components/Seo"
 
-import { UserContext } from "../shared/UserContext"
-import { SIGN_IN_URL } from "../shared/urls"
+import UserContext from "../shared/UserContext"
+import * as Url from "../shared/urls"
 
 const LoginPage = () => (
   <Layout>
@@ -20,7 +20,7 @@ const LoginPage = () => (
     <UserContext.Consumer>
       {({ logout }) => (
         <React.Fragment>
-          <a href={SIGN_IN_URL}>
+          <a href={Url.SIGN_IN}>
             <button onClick={() => {}}>Login Page</button>
           </a>
           <button

@@ -1,11 +1,9 @@
 import React from "react"
 import { navigate } from "gatsby"
-
+import { Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 
-import { Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap"
-
-export const UserGrid = props => {
+const UserGrid = props => {
   const { users, className } = props
 
   return (
@@ -34,3 +32,5 @@ export const UserGrid = props => {
     return <React.Fragment>{cards}</React.Fragment>
   }
 }
+
+export default UserGrid

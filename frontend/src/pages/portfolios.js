@@ -5,13 +5,11 @@ import { Router } from "@reach/router"
 import Layout from "../components/Layout/Layout"
 import SEO from "../components/Seo"
 import SinglePortfolio from "./portfolios/single-portfolio"
-import { fetchAllUsers } from "../shared/fetch"
-import { UserGrid } from "../components/UserGrid/UserGrid"
+import getAllUsers from "../shared/fetchActions/getAllUsers"
+import UserGrid from "../components/UserGrid/UserGrid"
 import { mapUser } from "../shared/mappers"
 
 const PortfolioPage = () => {
-  console.log(<SinglePortfolio path={"/:userId"}></SinglePortfolio>)
-
   return (
     <Layout>
       <SEO title="Portfolios" />
@@ -39,7 +37,7 @@ const AllPortfolios = () => {
 }
 
 async function fetchUsers() {
-  const users = await fetchAllUsers()
+  const users = await getAllUsers()
 
   return users.map(mapUser)
 }

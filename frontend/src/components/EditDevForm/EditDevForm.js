@@ -8,7 +8,7 @@ import BioInput from "../formInputs/BioInput/BioInput"
 import NameInput from "../formInputs/NameInput/NameInput"
 import ImageInput from "../formInputs/ImageInput/ImageInput"
 import validationSchema from "./validationSchema"
-import { updateProfileRequest } from "../../shared/fetch"
+import updateProfile from "../../shared/fetchActions/updateProfile"
 
 const EditDevForm = ({ initialValues, userId, onSubmit }) => {
   const imageRef = useRef(null)
@@ -18,7 +18,7 @@ const EditDevForm = ({ initialValues, userId, onSubmit }) => {
       initialValues={initialValues}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         try {
-          await updateProfileRequest(await mapFromUser(values), userId)
+          await updateProfile(await mapFromUser(values), userId)
         } catch (e) {
           console.log(e)
         }

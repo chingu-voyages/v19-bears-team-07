@@ -5,9 +5,9 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Layout from "../components/Layout/Layout"
 import SEO from "../components/Seo"
 import SingleApp from "./apps/single-app"
-import { AppGrid } from "../components/AppGrid/AppGrid"
+import AppGrid from "../components/AppGrid/AppGrid"
 import { mapApp } from "../shared/mappers"
-import { fetchAllApps } from "../shared/fetch"
+import getAllApps from "../shared/fetchActions/getAllApps"
 import GamesPage from "./apps/games"
 import ShoppingPage from "./apps/shopping"
 import ProductivityPage from "./apps/productivity"
@@ -43,6 +43,6 @@ const AllApps = () => {
 }
 
 const fetchApps = async () => {
-  const apps = await fetchAllApps()
+  const apps = await getAllApps()
   return apps.map(app => mapApp(app))
 }
