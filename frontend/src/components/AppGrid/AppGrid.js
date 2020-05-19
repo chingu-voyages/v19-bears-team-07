@@ -30,7 +30,7 @@ const RenderSingleApp = ({
     className={"AppGrid-Card"}
     key={index.toString() + "-" + url}
   >
-    <CardImg src={image ? image : imageUrl} width={"100%"}></CardImg>
+    <CardImg src={image ? image : imageUrl} width={"100%"} />
     <CardBody>
       <CardTitle>{name}</CardTitle>
       <CardText>{description}</CardText>
