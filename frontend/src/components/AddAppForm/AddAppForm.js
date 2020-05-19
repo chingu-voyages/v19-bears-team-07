@@ -5,6 +5,7 @@ import { FormGroup, Col, Container, Button, Modal, ModalBody } from "reactstrap"
 import UserContext from "../../shared/UserContext"
 import * as forBackend from "../../shared/convertForBackend"
 import postApp from "../../shared/fetchActions/postApp"
+import postTag from "../../shared/fetchActions/postTag"
 import NameInput from "../formInputs/NameInput/NameInput"
 import ImageInput from "../formInputs/ImageInput/ImageInput"
 import TagsInput from "../formInputs/TagsInput/TagsInput"
@@ -13,6 +14,7 @@ import AppUrlInput from "../formInputs/AppUrlInput/AppUrlInput"
 import Github from "../formInputs/GithubInput/GithubInput"
 import formInitialValues from "./formInitialValues"
 import validationSchema from "./validationSchema"
+import separateTags from "./separateTags"
 
 const AddApp = () => {
   const { userId } = useContext(UserContext)
@@ -26,7 +28,11 @@ const AddApp = () => {
         try {
           values.userId = parseInt(userId)
           const valuesToPost = await forBackend.convertApp(values)
-          await postApp(valuesToPost)
+          const { id: app_id } = await postApp(valuesToPost)
+          const tagsForPost = separateTags(values.tags)
+          await tagsForPost.forEach(async tag => {
+            await postTag({ name: tag, app_id })
+          })
           setSucessModal(true)
         } catch (e) {
           console.log(e)
