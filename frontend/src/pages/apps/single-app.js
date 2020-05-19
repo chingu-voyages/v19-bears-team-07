@@ -20,7 +20,7 @@ const SingleApp = ({ appId }) => {
     const { name, description } = app
     return (
       <div className="AnAppPage-container">
-        <AppCarousel apps={[app]}></AppCarousel>
+        <AppCarousel apps={[app]} />
         <Jumbotron fluid>
           <Container fluid>
             <h1 className="display-3">{name}</h1>

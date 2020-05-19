@@ -23,8 +23,8 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <AppCarousel apps={apps}></AppCarousel>
-      <AppGrid apps={apps}></AppGrid>
+      <AppCarousel apps={apps} />
+      <AppGrid apps={apps} />
     </Layout>
   )
 }
