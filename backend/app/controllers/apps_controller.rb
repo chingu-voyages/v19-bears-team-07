@@ -35,7 +35,7 @@ class AppsController < ApplicationController
 
   def app_params
     # whitelist params
-    params.permit(:name, :description, :img, :app_url, :github_url)
+    params.permit(:name, :description, :img, :app_url, :github_url, :user_id)
   end
 
   def set_app
