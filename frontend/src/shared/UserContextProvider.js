@@ -10,6 +10,7 @@ const UserContextProvider = ({ children }) => {
 
   useEffect(() => {
     checkLoggedIn()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const checkLoggedIn = async () => {
