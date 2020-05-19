@@ -1,9 +1,6 @@
-/**
- * This file exports the functions that map the data retrieved from the backend to the
- * data used in the views.
- */
+// use `import * as forFrontend from "./convertForFrontend"
 
-export const mapApp = ({
+export const convertApp = ({
   name,
   description,
   img,
@@ -23,13 +20,7 @@ export const mapApp = ({
     : "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
 })
 
-export const mapApp_authenticated = appData => {
-  const mapped = mapApp(appData)
-  mapped.manageUrl = `/apps/${appData.id}`
-  return mapped
-}
-
-export const mapUser = async userData => {
+export const convertUser = userData => {
   const {
     name,
     img,
@@ -49,4 +40,10 @@ export const mapUser = async userData => {
     linkedin: dev_linkedin ? dev_linkedin : "",
     url: `portfolios/${id}`,
   }
+}
+
+export const mapApp_authenticated = appData => {
+  const mapped = convertApp(appData)
+  mapped.manageUrl = `/apps/${appData.id}`
+  return mapped
 }

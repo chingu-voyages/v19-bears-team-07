@@ -1,11 +1,11 @@
 import React from "react"
-import AddApp from "../components/AddApp/AddApp"
-
 import "bootstrap/dist/css/bootstrap.min.css"
+
+import AddAppForm from "../components/AddAppForm/AddAppForm"
 
 const Page2 = () => (
   <div>
-    <AddApp />
+    <AddAppForm />
   </div>
 )
 

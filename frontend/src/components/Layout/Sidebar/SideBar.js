@@ -4,19 +4,19 @@ import { Link } from "gatsby"
 import classNames from "classnames"
 
 import { asDeveloperMenus, asLoggedOutMenus } from "./menus"
-import { UserContext } from "../../../shared/UserContext"
+import UserContext from "../../../shared/UserContext"
 import SubMenu from "./SubMenu"
 
 const RenderSubMenus = () => (
   <UserContext.Consumer>
     {({ loggedIn }) => {
       if (loggedIn) {
-        return asDeveloperMenus.map(menu => (
-          <SubMenu title={menu.title} items={menu.items} />
+        return asDeveloperMenus.map((menu, index) => (
+          <SubMenu key={index} title={menu.title} items={menu.items} />
         ))
       }
-      return asLoggedOutMenus.map(menu => (
-        <SubMenu title={menu.title} items={menu.items} />
+      return asLoggedOutMenus.map((menu, index) => (
+        <SubMenu key={index} title={menu.title} items={menu.items} />
       ))
     }}
   </UserContext.Consumer>

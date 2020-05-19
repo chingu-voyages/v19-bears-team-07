@@ -1,11 +1,11 @@
 import React from "react"
 
 import Layout from "../components/Layout/Layout"
-import SEO from "../components/seo"
-import AppGrid from "../components/app-grid"
-import { UserContext } from "../shared/UserContext"
-import { fetchMyApps } from "../shared/fetch"
-import { mapApp_authenticated } from "../shared/mappers"
+import SEO from "../components/Seo/Seo"
+import AppGrid from "../components/AppGrid/AppGrid"
+import UserContext from "../shared/UserContext"
+import { fetchMyApps } from "../shared/fetchActions/fetchMyApps"
+import { mapApp_authenticated } from "../shared/convertForFrontend"
 
 const ManageAppsPage = () => {
   const { userId, loggedIn } = React.useContext(UserContext)
