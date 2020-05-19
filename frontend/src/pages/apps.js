@@ -4,15 +4,31 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 import Layout from "../components/Layout/Layout"
 import SEO from "../components/Seo"
-import SingleApp from "./apps/single-app"
 import AppGrid from "../components/AppGrid/AppGrid"
-import * as forFrontend from "../shared/convertForFrontend"
-import getAllApps from "../shared/fetchActions/getAllApps"
 import GamesPage from "./apps/games"
 import ShoppingPage from "./apps/shopping"
 import ProductivityPage from "./apps/productivity"
+import SingleApp from "./apps/single-app"
 
-const AllApps = () => {
+import getAllApps from "../shared/fetchActions/getAllApps"
+import * as forFrontend from "../shared/convertForFrontend"
+
+const AppPage = () => {
+  return (
+    <Layout>
+      <SEO title="Apps" />
+      <Router basepath={"/apps"}>
+        <RenderAllApps path={"/"} />
+        <GamesPage path={"/games"} />
+        <ShoppingPage path={"/shopping"} />
+        <ProductivityPage path={"/productivity"} />
+        <SingleApp path={"/:appId"} />
+      </Router>
+    </Layout>
+  )
+}
+
+const RenderAllApps = () => {
   const [apps, setApps] = React.useState([])
 
   React.useEffect(() => {
@@ -23,22 +39,7 @@ const AllApps = () => {
     })()
   }, [])
 
-  return <AppGrid apps={apps}></AppGrid>
-}
-
-const AppPage = () => {
-  return (
-    <Layout>
-      <SEO title="Apps" />
-      <Router basepath={"/apps"}>
-        <AllApps path={"/"}></AllApps>
-        <GamesPage path={"/games"}></GamesPage>
-        <ShoppingPage path={"/shopping"}></ShoppingPage>
-        <ProductivityPage path={"/productivity"}></ProductivityPage>
-        <SingleApp path={"/:appId"}></SingleApp>
-      </Router>
-    </Layout>
-  )
+  return <AppGrid apps={apps} />
 }
 
 export default AppPage

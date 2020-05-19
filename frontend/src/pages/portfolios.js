@@ -1,12 +1,12 @@
 import React from "react"
-
 import { Router } from "@reach/router"
 
 import Layout from "../components/Layout/Layout"
 import SEO from "../components/Seo"
-import SinglePortfolio from "./portfolios/single-portfolio"
-import getAllUsers from "../shared/fetchActions/getAllUsers"
 import UserGrid from "../components/UserGrid/UserGrid"
+import SinglePortfolio from "./portfolios/single-portfolio"
+
+import getAllUsers from "../shared/fetchActions/getAllUsers"
 import * as forFrontend from "../shared/convertForFrontend"
 
 const PortfolioPage = () => {
@@ -14,16 +14,14 @@ const PortfolioPage = () => {
     <Layout>
       <SEO title="Portfolios" />
       <Router basepath={"/portfolios"}>
-        <AllPortfolios path={"/"}></AllPortfolios>
-        <SinglePortfolio path={"/:userId"}></SinglePortfolio>
+        <RenderAllPortfolios path={"/"} />
+        <SinglePortfolio path={"/:userId"} />
       </Router>
     </Layout>
   )
 }
 
-export default PortfolioPage
-
-const AllPortfolios = () => {
+const RenderAllPortfolios = () => {
   const [users, setUsers] = React.useState([])
 
   React.useEffect(() => {
@@ -34,5 +32,7 @@ const AllPortfolios = () => {
     })()
   }, [])
 
-  return <UserGrid users={users}></UserGrid>
+  return <UserGrid users={users} />
 }
+
+export default PortfolioPage
