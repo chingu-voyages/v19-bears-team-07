@@ -3,34 +3,39 @@ import { navigate } from "gatsby"
 import { Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap"
 import "./AppGrid.css"
 
-const AppGrid = props => {
-  const { apps, className } = props
-
+const AppGrid = ({ apps }) => {
   return (
-    <div className={"AppGrid-container" + (className ? " " + className : "")}>
-      {renderApps()}
+    <div className={"AppGrid-container"}>
+      <RenderApps apps={apps} />
     </div>
   )
-
-  function renderApps() {
-    const cards = apps.map((app, index) => {
-      const { image, imageUrl, name, description, url } = app
-      return (
-        <Card
-          onClick={() => navigate(url)}
-          className={"AppGrid-Card"}
-          key={index.toString() + "-" + url}
-        >
-          <CardImg src={image ? image : imageUrl} width={"100%"}></CardImg>
-          <CardBody>
-            <CardTitle>{name}</CardTitle>
-            <CardText>{description}</CardText>
-          </CardBody>
-        </Card>
-      )
-    })
-    return <React.Fragment>{cards}</React.Fragment>
-  }
 }
+
+const RenderApps = ({ apps }) => {
+  return (
+    <React.Fragment>
+      {apps.map((app, index) => (
+        <RenderSingleApp app={app} index={index} />
+      ))}
+    </React.Fragment>
+  )
+}
+
+const RenderSingleApp = ({
+  app: { image, imageUrl, name, description, url },
+  index,
+}) => (
+  <Card
+    onClick={() => navigate(url)}
+    className={"AppGrid-Card"}
+    key={index.toString() + "-" + url}
+  >
+    <CardImg src={image ? image : imageUrl} width={"100%"}></CardImg>
+    <CardBody>
+      <CardTitle>{name}</CardTitle>
+      <CardText>{description}</CardText>
+    </CardBody>
+  </Card>
+)
 
 export default AppGrid
