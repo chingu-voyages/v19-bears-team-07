@@ -2,11 +2,12 @@ import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 import AddAppForm from "../components/AddAppForm/AddAppForm"
+import Layout from "../components/Layout/Layout"
 
-const Page2 = () => (
-  <div>
+const AddApp = () => (
+  <Layout>
     <AddAppForm />
-  </div>
+  </Layout>
 )
 
-export default Page2
+export default AddApp
