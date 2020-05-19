@@ -1,7 +1,10 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useContext } from "react"
 import { Formik, Form } from "formik"
 import { FormGroup, Col, Container, Button, Modal, ModalBody } from "reactstrap"
 
+import UserContext from "../../shared/UserContext"
+import * as forBackend from "../../shared/convertForBackend"
+import postApp from "../../shared/fetchActions/postApp"
 import NameInput from "../formInputs/NameInput/NameInput"
 import ImageInput from "../formInputs/ImageInput/ImageInput"
 import TagsInput from "../formInputs/TagsInput/TagsInput"
@@ -12,6 +15,7 @@ import formInitialValues from "./formInitialValues"
 import validationSchema from "./validationSchema"
 
 const AddApp = () => {
+  const { userId } = useContext(UserContext)
   const [successModal, setSucessModal] = useState(false)
   const imageRef = useRef(null)
   return (
@@ -20,7 +24,9 @@ const AddApp = () => {
       validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         try {
-          console.log(values)
+          values.userId = parseInt(userId)
+          const valuesToPost = await forBackend.convertApp(values)
+          await postApp(valuesToPost)
           setSucessModal(true)
         } catch (e) {
           console.log(e)
