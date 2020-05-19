@@ -55,7 +55,10 @@ const AddApp = () => {
               <br />
               <TagsInput error={errors.tags} touched={touched.tags} />
               <br />
-              <DescriptionInput error={errors.desc} touched={touched.desc} />
+              <DescriptionInput
+                error={errors.description}
+                touched={touched.description}
+              />
               <br />
               <AppUrlInput error={errors.appUrl} touched={touched.appUrl} />
               <br />
