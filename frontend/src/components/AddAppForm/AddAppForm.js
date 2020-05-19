@@ -2,15 +2,14 @@ import React, { useRef, useState } from "react"
 import { Formik, Form } from "formik"
 import { FormGroup, Col, Container, Button, Modal, ModalBody } from "reactstrap"
 
+import NameInput from "../formInputs/NameInput/NameInput"
+import ImageInput from "../formInputs/ImageInput/ImageInput"
+import TagsInput from "../formInputs/TagsInput/TagsInput"
+import DescriptionInput from "../formInputs/DescriptionInput/DescriptionInput"
+import AppUrlInput from "../formInputs/AppUrlInput/AppUrlInput"
+import Github from "../formInputs/GithubInput/GithubInput"
 import formInitialValues from "./formInitialValues"
-
-import NameInput from "./NameInput/NameInput"
-import ImageInput from "./ImageInput/ImageInput"
-import TagsInput from "./TagsInput/TagsInput"
-import DescriptionInput from "./DescriptionInput/DescriptionInput"
-import AppUrlInput from "./AppUrlInput/AppUrlInput"
-import Github from "./GithubInput/GithubInput"
-import { AddAppSchema } from "./formSchema"
+import validationSchema from "./validationSchema"
 
 const AddApp = () => {
   const [successModal, setSucessModal] = useState(false)
@@ -18,7 +17,7 @@ const AddApp = () => {
   return (
     <Formik
       initialValues={formInitialValues}
-      validationSchema={AddAppSchema}
+      validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         try {
           console.log(values)
@@ -56,7 +55,10 @@ const AddApp = () => {
               <br />
               <TagsInput error={errors.tags} touched={touched.tags} />
               <br />
-              <DescriptionInput error={errors.desc} touched={touched.desc} />
+              <DescriptionInput
+                error={errors.description}
+                touched={touched.description}
+              />
               <br />
               <AppUrlInput error={errors.appUrl} touched={touched.appUrl} />
               <br />

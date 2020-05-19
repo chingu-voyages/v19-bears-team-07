@@ -1,22 +1,21 @@
 import React from "react"
-import { AppGrid } from "../../components/app-grid"
-import { fetchPortfolio } from "../../shared/fetch"
-import { mapApp } from "../../shared/mappers"
+import AppGrid from "../../components/AppGrid/AppGrid"
+import getSinglePortfolio from "../../shared/fetchActions/getSinglePortfolio"
+import * as forFrontend from "../../shared/convertForFrontend"
 
-const SinglePortfolio = props => {
-  const { userId } = props
-
+const SinglePortfolio = ({ userId }) => {
   const [apps, setApps] = React.useState([])
 
   React.useEffect(() => {
     ;(async () => {
-      const apps = (await fetchPortfolio(userId)).apps.map(mapApp)
+      const { apps: appsData } = await getSinglePortfolio(userId)
+      const apps = appsData.map(forFrontend.convertApp)
       setApps(apps)
     })()
   }, [userId])
 
   return (
-    <div className={"APortfolioPage-container"}>
+    <div className="APortfolioPage-container">
       <h2>Apps</h2>
       <AppGrid apps={apps}></AppGrid>
     </div>
