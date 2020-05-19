@@ -7,7 +7,7 @@ import SEO from "../components/Seo"
 import SinglePortfolio from "./portfolios/single-portfolio"
 import getAllUsers from "../shared/fetchActions/getAllUsers"
 import UserGrid from "../components/UserGrid/UserGrid"
-import { mapUser } from "../shared/mappers"
+import * as forFrontend from "../shared/convertForFrontend"
 
 const PortfolioPage = () => {
   return (
@@ -28,16 +28,11 @@ const AllPortfolios = () => {
 
   React.useEffect(() => {
     ;(async () => {
-      const users = await fetchUsers()
+      const usersData = await getAllUsers()
+      const users = usersData.map(forFrontend.convertUser)
       setUsers(users)
     })()
   }, [])
 
   return <UserGrid users={users}></UserGrid>
-}
-
-async function fetchUsers() {
-  const users = await getAllUsers()
-
-  return users.map(mapUser)
 }

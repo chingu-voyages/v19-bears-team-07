@@ -1,9 +1,4 @@
-/**
- * This file exports the functions that map the data retrieved from the backend to the
- * data used in the views.
- */
-
-export const mapApp = ({
+export const convertApp = ({
   name,
   description,
   img,
@@ -23,7 +18,7 @@ export const mapApp = ({
     : "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
 })
 
-export const mapUser = async userData => {
+export const convertUser = userData => {
   const {
     name,
     img,

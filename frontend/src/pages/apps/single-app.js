@@ -2,7 +2,7 @@ import React from "react"
 import AppCarousel from "../../components/AppCarousel/AppCarousel"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Jumbotron, Container } from "reactstrap"
-import { mapApp } from "../../shared/mappers"
+import * as forFrontend from "../../shared/convertForFrontend"
 import getSingleApp from "../../shared/fetchActions/getSingleApp"
 
 const SingleApp = ({ appId }) => {
@@ -10,8 +10,8 @@ const SingleApp = ({ appId }) => {
 
   React.useEffect(() => {
     ;(async () => {
-      const rawAppData = await getSingleApp(appId)
-      const app = mapApp(rawAppData)
+      const appData = await getSingleApp(appId)
+      const app = forFrontend.convertApp(appData)
       setApp(app)
     })()
   }, [appId])

@@ -6,11 +6,25 @@ import Layout from "../components/Layout/Layout"
 import SEO from "../components/Seo"
 import SingleApp from "./apps/single-app"
 import AppGrid from "../components/AppGrid/AppGrid"
-import { mapApp } from "../shared/mappers"
+import * as forFrontend from "../shared/convertForFrontend"
 import getAllApps from "../shared/fetchActions/getAllApps"
 import GamesPage from "./apps/games"
 import ShoppingPage from "./apps/shopping"
 import ProductivityPage from "./apps/productivity"
+
+const AllApps = () => {
+  const [apps, setApps] = React.useState([])
+
+  React.useEffect(() => {
+    ;(async () => {
+      const appsData = await getAllApps()
+      const apps = appsData.map(forFrontend.convertApp)
+      setApps(apps)
+    })()
+  }, [])
+
+  return <AppGrid apps={apps}></AppGrid>
+}
 
 const AppPage = () => {
   return (
@@ -28,21 +42,3 @@ const AppPage = () => {
 }
 
 export default AppPage
-
-const AllApps = () => {
-  const [apps, setApps] = React.useState([])
-
-  React.useEffect(() => {
-    ;(async () => {
-      const apps = await fetchApps()
-      setApps(apps)
-    })()
-  }, [])
-
-  return <AppGrid apps={apps}></AppGrid>
-}
-
-const fetchApps = async () => {
-  const apps = await getAllApps()
-  return apps.map(app => mapApp(app))
-}

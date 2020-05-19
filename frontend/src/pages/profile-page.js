@@ -5,7 +5,7 @@ import Layout from "../components/Layout/Layout"
 import SEO from "../components/Seo"
 import EditDevForm from "../components/EditDevForm/EditDevForm"
 import UserContext from "../shared/UserContext"
-import { mapUser } from "../shared/mappers"
+import * as forFrontend from "../shared/convertForFrontend"
 import getSingleUser from "../shared/fetchActions/getSingleUser"
 
 const initial = {
@@ -26,7 +26,7 @@ const ProfilePage = () => {
   React.useEffect(() => {
     ;(async () => {
       if (loggedIn && userId) {
-        const user = await mapUser(await getSingleUser(userId))
+        const user = forFrontend.convertUser(await getSingleUser(userId))
         console.log(user)
         setInitialValues(user)
       }

@@ -7,14 +7,15 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import AppGrid from "../components/AppGrid/AppGrid"
 import AppCarousel from "../components/AppCarousel/AppCarousel"
 import getAllApps from "../shared/fetchActions/getAllApps"
-import { mapApp } from "../shared/mappers"
+import * as forFrontend from "../shared/convertForFrontend"
 
 const IndexPage = () => {
   const [apps, setApps] = React.useState([])
 
   React.useEffect(() => {
     ;(async () => {
-      const apps = await fetchApps()
+      const appsData = await getAllApps()
+      const apps = appsData.map(forFrontend.convertApp)
       setApps(apps)
     })()
   }, [])
@@ -29,8 +30,3 @@ const IndexPage = () => {
 }
 
 export default IndexPage
-
-const fetchApps = async () => {
-  const apps = await getAllApps()
-  return apps.map(mapApp)
-}

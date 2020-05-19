@@ -1,16 +1,16 @@
 import React from "react"
 import AppGrid from "../../components/AppGrid/AppGrid"
 import getSinglePortfolio from "../../shared/fetchActions/getSinglePortfolio"
-import { mapApp } from "../../shared/mappers"
+import * as forFrontend from "../../shared/convertForFrontend"
 
 const SinglePortfolio = ({ userId }) => {
   const [apps, setApps] = React.useState([])
 
   React.useEffect(() => {
     ;(async () => {
-      const { apps } = await getSinglePortfolio(userId)
-      const mappedApps = apps.map(mapApp)
-      setApps(mappedApps)
+      const { apps: appsData } = await getSinglePortfolio(userId)
+      const apps = appsData.map(forFrontend.convertApp)
+      setApps(apps)
     })()
   }, [userId])
 
