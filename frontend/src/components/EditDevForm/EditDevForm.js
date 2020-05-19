@@ -3,9 +3,11 @@ import { Formik, Form } from "formik"
 import { FormGroup, Container, Button } from "reactstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 
-import BasicInput from "../formInputs/BasicInput/BasicInput"
-import BioInput from "../formInputs/BioInput/BioInput"
 import NameInput from "../formInputs/NameInput/NameInput"
+import BioInput from "../formInputs/BioInput/BioInput"
+import GithubInput from "../formInputs/GithubInput"
+import TwitterInput from "../formInputs/TwitterInput"
+import LinkedinInput from "../formInputs/LinkedinInput"
 import ImageInput from "../formInputs/ImageInput/ImageInput"
 import validationSchema from "./validationSchema"
 import updateProfile from "../../shared/fetchActions/updateProfile"
@@ -41,24 +43,12 @@ const EditDevForm = ({ initialValues, userId, onSubmit }) => {
                 errors={errors.picture}
                 touched={touched.picture}
               />
-              <BasicInput
-                componentName="github"
-                label="github"
-                error={errors.github}
-                touched={touched.github}
-              ></BasicInput>
-              <BasicInput
-                componentName="twitter"
-                label="twitter"
-                error={errors.twitter}
-                touched={touched.twitter}
-              ></BasicInput>
-              <BasicInput
-                componentName="linkedin"
-                label="linkedin"
+              <GithubInput error={errors.github} touched={touched.github} />
+              <TwitterInput error={errors.twitter} touched={touched.twitter} />
+              <LinkedinInput
                 error={errors.linkedin}
                 touched={touched.linkedin}
-              ></BasicInput>
+              />
               <Button type="submit" color="primary" disabled={isSubmitting}>
                 Submit
               </Button>
