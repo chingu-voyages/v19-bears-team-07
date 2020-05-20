@@ -15,6 +15,7 @@ export const convertApp = ({
   githubUrl: github_url,
 
   url: `/apps/${id}`,
+  manageUrl: `/apps/${appData.id}`,
   imageUrl: img
     ? ""
     : "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
@@ -40,10 +41,4 @@ export const convertUser = userData => {
     linkedin: dev_linkedin ? dev_linkedin : "",
     url: `portfolios/${id}`,
   }
-}
-
-export const mapApp_authenticated = appData => {
-  const mapped = convertApp(appData)
-  mapped.manageUrl = `/apps/${appData.id}`
-  return mapped
 }

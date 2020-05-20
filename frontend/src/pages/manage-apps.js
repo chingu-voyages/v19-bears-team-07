@@ -4,8 +4,8 @@ import Layout from "../components/Layout/Layout"
 import SEO from "../components/Seo/Seo"
 import AppGrid from "../components/AppGrid/AppGrid"
 import UserContext from "../shared/UserContext"
-import { fetchMyApps } from "../shared/fetchActions/fetchMyApps"
-import { mapApp_authenticated } from "../shared/convertForFrontend"
+import getMyApps from "../shared/fetchActions/getMyApps"
+import * as forFrontend from "../shared/convertForFrontend"
 
 const ManageAppsPage = () => {
   const { userId, loggedIn } = React.useContext(UserContext)
@@ -14,9 +14,9 @@ const ManageAppsPage = () => {
   React.useEffect(() => {
     // Fetches all the apps that are authenticated for this user.
     ;(async () => {
-      const appData = await fetchMyApps()
+      const appData = await getMyApps()
       console.log(appData)
-      const apps = appData.map(mapApp_authenticated)
+      const apps = appData.map(forFrontend.convertApp)
       setApps(apps)
     })()
   }, [userId])
@@ -34,16 +34,17 @@ const ManageAppsPage = () => {
     <Layout>
       <SEO title="Manage Apps" />
       <h1>manage apps</h1>
-      {renderApps()}
+      <RenderApps apps={apps}></RenderApps>
     </Layout>
   )
+}
 
-  function renderApps() {
-    if (apps && apps.length > 0) {
-      return <AppGrid apps={apps} urlSelector={app => app.manageUrl}></AppGrid>
-    } else {
-      return <h2>You do not have any apps</h2>
-    }
+const RenderApps = ({ apps }) => {
+  if (apps && apps.length > 0) {
+    const appUrls = apps.map(app => app.manageUrl)
+    return <AppGrid apps={apps} appUrls={appUrls}></AppGrid>
+  } else {
+    return <h2>You do not have any apps</h2>
   }
 }
 
