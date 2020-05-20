@@ -14,10 +14,11 @@ const SinglePortfolio = ({ userId }) => {
     })()
   }, [userId])
 
+  const appUrls = apps.map(app => app.url)
   return (
     <div className="APortfolioPage-container">
       <h2>Apps</h2>
-      <AppGrid apps={apps}></AppGrid>
+      <AppGrid apps={apps} appUrls={appUrls}></AppGrid>
     </div>
   )
 }
