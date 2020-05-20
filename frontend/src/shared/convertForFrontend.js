@@ -15,7 +15,7 @@ export const convertApp = ({
   githubUrl: github_url,
 
   url: `/apps/${id}`,
-  manageUrl: `/apps/${appData.id}`,
+  manageUrl: `/manage-apps/${id}/edit`,
   imageUrl: img
     ? ""
     : "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
