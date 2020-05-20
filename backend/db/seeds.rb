@@ -11,23 +11,23 @@
 5.times do |i|
   user = User.create!(
     name: "User #{i}",
-    img: "image url #{i}",
+    img: "https://media.npr.org/assets/img/2020/02/20/zachwoods_hbo_bullseye2020_custom-539527210f27f2329bc46b37bbffc3742de8e1f7-s800-c85.jpeg",
     dev_bio: "Hey, I'm developer ##{i}",
     is_dev: true,
-    dev_twitter: "twitter url for dev ##{i}",
-    dev_github: "github url for dev ##{i}",
-    dev_linkedin: "linkedin url for dev ##{i}",
-    dev_portfolio: "portfolio url for dev ##{i}",
-    email: "example#{i}@example.com", 
-    password: "password"
+    dev_twitter: "https://twitter.com/piedpiperplc",
+    dev_github: "https://github.com/chingu-voyages/v19-bears-team-07",
+    dev_linkedin: "https://www.linkedin.com/in/rbranson/?originalSubdomain=vg",
+    dev_portfolio: "https://github.com/chingu-voyages",
+    email: "user#{i}@cool.com", 
+    password: "pword"
     )
 
   app = App.create!(
     name: "App #{i}", 
     description: "An app description for App #{i}",
-    img: "image url for app ##{i}",
-    app_url: "link to app ##{i}",
-    github_url: "github url for app ##{i}", 
+    img: "https://images-na.ssl-images-amazon.com/images/I/512EsSPL7KL._AC_UX679_.jpg",
+    app_url: "https://myspace.com/",
+    github_url: "https://github.com/chingu-voyages/v19-bears-team-07", 
     user: user
     )
 
