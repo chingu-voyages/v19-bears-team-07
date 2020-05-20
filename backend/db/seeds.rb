@@ -9,7 +9,8 @@
 # Create users
 
 5.times do |i|
-  user = User.create!(name: "User #{i}", email: "example#{i}@example.com", password: "my_solid_password")
-  app = App.create!(name: "App #{i}", description: "An app.", user: user)
-  tag = Tag.create!(name: "Games #{i}", description: "Fun fun fun", app: app)
+  user = User.create!(name: "User #{i}", email: "test#{i}@test.com", password: "my_password")
+  app = App.create!(name: "App #{i}", description: "This is an app.", user: user)
+  tag = Tag.create!(name: "Games #{i}", description: "This is fun", app: app)
+  comment = Comment.create!(comment: "This is a great app!", app: app)
 end
