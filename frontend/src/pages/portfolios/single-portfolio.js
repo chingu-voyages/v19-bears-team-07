@@ -25,11 +25,31 @@ const SinglePortfolio = ({ userId }) => {
     <div className="APortfolioPage-container">
       <h1>{user.name}</h1>
       <img src={user.image}></img>
+      <h2>Developer Bio</h2>
       <p>{user.bio}</p>
-      <a href={user.twitter}>Twitter</a>
-      <a href={user.github}>Github</a>
-      <a href={user.linkedin}>Linkedin</a>
-      <a href={user.website}>Personal Website</a>
+      <h2>Check out my links!</h2>
+      <ul>
+        <li>
+          <a href={user.twitter}>Twitter</a>
+        </li>
+        <li>
+          <a href={user.github}>Github</a>
+        </li>
+        <li>
+          <a href={user.linkedin}>Linkedin</a>
+        </li>
+        <li>
+          <a href={user.website}>Personal Website</a>
+        </li>
+      </ul>
+
+      <h2>Skills</h2>
+      <ul>
+        <li>javascript</li>
+        <li>react</li>
+        <li>ruby</li>
+        <li>rails</li>
+      </ul>
 
       <h2>Teams</h2>
 
