@@ -9,7 +9,31 @@
 # Create users
 
 5.times do |i|
-  user = User.create!(name: "User #{i}", email: "example#{i}@example.com", password: "my_solid_password")
-  app = App.create!(name: "App #{i}", description: "An app.", user: user)
-  tag = Tag.create!(name: "Games #{i}", description: "Fun fun fun", app: app)
+  user = User.create!(
+    name: "User #{i}",
+    img: "image url #{i}",
+    dev_bio: "Hey, I'm developer ##{i}",
+    is_dev: true,
+    dev_twitter: "twitter url for dev ##{i}",
+    dev_github: "github url for dev ##{i}",
+    dev_linkedin: "linkedin url for dev ##{i}",
+    dev_portfolio: "portfolio url for dev ##{i}",
+    email: "example#{i}@example.com", 
+    password: "password"
+    )
+
+  app = App.create!(
+    name: "App #{i}", 
+    description: "An app description for App #{i}",
+    img: "image url for app ##{i}",
+    app_url: "link to app ##{i}",
+    github_url: "github url for app ##{i}", 
+    user: user
+    )
+
+  tag = Tag.create!(
+    name: "Games #{i}", 
+    description: "Fun fun fun", 
+    app: app
+    )
 end
