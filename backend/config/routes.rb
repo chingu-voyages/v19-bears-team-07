@@ -15,5 +15,11 @@ Rails.application.routes.draw do
   # CRUD for Apps, Users, & Tags
   resources :apps, :users, :tags
 
+
+  # CRUD for resources owned by the authenticated user
+  namespace :me do 
+    resources :apps, except: [:new, :edit]
+  end
+
   get 'users/:id/portfolio', to: 'users#portfolio'
 end
