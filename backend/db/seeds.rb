@@ -19,7 +19,7 @@
     dev_linkedin: "https://www.linkedin.com/in/rbranson/?originalSubdomain=vg",
     dev_portfolio: "https://github.com/chingu-voyages",
     email: "user#{i}@cool.com", 
-    password: "pword"
+    password: "password"
     )
 
   app = App.create!(
