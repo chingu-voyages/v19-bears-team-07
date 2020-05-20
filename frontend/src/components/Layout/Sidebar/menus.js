@@ -12,7 +12,7 @@ const basicMenu = [
 const developerMenu = [
   {
     title: "Profile page",
-    target: "profile-page",
+    target: "profile",
   },
   {
     title: "Manage apps",
@@ -20,7 +20,7 @@ const developerMenu = [
   },
   {
     title: "+ New App",
-    target: "new-app",
+    target: "add-app",
   },
 ]
 

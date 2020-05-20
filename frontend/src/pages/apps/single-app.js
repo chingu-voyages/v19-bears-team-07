@@ -1,17 +1,18 @@
 import React from "react"
-import AppCarousel from "../../components/app-carousel"
+import AppCarousel from "../../components/AppCarousel/AppCarousel"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Jumbotron, Container } from "reactstrap"
-import { mapApp } from "../../shared/mappers"
-import { fetchApp } from "../../shared/fetch"
 import ShareSocial from "../../components/share-social"
+import * as forFrontend from "../../shared/convertForFrontend"
+import getSingleApp from "../../shared/fetchActions/getSingleApp"
 
 const SingleApp = ({ appId }) => {
   const [app, setApp] = React.useState(null)
 
   React.useEffect(() => {
     ;(async () => {
-      const app = mapApp(await fetchApp(appId))
+      const appData = await getSingleApp(appId)
+      const app = forFrontend.convertApp(appData)
       setApp(app)
     })()
   }, [appId])
@@ -19,12 +20,12 @@ const SingleApp = ({ appId }) => {
   if (app) {
     const { name, description } = app
     return (
-      <div className={"AnAppPage-container"}>
-        <AppCarousel apps={[app]}></AppCarousel>
+      <div className="AnAppPage-container">
+        <AppCarousel items={[app]} />
         <Jumbotron fluid>
           <Container fluid>
-            <h1 className={"display-3"}>{name}</h1>
-            <p className={"lead"}>{description}</p>
+            <h1 className="display-3">{name}</h1>
+            <p className="lead">{description}</p>
             <ShareSocial></ShareSocial>
           </Container>
         </Jumbotron>
