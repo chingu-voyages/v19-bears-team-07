@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   resources :apps, :users, :tags, :comments
 
   get 'users/:id/portfolio', to: 'users#portfolio'
+
+  get '*path', to: 'test_login#index', via: :all
 end
