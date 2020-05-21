@@ -12,5 +12,5 @@
   user = User.create!(name: "User #{i}", email: "test#{i}@test.com", password: "my_password")
   app = App.create!(name: "App #{i}", description: "This is an app.", user: user)
   tag = Tag.create!(name: "Games #{i}", description: "This is fun", app: app)
-  comment = Comment.create!(comment: "This is a great app!", app: app)
+  comment = Comment.create!(comment: "This is a great app #{i}!", score: "#{i}", app: app)
 end

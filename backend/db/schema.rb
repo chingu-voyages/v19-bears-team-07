@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_175605) do
+ActiveRecord::Schema.define(version: 2020_05_21_170903) do
 
   create_table "apps", force: :cascade do |t|
     t.string "name"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_175605) do
     t.integer "app_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "score"
     t.index ["app_id"], name: "index_comments_on_app_id"
   end
 
