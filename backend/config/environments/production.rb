@@ -5,8 +5,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'afternoon-sea-83763.herokuapp.com', port: 3000 }
 
   #!! Update for Prod
-  config.client_root = 'https://chingu-v19-bears-7.netlify.app/'
-  config.server_root = 'https://afternoon-sea-83763.herokuapp.com/'
+  config.client_root = 'chingu-v19-bears-7.netlify.app'
+  config.server_root = 'afternoon-sea-83763.herokuapp.com'
   #!!! END Manual configs
 
   # Settings specified here will take precedence over those in config/application.rb.
