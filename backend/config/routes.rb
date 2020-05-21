@@ -12,8 +12,14 @@ Rails.application.routes.draw do
   # Done as part of setup for Devise auth
   root to: "test_login#index"
 
-  # CRUD for Apps, Users, & Tags
-  resources :apps, :users, :tags
+  # CRUD for Apps, Users, Tags, Catgories
+  resources :apps, :users, :tags, except: [:new, :edit]
+
+  resources :categories, except: [:new, :edit] do 
+    member do 
+      get "apps"
+    end
+  end
 
 
   # CRUD for resources owned by the authenticated user
