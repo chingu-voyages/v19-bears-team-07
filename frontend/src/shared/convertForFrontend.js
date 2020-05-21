@@ -41,3 +41,22 @@ export const convertUser = userData => {
     url: `portfolios/${id}`,
   }
 }
+
+export const convertTag = ({ name, description, img }) => ({
+  name,
+  description,
+  image: img,
+
+  url: `/tags/${id}`,
+  imageUrl: img
+    ? ""
+    : "https://www.pinclipart.com/picdir/middle/333-3338907_game-png-icon-free-download-onlinewebfonts-com-play.png",
+})
+
+export const convertComment = ({ title, description, score }) => ({
+  title,
+  description,
+  score,
+
+  url: `/comments/${id}`,
+})
