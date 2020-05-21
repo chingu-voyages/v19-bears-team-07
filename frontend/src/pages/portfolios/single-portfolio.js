@@ -21,6 +21,7 @@ const SinglePortfolio = ({ userId }) => {
     })()
   }, [userId])
 
+  const appUrls = apps.map(app => app.url)
   return (
     <div className="APortfolioPage-container">
       <h1>{user.name}</h1>
@@ -54,7 +55,7 @@ const SinglePortfolio = ({ userId }) => {
       <h2>Teams</h2>
 
       <h2>Apps</h2>
-      <AppGrid apps={apps}></AppGrid>
+      <AppGrid apps={apps} appUrls={appUrls}></AppGrid>
     </div>
   )
 }
