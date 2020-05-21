@@ -1,7 +1,7 @@
 
 class CategoriesController < ApplicationController
     before_action :authenticate_user!, except: [:index]
-    before_action :set_category, only: [:show, :update, :destroy]
+    before_action :set_category, only: [:show, :update, :destroy, :apps]
 
     # GET categories/
     def index 
@@ -51,6 +51,18 @@ class CategoriesController < ApplicationController
         end
 
         head :no_content
+    end
+
+    # GET categories/:id/apps
+    def apps 
+        # Return all apps that have a matching category_id
+        if @category 
+            apps = App.where(category: @category)
+            json_response(apps)
+        else 
+            puts "NOT FOUND"
+            head :not_found
+        end
     end
 
     private 

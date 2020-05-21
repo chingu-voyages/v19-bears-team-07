@@ -15,6 +15,12 @@ Rails.application.routes.draw do
   # CRUD for Apps, Users, Tags, Catgories
   resources :apps, :users, :tags, :categories, except: [:new, :edit]
 
+  resources :categories, except: [:new, :edit] do 
+    member do 
+      get "apps"
+    end
+  end
+
 
   # CRUD for resources owned by the authenticated user
   namespace :me do 
