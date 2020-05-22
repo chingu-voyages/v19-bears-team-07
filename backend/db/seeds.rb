@@ -8,7 +8,7 @@
 
 # Create users
 
-3.times do |i|
+5.times do |i|
   user = User.create!(
     name: "User #{i}",
     img: "https://media.npr.org/assets/img/2020/02/20/zachwoods_hbo_bullseye2020_custom-539527210f27f2329bc46b37bbffc3742de8e1f7-s800-c85.jpeg",
