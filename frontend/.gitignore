@@ -52,7 +52,8 @@ typings/
 *.tgz
 
 # dotenv environment variable files
-.env*
+# TODO : Allowing until these are configured. Currently they don't contain any secrets, so it should be fine.
+# .env*
 
 # gatsby files
 .cache/

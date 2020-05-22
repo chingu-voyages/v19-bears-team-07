@@ -63,6 +63,6 @@ ActiveRecord::Schema.define(version: 2020_05_21_193045) do
   end
 
   add_foreign_key "apps", "categories", on_delete: :nullify
-  add_foreign_key "apps", "users"
-  add_foreign_key "tags", "apps"
+  add_foreign_key "apps", "users", on_delete: :cascade
+  add_foreign_key "tags", "apps", on_delete: :cascade
 end
