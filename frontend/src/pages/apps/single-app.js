@@ -2,6 +2,7 @@ import React from "react"
 import AppCarousel from "../../components/AppCarousel/AppCarousel"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Jumbotron, Container } from "reactstrap"
+import ShareSocial from "../../components/share-social"
 import PaginatedComments from "../../components/Comments/PaginatedComments"
 import * as forFrontend from "../../shared/convertForFrontend"
 import getSingleApp from "../../shared/fetchActions/getSingleApp"
@@ -26,6 +27,7 @@ export const SingleApp = ({ appId }) => {
           <Container fluid>
             <h1 className="display-3">{name}</h1>
             <p className="lead">{description}</p>
+            <ShareSocial></ShareSocial>
           </Container>
         </Jumbotron>
         <PaginatedComments comments={exampleComments}></PaginatedComments>

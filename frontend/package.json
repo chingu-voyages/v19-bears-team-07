@@ -25,6 +25,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
+    "react-share": "^4.1.0",
+    "react-social": "^1.10.0",
     "reactstrap": "^8.4.1",
     "yup": "^0.28.5"
   },
