@@ -1,0 +1,21 @@
+.PaginatedComments-pageContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 10px;
+  border-color: lightgrey;
+  align-items: center;
+}
+
+.PaginatedComments-singlePage {
+  margin: 10px;
+}
+
+.PaginatedComments-singlePage:hover {
+  cursor: pointer;
+}
+
+.PaginatedComments-activePage {
+  text-decoration: underline;
+}
