@@ -41,7 +41,6 @@ const ManageAppsPage = () => {
         <RenderApps path={"/"} apps={apps}></RenderApps>
         <SingleAppEdit path={"/:appId/edit"} />
       </Router>
-      <RenderApps apps={apps}></RenderApps>
     </Layout>
   )
 }
