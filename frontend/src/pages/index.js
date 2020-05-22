@@ -20,11 +20,13 @@ const IndexPage = () => {
     })()
   }, [])
 
+  const appUrls = apps.map(app => app.url)
+
   return (
     <Layout>
       <SEO title="Home" />
       <AppCarousel items={apps} />
-      <AppGrid apps={apps} />
+      <AppGrid apps={apps} appUrls={appUrls} />
     </Layout>
   )
 }

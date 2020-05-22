@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Create users
 
 5.times do |i|
+
   user = User.create!(
     name: "User #{i}",
     img: "https://media.npr.org/assets/img/2020/02/20/zachwoods_hbo_bullseye2020_custom-539527210f27f2329bc46b37bbffc3742de8e1f7-s800-c85.jpeg",
@@ -30,6 +30,8 @@
     github_url: "https://github.com/chingu-voyages/v19-bears-team-07", 
     user: user
     )
+
   
   category = Category.create!(name: "Category #{i}")
+
 end
