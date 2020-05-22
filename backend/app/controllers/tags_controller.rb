@@ -5,7 +5,7 @@ class TagsController < ApplicationController
 
   # GET /tags
   def index
-    @tags = Tag.all
+    @tags = Tag.all.order(created_at: :desc)
     json_response(@tags)
   end
 
