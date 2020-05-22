@@ -30,6 +30,12 @@
     github_url: "https://github.com/chingu-voyages/v19-bears-team-07", 
     user: user
     )
-  
-  category = Category.create!(name: "Category #{i}")
+
 end
+
+Category.create!(name: "Developer Tools")
+Category.create!(name: "Games")
+Category.create!(name: "News & Weather")
+Category.create!(name: "Productivity")
+Category.create!(name: "Shopping")
+Category.create!(name: "Social")
