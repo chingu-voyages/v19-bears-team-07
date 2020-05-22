@@ -5,20 +5,54 @@ import SEO from "../components/Seo/Seo"
 import SingleAppEdit from "./apps/single-app-edit"
 import { Router } from "@reach/router"
 import "bootstrap/dist/css/bootstrap.min.css"
+import AppGrid from "../components/AppGrid/AppGrid"
+import UserContext from "../shared/UserContext"
+import getMyApps from "../shared/fetchActions/getMyApps"
+import * as forFrontend from "../shared/convertForFrontend"
 
-const ManageAppsPage = () => (
-  <Layout>
-    <SEO title="Manage Apps" />
-    <h1>manage apps</h1>
-    <Router basepath={"/manage-apps"}>
-      <AllApps path={"/"}></AllApps>
-      <SingleAppEdit path={"/:appId/edit"} />
-    </Router>
-  </Layout>
-)
+const ManageAppsPage = () => {
+  const { userId, loggedIn } = React.useContext(UserContext)
+  const [apps, setApps] = React.useState([])
+
+  React.useEffect(() => {
+    // Fetches all the apps that are authenticated for this user.
+    ;(async () => {
+      const appData = await getMyApps()
+      console.log(appData)
+      const apps = appData.map(forFrontend.convertApp)
+      setApps(apps)
+    })()
+  }, [userId])
+
+  if (!userId || !loggedIn) {
+    return (
+      <Layout>
+        <SEO title="Manage Apps" />
+        <h1>You are not authorized</h1>
+      </Layout>
+    )
+  }
+
+  return (
+    <Layout>
+      <SEO title="Manage Apps" />
+      <h1>manage apps</h1>
+      <Router basepath={"/manage-apps"}>
+        <RenderApps path={"/"} apps={apps}></RenderApps>
+        <SingleAppEdit path={"/:appId/edit"} />
+      </Router>
+      <RenderApps apps={apps}></RenderApps>
+    </Layout>
+  )
+}
+
+const RenderApps = ({ apps }) => {
+  if (apps && apps.length > 0) {
+    const appUrls = apps.map(app => app.manageUrl)
+    return <AppGrid apps={apps} appUrls={appUrls}></AppGrid>
+  } else {
+    return <h2>You do not have any apps</h2>
+  }
+}
 
 export default ManageAppsPage
-
-const AllApps = () => {
-  return <span>All Apps are here</span>
-}
