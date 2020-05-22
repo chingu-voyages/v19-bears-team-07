@@ -2,11 +2,11 @@ Rails.application.configure do
   #!!! START Manual configs
 
   #!!! THIS NEEDS TO BE UPDATED FOR PROD ENVIRON
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'afternoon-sea-83763.herokuapp.com', port: 3000 }
 
   #!! Update for Prod
-  config.client_root = 'localhost:8000'
-  config.server_root = 'localhost:3000'
+  config.client_root = 'chingu-v19-bears-7.netlify.app'
+  config.server_root = 'afternoon-sea-83763.herokuapp.com'
   #!!! END Manual configs
 
   # Settings specified here will take precedence over those in config/application.rb.
