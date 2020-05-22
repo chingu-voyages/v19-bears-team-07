@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+    before_action :authenticate_user!, except: [:index]
     before_action :set_comment, only: [:show, :update, :destroy]
   
   
@@ -10,36 +11,53 @@ class CommentsController < ApplicationController
   
     # GET /comment/:id
     def show
-      json_response(@comment)
+      if @comment
+        json_response(@comment)
+      else
+        head :not_found
+      end
     end
   
     # POST /comments
     def create
-      @comment = comment.create(comment_params)
-      json_response(@comment, :created)
+      @comment = Comment.create(comment_params)
+      if @comment.valid?
+        @comment.save
+        json_response(@comment, :created)
+      else
+        head :bad_request
+      end
     end
   
     # PUT /comments/:id
     def update
-      @comment.update!(comment_params)
-      head :no_content
+      if @comment
+        @comment.update!(comment_params)
+        if @comment.valid?
+          head :no_content
+        else
+          head :bad_request
+        end      
+      else
+        head :not_found
+      end
     end
   
     # DELETE /comments/:id
     def destroy
-      @comment.destroy
-      head :no_content
+      if @comment
+        @comment.destroy
+      end
+        head :no_content
     end
   
-    private
-  
-    def comment_params
+    private def comment_params
       # whitelist params
       params.permit(:title, :description, :score)
     end
   
     def set_comment
-      @comment = comment.find(params[:id])
+      @comment = Comment.find(params[:id])
     end
   end
   

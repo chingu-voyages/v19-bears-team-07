@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   before_action :set_tags, only: [:show, :update, :destroy]
 
 
@@ -10,30 +11,47 @@ class TagsController < ApplicationController
 
   # GET /tag/:id
   def show
-    json_response(@tag)
+    if @tag
+      json_response(@tag)
+    else
+      head :not_found
+    end
   end
 
   # POST /tags
   def create
     @tag = Tag.create(tag_params)
-    json_response(@tag, :created)
+    if @tag.valid?
+      @tag.save
+      json_response(@tag, :created)
+    else
+      head :bad_request
+    end
   end
 
   # PUT /tags/:id
   def update
-    @tag.update!(tag_params)
-    head :no_content
+    if @tag
+      @tag.update!(tag_params)
+      if @tag.valid?
+        head :no_content
+      else
+        head :bad_request
+      end      
+    else
+      head :not_found
+    end
   end
 
   # DELETE /tags/:id
   def destroy
-    @tag.destroy
-    head :no_content
+    if @tag
+      @tag.destroy
+    end
+      head :no_content
   end
 
-  private
-
-  def tag_params
+  private def tag_params
     # whitelist paramss
     params.permit(:name, :description, :img)
   end
