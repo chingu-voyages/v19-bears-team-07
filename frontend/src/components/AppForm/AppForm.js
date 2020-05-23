@@ -9,18 +9,14 @@ import DescriptionInput from "../formInputs/DescriptionInput/DescriptionInput"
 import AppUrlInput from "../formInputs/AppUrlInput/AppUrlInput"
 import Github from "../formInputs/GithubInput/GithubInput"
 import validationSchema from "./validationSchema"
+import DeleteApp from "../DeleteApp/DeleteApp"
 
-const AppForm = ({
-  formMode,
-  initialValues,
-  submitForm,
-  deleteApp = () => {},
-}) => {
+const AppForm = ({ formMode, initialValues, submitForm }) => {
   const [successModal, setSucessModal] = useState(false)
-  const [areYouSureModal, setAreYouSureModal] = useState(false)
   const imageRef = useRef(null)
   return (
     <Formik
+      enableReinitialize
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
@@ -73,7 +69,7 @@ const AppForm = ({
                 <SubmitButtonsSection
                   formMode={formMode}
                   isSubmitting={isSubmitting}
-                  deleteApp={deleteApp}
+                  app={initialValues}
                 />
               </Col>
             </Container>
@@ -84,7 +80,7 @@ const AppForm = ({
   )
 }
 
-const SubmitButtonsSection = ({ formMode, isSubmitting, deleteApp }) => {
+const SubmitButtonsSection = ({ formMode, isSubmitting, app }) => {
   if (formMode === "add") {
     return (
       <Button type="submit" color="primary" disabled={isSubmitting}>
@@ -93,18 +89,13 @@ const SubmitButtonsSection = ({ formMode, isSubmitting, deleteApp }) => {
     )
   }
   if (formMode === "edit") {
+    const { id: appId, name } = app
     return (
       <div style={{ display: "flex" }}>
         <Button type="submit" color="primary" disabled={isSubmitting}>
           Update
         </Button>
-        <Button
-          onClick={() => deleteApp()}
-          color="danger"
-          disabled={isSubmitting}
-        >
-          Delete
-        </Button>
+        <DeleteApp name={name} appId={appId} />
       </div>
     )
   }
