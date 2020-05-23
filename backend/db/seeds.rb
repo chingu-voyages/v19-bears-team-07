@@ -6,9 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+names = [
+  'Developer Tools', 
+  'Games', 
+  'News & Weather',
+  'Productivity',
+  'Shopping',
+  'Social'
+]
 
 5.times do |i|
-  
 
   user = User.create!(
     name: "User #{i}",
@@ -21,7 +28,9 @@
     dev_portfolio: "https://github.com/chingu-voyages",
     email: "user#{i}@cool.com", 
     password: "password"
-    )
+  )
+
+  category = Category.create!(name: names[i])
 
   app = App.create!(
     name: "App #{i}", 
@@ -29,15 +38,10 @@
     img: "https://images-na.ssl-images-amazon.com/images/I/512EsSPL7KL._AC_UX679_.jpg",
     app_url: "https://myspace.com/",
     github_url: "https://github.com/chingu-voyages/v19-bears-team-07", 
-    user: user
-    )
+    user: user,
+    category: category
+  )
 
-  tag = Tag.create!(
-    name: "Games #{i}", 
-    description: "Fun fun fun", 
-    app: app
-    )
-  
-  category = Category.create!(name: "Category #{i}")  
-  
 end
+
+
