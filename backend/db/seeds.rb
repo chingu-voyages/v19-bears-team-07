@@ -6,14 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-Category.create!(name: "Developer Tools")
-Category.create!(name: "Games")
-Category.create!(name: "News & Weather")
-Category.create!(name: "Productivity")
-Category.create!(name: "Shopping")
-Category.create!(name: "Social")
-
+names = [
+  'Developer Tools', 
+  'Games', 
+  'News & Weather',
+  'Productivity',
+  'Shopping',
+  'Social'
+]
 
 5.times do |i|
 
@@ -28,7 +28,9 @@ Category.create!(name: "Social")
     dev_portfolio: "https://github.com/chingu-voyages",
     email: "user#{i}@cool.com", 
     password: "password"
-    )
+  )
+
+  category = Category.create!(name: names[i])
 
   app = App.create!(
     name: "App #{i}", 
@@ -38,7 +40,7 @@ Category.create!(name: "Social")
     github_url: "https://github.com/chingu-voyages/v19-bears-team-07", 
     user: user,
     category: category
-    )
+  )
 
 end
 
