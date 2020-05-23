@@ -25,20 +25,24 @@ export const convertUser = userData => {
   const {
     name,
     img,
+    is_dev,
     dev_bio,
     dev_twitter,
     dev_github,
     dev_linkedin,
+    dev_portfolio,
     id,
   } = userData
 
   return {
     name: name ? name : "",
     image: img ? img : "",
+    dev: is_dev ? is_dev : "",
     bio: dev_bio ? dev_bio : "",
     twitter: dev_twitter ? dev_twitter : "",
     github: dev_github ? dev_github : "",
     linkedin: dev_linkedin ? dev_linkedin : "",
+    website: dev_portfolio ? dev_portfolio : "",
     url: `portfolios/${id}`,
   }
 }

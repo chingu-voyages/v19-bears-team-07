@@ -6,7 +6,9 @@ Rails.application.configure do
 
   # host
   config.client_root = 'localhost:8000'
+  config.client_url = 'http://' + config.client_root
   config.server_root = 'localhost:3000'
+  config.server_url = 'http://' + config.server_root
   #!!! END Manual configs
 
   # Settings specified here will take precedence over those in config/application.rb.

@@ -2,6 +2,9 @@ import React from "react"
 
 import Layout from "../components/Layout/Layout"
 import SEO from "../components/Seo/Seo"
+import SingleAppEdit from "./apps/single-app-edit"
+import { Router } from "@reach/router"
+import "bootstrap/dist/css/bootstrap.min.css"
 import AppGrid from "../components/AppGrid/AppGrid"
 import UserContext from "../shared/UserContext"
 import getMyApps from "../shared/fetchActions/getMyApps"
@@ -34,7 +37,10 @@ const ManageAppsPage = () => {
     <Layout>
       <SEO title="Manage Apps" />
       <h1>manage apps</h1>
-      <RenderApps apps={apps}></RenderApps>
+      <Router basepath={"/manage-apps"}>
+        <RenderApps path={"/"} apps={apps}></RenderApps>
+        <SingleAppEdit path={"/:appId/edit"} />
+      </Router>
     </Layout>
   )
 }
