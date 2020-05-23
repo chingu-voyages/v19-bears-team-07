@@ -10,4 +10,12 @@ class ApplicationController < ActionController::Base
     (base_url.include? my_config.client_root) or (base_url.include? my_config.server_root)
   }
   include Response
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
 end
