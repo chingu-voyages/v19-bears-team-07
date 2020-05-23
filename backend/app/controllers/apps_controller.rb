@@ -22,7 +22,7 @@ class AppsController < ApplicationController
   # PUT /apps/:id
   def update
     @app.update!(app_params)
-    head :no_content
+    json_response(@app)
   end
 
   # DELETE /apps/:id
