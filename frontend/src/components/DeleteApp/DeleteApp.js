@@ -11,7 +11,6 @@ import {
 import { navigate } from "gatsby"
 
 import doDeleteApp from "../../shared/fetchActions/deleteMyApp"
-import "./DeleteApp.css"
 
 const DeleteApp = ({ name, appId }) => {
   const [inputText, setInputText] = React.useState("")
