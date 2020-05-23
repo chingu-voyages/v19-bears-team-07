@@ -8,6 +8,7 @@ import separateTags from "./separateTags"
 import AppForm from "../AppForm/AppForm"
 
 const EditApp = ({ app, getAppData }) => {
+  app.github = app.githubUrl
   const submitData = async values => {
     try {
       const valuesToPut = await forBackend.convertApp(values)
