@@ -92,7 +92,12 @@ const SubmitButtonsSection = ({ formMode, isSubmitting, app }) => {
     const { id: appId, name } = app
     return (
       <div style={{ display: "flex" }}>
-        <Button type="submit" color="primary" disabled={isSubmitting}>
+        <Button
+          style={{ marginRight: "1em" }}
+          type="submit"
+          color="primary"
+          disabled={isSubmitting}
+        >
           Update
         </Button>
         <DeleteApp name={name} appId={appId} />
