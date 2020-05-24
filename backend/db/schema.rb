@@ -85,6 +85,6 @@ ActiveRecord::Schema.define(version: 2020_05_23_061856) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "apps", "categories", on_delete: :nullify
-  add_foreign_key "apps", "users", on_delete: :cascade
-  add_foreign_key "tags", "apps", on_delete: :cascade
+  add_foreign_key "apps", "users"
+  add_foreign_key "tags", "apps"
 end
