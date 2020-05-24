@@ -71,8 +71,18 @@ const RenderSingleApp = ({
 const RenderFavoriteButton = ({}) => {
   const [isFavorite, setIsFavorite] = React.useState(false)
 
+  // TODO : This should update the favorite on the server. Ideally these updates would be
+  // TODO : debounced in case a user is rapidly clicking the button, but perhaps that
+  // TODO : can be a later enhancement.
+  const updateFavorite = async () => {
+    // Implement this once server side is set up. Possibly move this to the /fetchActions folder
+  }
+
   const toggleFavorite = () => {
+    // We set the favorite on the client side and asynchronously
+    // Ask the backend to also update the favorite
     setIsFavorite(isFavorite => !isFavorite)
+    updateFavorite()
   }
 
   return (
@@ -88,6 +98,8 @@ const RenderFavoriteButton = ({}) => {
   )
 }
 
+// TODO : This is just test data until the server side is set up.
+// TODO : It should be replaced once we have actual seed data.
 const getMyFavoriteApps = async () => {
   return [
     {
