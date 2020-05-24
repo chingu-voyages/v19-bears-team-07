@@ -69,7 +69,7 @@ const RenderSingleApp = ({
 }
 
 const RenderFavoriteButton = ({}) => {
-  const [isFavorite, setIsFavorite] = React.useState(false)
+  const [isFavorite, setIsFavorite] = React.useState(true)
 
   // TODO : This should update the favorite on the server. Ideally these updates would be
   // TODO : debounced in case a user is rapidly clicking the button, but perhaps that
