@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   root to: "test_login#index"
 
   # CRUD for Apps, Users, & Tags
-  resources :apps, :users, :tags, :comments
+  resources :apps, :users, :tags, :comments, :categories
 
   get 'users/:id/portfolio', to: 'users#portfolio'
 
