@@ -3,24 +3,16 @@ class CommentsController < ApplicationController
     before_action :set_comment, only: [:show, :update, :destroy]
   
   
-    # GET /comments
+    # GET apps/:app_id/comments
     def index
-      @comments = Comment.all.order(created_at: :desc)
+      @comments = Comment.where(app: current_app).order(created_at: :desc)
       json_response(@comments)
     end  
   
-    # GET /comment/:id
-    def show
-      if @comment
-        json_response(@comment)
-      else
-        head :not_found
-      end
-    end
-  
-    # POST /comments
+    # POST apps/:app_id/comments
     def create
-      @comment = Comment.create(comment_params)
+      @comment = Comment.new(comment_params)
+      @comment.app = current_app
       if @comment.valid?
         @comment.save
         json_response(@comment, :created)
@@ -29,21 +21,7 @@ class CommentsController < ApplicationController
       end
     end
   
-    # PUT /comments/:id
-    def update
-      if @comment
-        @comment.update!(comment_params)
-        if @comment.valid?
-          head :no_content
-        else
-          head :bad_request
-        end      
-      else
-        head :not_found
-      end
-    end
-  
-    # DELETE /comments/:id
+    # DELETE apps/:app_id/comments/:id
     def destroy
       if @comment
         @comment.destroy
@@ -51,13 +29,14 @@ class CommentsController < ApplicationController
         head :no_content
     end
   
-    private def comment_params
+    private 
+    def comment_params
       # whitelist params
-      params.permit(:title, :description, :score)
+      params.permit(:title, :description, :score, :app_id)
     end
   
     def set_comment
-      @comment = Comment.find(params[:id])
+      @comment = Comment.find_by(app: current_app, id: comment_params[:id])
     end
   end
   
