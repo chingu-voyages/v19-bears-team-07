@@ -35,7 +35,7 @@ class TagsController < ApplicationController
 
   def tag_params
     # whitelist paramss
-    params.permit(:name, :description, :img)
+    params.permit(:name, :description, :img, :app_id)
   end
 
   def set_tag

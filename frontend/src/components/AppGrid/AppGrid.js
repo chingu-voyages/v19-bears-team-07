@@ -7,7 +7,11 @@ const AppGrid = ({ apps, appUrls }) => {
   return (
     <div className={"AppGrid-container"}>
       {apps.map((app, index) => (
-        <RenderSingleApp app={app} index={index} appUrl={appUrls[index]} />
+        <RenderSingleApp
+          app={app}
+          appUrl={appUrls[index]}
+          key={index.toString() + "-" + appUrls[index]}
+        />
       ))}
     </div>
   )
@@ -15,15 +19,10 @@ const AppGrid = ({ apps, appUrls }) => {
 
 const RenderSingleApp = ({
   app: { image, imageUrl, name, description },
-  index,
   appUrl,
 }) => {
   return (
-    <Card
-      onClick={() => navigate(appUrl)}
-      className="AppGrid-Card"
-      key={index.toString() + "-" + appUrl}
-    >
+    <Card onClick={() => navigate(appUrl)} className="AppGrid-Card">
       <CardImg src={image ? image : imageUrl} width="100%" />
       <CardBody>
         <CardTitle>{name}</CardTitle>
