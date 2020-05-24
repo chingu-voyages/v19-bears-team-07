@@ -39,7 +39,8 @@ const RenderAllApps = () => {
     })()
   }, [])
 
-  return <AppGrid apps={apps} />
+  const appUrls = apps.map(app => app.url)
+  return <AppGrid apps={apps} appUrls={appUrls} />
 }
 
 export default AppPage

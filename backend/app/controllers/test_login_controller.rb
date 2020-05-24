@@ -4,7 +4,7 @@ class TestLoginController < ApplicationController
   def index
       @signed_in = "Yes, I am!"
     if user_signed_in?
-      redirect_to "http://localhost:8000/"
+      redirect_to "https://chingu-v19-bears-7.netlify.app/"
     else 
     
       @signed_in = "No, I'm not..."
