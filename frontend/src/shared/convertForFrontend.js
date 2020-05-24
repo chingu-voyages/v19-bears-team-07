@@ -42,21 +42,29 @@ export const convertUser = userData => {
   }
 }
 
-export const convertTag = ({ name, description, img }) => ({
-  name,
-  description,
-  image: img,
+export const convertCategory = categoryData => {
+  const { id, name } = categoryData
 
-  url: `/tags/${id}`,
-  imageUrl: img
-    ? ""
-    : "https://www.pinclipart.com/picdir/middle/333-3338907_game-png-icon-free-download-onlinewebfonts-com-play.png",
-})
+  return {
+    name: name ? name : "",
+  }
+}
 
-export const convertComment = ({ title, description, score }) => ({
-  title,
-  description,
-  score,
+export const convertTag = tagData => {
+  const { name, description, image } = tagData
 
-  url: `/comments/${id}`,
-})
+  return {
+    name: name ? name : "",
+    description: description ? description : "",
+    image: image ? image : "",
+  }
+}
+
+export const convertComment = commentData => {
+  const { title, description } = commentData
+
+  return {
+    title: title ? title : "",
+    description: description ? description : "",
+  }
+}
