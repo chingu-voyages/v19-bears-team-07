@@ -7,12 +7,14 @@ export const convertApp = ({
   app_url,
   github_url,
   id,
+  user_id,
 }) => ({
   name,
   description,
   image: img,
   appUrl: app_url,
   githubUrl: github_url,
+  userId: user_id,
 
   url: `/apps/${id}`,
   manageUrl: `/manage-apps/${id}/edit`,
@@ -36,7 +38,9 @@ export const convertUser = userData => {
 
   return {
     name: name ? name : "",
-    image: img ? img : "",
+    image: img
+      ? img
+      : "https://www.kirkleescollege.ac.uk/wp-content/uploads/2015/09/default-avatar.png",
     dev: is_dev ? is_dev : "",
     bio: dev_bio ? dev_bio : "",
     twitter: dev_twitter ? dev_twitter : "",
