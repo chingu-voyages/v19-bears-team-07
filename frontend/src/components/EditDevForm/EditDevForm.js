@@ -11,6 +11,7 @@ import ImageInput from "../formInputs/ImageInput/ImageInput"
 import validationSchema from "./validationSchema"
 import updateProfile from "../../shared/fetchActions/updateProfile"
 import * as forBackend from "../../shared/convertForBackend"
+import updateImage from "../../shared/fetchActions/updateImage"
 
 const EditDevForm = ({ initialValues, userId, refreshUserData }) => {
   const imageRef = useRef(null)
@@ -23,17 +24,9 @@ const EditDevForm = ({ initialValues, userId, refreshUserData }) => {
           const updatedUser = await forBackend.convertUser(values)
           await updateProfile(updatedUser, userId)
 
-          // image patch to active storage
           const formData = new FormData()
-          formData.append("user", JSON.stringify(values))
           formData.append("image", values.image)
-          fetch(`${process.env.GATSBY_BACKEND_URL}/users/${userId}`, {
-            method: "PATCH",
-            credentials: "include",
-            body: formData,
-          })
-            .then(res => res.json())
-            .then(data => console.log(data))
+          await updateImage(userId, formData)
         } catch (e) {
           console.log(e)
         }
