@@ -14,6 +14,7 @@ export const convertUser = async ({
   } catch (e) {
     console.log(e)
   }
+
   return {
     name,
     dev_bio: bio,
