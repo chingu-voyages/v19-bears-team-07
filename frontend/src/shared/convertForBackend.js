@@ -14,9 +14,9 @@ export const convertUser = async ({
   } catch (e) {
     console.log(e)
   }
+
   return {
     name,
-    img: convertedImage ? convertedImage : undefined,
     dev_bio: bio,
     dev_twitter: twitter,
     dev_github: github,
