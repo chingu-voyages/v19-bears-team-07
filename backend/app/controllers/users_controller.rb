@@ -8,11 +8,23 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
+    @users.each do |user|
+      if user.image.attached?
+        user.img = url_for(user.image)
+      else
+        user.img = 'blank'
+      end
+    end
     json_response(@users)
   end
 
   # GET /user/:id
   def show
+    if @user.image.attached?
+      @user.img = url_for(@user.image)
+    else
+      @user.img = ''
+    end
     json_response(@user)
   end
 
@@ -25,6 +37,12 @@ class UsersController < ApplicationController
   # PATCH or PUT /users/:id
   def update
     @user.update!(user_params)
+    if @user.image.attached?
+      @user.image.purge
+      @user.image.attach(params[:image])
+    else
+      @user.image.attach(params[:image])
+    end
     head :no_content
   end
 
@@ -44,7 +62,7 @@ class UsersController < ApplicationController
 
   def user_params
     # whitelist params
-    params.permit(:id, :name, :img, :is_dev, :dev_bio, :dev_twitter, :dev_github, :dev_linkedin, :dev_portfolio)
+    params.require(:user).permit(:id, :name, :img, :image, :is_dev, :dev_bio, :dev_twitter, :dev_github, :dev_linkedin, :dev_portfolio)
   end
 
   def set_user

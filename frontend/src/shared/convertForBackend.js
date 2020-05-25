@@ -29,7 +29,7 @@ export const convertUser = async ({
 
   return {
     name,
-    img: convertedImage ? convertedImage : undefined,
+    // image,
     dev_bio: bio,
     dev_twitter: twitter,
     dev_github: github,

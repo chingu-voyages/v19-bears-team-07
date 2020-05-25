@@ -24,7 +24,7 @@ export const convertApp = ({
 export const convertUser = userData => {
   const {
     name,
-    img,
+    image,
     is_dev,
     dev_bio,
     dev_twitter,
@@ -36,7 +36,7 @@ export const convertUser = userData => {
 
   return {
     name: name ? name : "",
-    image: img ? img : "",
+    image: image ? image : "",
     dev: is_dev ? is_dev : "",
     bio: dev_bio ? dev_bio : "",
     twitter: dev_twitter ? dev_twitter : "",

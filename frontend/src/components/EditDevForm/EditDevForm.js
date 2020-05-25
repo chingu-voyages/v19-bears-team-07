@@ -22,6 +22,16 @@ const EditDevForm = ({ initialValues, userId, refreshUserData }) => {
         try {
           const updatedUser = await forBackend.convertUser(values)
           await updateProfile(updatedUser, userId)
+
+          // image patch to active storage
+          const formData = new FormData()
+          formData.append("image", values.image)
+          fetch(`${process.env.GATSBY_BACKEND_URL}/users/${userId}`, {
+            method: "PATCH",
+            body: formData,
+          })
+            .then(res => res.json())
+            .then(data => console.log(data))
         } catch (e) {
           console.log(e)
         }
