@@ -22,7 +22,7 @@ class AppsController < ApplicationController
   # PUT /apps/:id
   def update
     @app.update!(app_params)
-    head :no_content
+    json_response(@app)
   end
 
   # DELETE /apps/:id
@@ -35,7 +35,7 @@ class AppsController < ApplicationController
 
   def app_params
     # whitelist params
-    params.permit(:name, :description, :img, :app_url, :github_url)
+    params.permit(:name, :description, :img, :app_url, :github_url, :user_id)
   end
 
   def set_app

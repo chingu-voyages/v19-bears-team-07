@@ -4,7 +4,7 @@ import * as Url from "../urls"
 
 const getAllApps = async () => {
   try {
-    const request = new Request(Url.ALL_APPS, {
+    const request = new Request(Url.APPS, {
       method: "GET",
       credentials: "include",
     })

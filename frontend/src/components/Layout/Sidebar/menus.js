@@ -1,56 +1,56 @@
 const basicMenu = [
   {
     title: "Favorite Apps",
-    target: "favorite-apps",
+    target: "/favorite-apps",
   },
   {
     title: "Settings",
-    target: "settings",
+    target: "/settings",
   },
 ]
 
 const developerMenu = [
   {
     title: "Profile page",
-    target: "profile",
+    target: "/profile",
   },
   {
     title: "Manage apps",
-    target: "manage-apps",
+    target: "/manage-apps",
   },
   {
     title: "+ New App",
-    target: "add-app",
+    target: "/add-app",
   },
 ]
 
 const appsMenu = [
   {
     title: "games",
-    target: "apps/games",
+    target: "/apps/games",
   },
   {
     title: "productivity",
-    target: "apps/productivity",
+    target: "/apps/productivity",
   },
   {
     title: "shopping",
-    target: "apps/shopping",
+    target: "/apps/shopping",
   },
 ]
 
 const devsMenu = [
   {
     title: "rails",
-    target: "devs/rails",
+    target: "/devs/rails",
   },
   {
     title: "react",
-    target: "devs/react",
+    target: "/devs/react",
   },
   {
     title: "vue",
-    target: "devs/vue",
+    target: "/devs/vue",
   },
 ]
 
