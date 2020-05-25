@@ -5,24 +5,29 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  Row,
   Input,
   ModalFooter,
 } from "reactstrap"
+import { navigate } from "gatsby"
 
-import "./DeleteApp.css"
+import doDeleteApp from "../../shared/fetchActions/deleteMyApp"
 
-const DeleteApp = ({ name, deleteApp }) => {
-  const [input, setInput] = React.useState("")
+const DeleteApp = ({ name, appId }) => {
+  const [inputText, setInputText] = React.useState("")
   const [modal, setModal] = React.useState(false)
   const toggleModal = () => setModal(modal => !modal)
+
+  const deleteApp = async () => {
+    await doDeleteApp(appId)
+    navigate("manage-apps")
+  }
 
   return (
     <React.Fragment>
       <Button
         color={"danger"}
         onClick={() => {
-          setInput("")
+          setInputText("")
           toggleModal()
         }}
       >
@@ -37,14 +42,14 @@ const DeleteApp = ({ name, deleteApp }) => {
           , to confirm that you really want this. <br /> <br />
           <Input
             type="text"
-            value={input}
-            onChange={event => setInput(event.target.value)}
+            value={inputText}
+            onChange={event => setInputText(event.target.value)}
           ></Input>
         </ModalBody>
         <ModalFooter>
           <Button
             color={"danger"}
-            disabled={input !== name}
+            disabled={inputText !== name}
             onClick={() => {
               deleteApp()
               toggleModal()
