@@ -11,8 +11,6 @@ class UsersController < ApplicationController
     @users.each do |user|
       if user.image.attached?
         user.img = url_for(user.image)
-      else
-        user.img = 'blank'
       end
     end
     json_response(@users)
@@ -22,8 +20,6 @@ class UsersController < ApplicationController
   def show
     if @user.image.attached?
       @user.img = url_for(@user.image)
-    else
-      @user.img = ''
     end
     json_response(@user)
   end
@@ -62,7 +58,7 @@ class UsersController < ApplicationController
 
   def user_params
     # whitelist params
-    params.require(:user).permit(:id, :name, :img, :image, :is_dev, :dev_bio, :dev_twitter, :dev_github, :dev_linkedin, :dev_portfolio)
+    params.permit(:user, :id, :name, :img, :image, :is_dev, :dev_bio, :dev_twitter, :dev_github, :dev_linkedin, :dev_portfolio)
   end
 
   def set_user
