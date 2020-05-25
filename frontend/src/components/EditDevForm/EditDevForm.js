@@ -25,9 +25,11 @@ const EditDevForm = ({ initialValues, userId, refreshUserData }) => {
 
           // image patch to active storage
           const formData = new FormData()
+          formData.append("user", JSON.stringify(values))
           formData.append("image", values.image)
           fetch(`${process.env.GATSBY_BACKEND_URL}/users/${userId}`, {
             method: "PATCH",
+            credentials: "include",
             body: formData,
           })
             .then(res => res.json())
