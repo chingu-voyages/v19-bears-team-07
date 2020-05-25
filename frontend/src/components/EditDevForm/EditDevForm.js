@@ -11,7 +11,7 @@ import ImageInput from "../formInputs/ImageInput/ImageInput"
 import validationSchema from "./validationSchema"
 import updateProfile from "../../shared/fetchActions/updateProfile"
 import * as forBackend from "../../shared/convertForBackend"
-import updateImage from "../../shared/fetchActions/updateImage"
+import updateUserImage from "../../shared/fetchActions/updateUserImage"
 
 const EditDevForm = ({ initialValues, userId, refreshUserData }) => {
   const imageRef = useRef(null)
@@ -26,7 +26,7 @@ const EditDevForm = ({ initialValues, userId, refreshUserData }) => {
 
           const formData = new FormData()
           formData.append("image", values.image)
-          await updateImage(userId, formData)
+          await updateUserImage(userId, formData)
         } catch (e) {
           console.log(e)
         }

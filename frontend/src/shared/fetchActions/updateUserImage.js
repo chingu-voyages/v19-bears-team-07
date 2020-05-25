@@ -1,6 +1,6 @@
 import * as Url from "../urls"
 
-const updateImage = async (userId, formData) => {
+const updateUserImage = async (userId, formData) => {
   const req = new Request(Url.singleUser(userId), {
     method: "PATCH",
     credentials: "include",
@@ -11,4 +11,4 @@ const updateImage = async (userId, formData) => {
   return response
 }
 
-export default updateImage
+export default updateUserImage
