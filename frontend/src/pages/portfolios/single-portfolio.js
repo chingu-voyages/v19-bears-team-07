@@ -1,5 +1,5 @@
 import React from "react"
-import AppGrid from "../../components/AppGrid/AppGrid"
+import AppGrid from "../../components/AppGrid/PublicAppGrid"
 import getSinglePortfolio from "../../shared/fetchActions/getSinglePortfolio"
 import * as forFrontend from "../../shared/convertForFrontend"
 import getSingleUser from "../../shared/fetchActions/getSingleUser"

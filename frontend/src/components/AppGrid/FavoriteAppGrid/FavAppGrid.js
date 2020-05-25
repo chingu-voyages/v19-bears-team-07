@@ -8,31 +8,12 @@ import {
   CardText,
   CardFooter,
 } from "reactstrap"
-import * as forFrontend from "../../shared/convertForFrontend"
 import "./FavAppGrid.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
-import getMyFavoriteApps from "../../shared/fetchActions/getMyFavoriteApps"
-import updateMyFavoriteApp from "../../shared/fetchActions/updateMyFavoriteApp"
+import updateMyFavoriteApp from "../../../shared/fetchActions/updateMyFavoriteApp"
 
-/* Implements an app grid with a favorite button that is connected to the db
- */
-const FavoriteAppGrid = () => {
-  const [apps, setApps] = React.useState([])
-
-  React.useEffect(() => {
-    ;(async () => {
-      const apps = (await getMyFavoriteApps()).map(forFrontend.convertApp)
-      setApps(apps)
-    })()
-  }, [])
-
-  const appUrls = apps.map(app => app.url)
-  return <AppGrid apps={apps} appUrls={appUrls}></AppGrid>
-}
-export default FavoriteAppGrid
-
-const AppGrid = ({ apps, appUrls }) => {
+const FavAppGrid = ({ apps, appUrls }) => {
   return (
     <div className={"FavAppGrid-container"}>
       {apps.map((app, index) => (
@@ -41,9 +22,10 @@ const AppGrid = ({ apps, appUrls }) => {
     </div>
   )
 }
+export default FavAppGrid
 
 const RenderSingleApp = ({
-  app: { image, imageUrl, name, description, id },
+  app: { image, imageUrl, name, description, id, isFavorite },
   index,
   appUrl,
 }) => {
@@ -63,30 +45,30 @@ const RenderSingleApp = ({
         <CardText>{description}</CardText>
       </CardBody>
       <CardFooter>
-        <RenderFavoriteButton appId={id} />
+        <RenderFavoriteButton appId={id} isFavorite={isFavorite} />
       </CardFooter>
     </Card>
   )
 }
 
-const RenderFavoriteButton = ({ appId }) => {
-  const [isFavorite, setIsFavorite] = React.useState(true)
+const RenderFavoriteButton = ({ appId, isFavorite }) => {
+  const [isFav, setIsFavorite] = React.useState(isFavorite)
 
   const toggleFavorite = () => {
     // We set the favorite on the client side and asynchronously
     // Ask the backend to also update the favorite
-    setIsFavorite(isFavorite => !isFavorite)
+    setIsFavorite(isFav => !isFav)
 
     // TODO : Ideally the server update would be
     // TODO : debounced in case a user is rapidly clicking the button, but perhaps that
     // TODO : can be a later enhancement.
-    updateMyFavoriteApp(appId, !isFavorite)
+    updateMyFavoriteApp(appId, !isFav)
   }
 
   return (
     <FontAwesomeIcon
       icon={faHeart}
-      color={isFavorite ? "red" : "grey"}
+      color={isFav ? "red" : "grey"}
       onClick={event => {
         event.preventDefault()
         toggleFavorite()

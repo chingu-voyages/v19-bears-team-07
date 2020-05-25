@@ -17,6 +17,8 @@ const AppGrid = ({ apps, appUrls }) => {
   )
 }
 
+export default AppGrid
+
 const RenderSingleApp = ({
   app: { image, imageUrl, name, description },
   appUrl,
@@ -31,5 +33,3 @@ const RenderSingleApp = ({
     </Card>
   )
 }
-
-export default AppGrid
