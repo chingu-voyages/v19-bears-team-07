@@ -12,6 +12,8 @@ import * as forFrontend from "../../shared/convertForFrontend"
 import "./FavAppGrid.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
+import getMyFavoriteApps from "../../shared/fetchActions/getMyFavoriteApps"
+import updateMyFavoriteApp from "../../shared/fetchActions/updateMyFavoriteApp"
 
 /* Implements an app grid with a favorite button that is connected to the db
  */
@@ -20,8 +22,7 @@ const FavoriteAppGrid = () => {
 
   React.useEffect(() => {
     ;(async () => {
-      // TODO: This should include a statement to map `forFrontend`
-      const apps = await getMyFavoriteApps()
+      const apps = (await getMyFavoriteApps()).map(forFrontend.convertApp)
       setApps(apps)
     })()
   }, [])
@@ -42,7 +43,7 @@ const AppGrid = ({ apps, appUrls }) => {
 }
 
 const RenderSingleApp = ({
-  app: { image, imageUrl, name, description },
+  app: { image, imageUrl, name, description, id },
   index,
   appUrl,
 }) => {
@@ -62,27 +63,24 @@ const RenderSingleApp = ({
         <CardText>{description}</CardText>
       </CardBody>
       <CardFooter>
-        <RenderFavoriteButton></RenderFavoriteButton>
+        <RenderFavoriteButton appId={id} />
       </CardFooter>
     </Card>
   )
 }
 
-const RenderFavoriteButton = ({}) => {
+const RenderFavoriteButton = ({ appId }) => {
   const [isFavorite, setIsFavorite] = React.useState(true)
-
-  // TODO : This should update the favorite on the server. Ideally these updates would be
-  // TODO : debounced in case a user is rapidly clicking the button, but perhaps that
-  // TODO : can be a later enhancement.
-  const updateFavorite = async () => {
-    // Implement this once server side is set up. Possibly move this to the /fetchActions folder
-  }
 
   const toggleFavorite = () => {
     // We set the favorite on the client side and asynchronously
     // Ask the backend to also update the favorite
     setIsFavorite(isFavorite => !isFavorite)
-    updateFavorite()
+
+    // TODO : Ideally the server update would be
+    // TODO : debounced in case a user is rapidly clicking the button, but perhaps that
+    // TODO : can be a later enhancement.
+    updateMyFavoriteApp(appId, !isFavorite)
   }
 
   return (
@@ -96,47 +94,4 @@ const RenderFavoriteButton = ({}) => {
       className={"FavAppGrid-FavIcon"}
     ></FontAwesomeIcon>
   )
-}
-
-// TODO : This is just test data until the server side is set up.
-// TODO : It should be replaced once we have actual seed data.
-const getMyFavoriteApps = async () => {
-  return [
-    {
-      name: "Test 1",
-      description: "Description",
-      image:
-        "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-      appUrl: "url",
-      githubUrl: "url",
-      userId: 5,
-      url: `/apps/${5}`,
-      manageUrl: `/manage-apps/${5}/edit`,
-      imageUrl: "",
-    },
-    {
-      name: "Test 1",
-      description: "Description",
-      image:
-        "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-      appUrl: "url",
-      githubUrl: "url",
-      userId: 5,
-      url: `/apps/${5}`,
-      manageUrl: `/manage-apps/${5}/edit`,
-      imageUrl: "",
-    },
-    {
-      name: "Test 1",
-      description: "Description",
-      image:
-        "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
-      appUrl: "url",
-      githubUrl: "url",
-      userId: 5,
-      url: `/apps/${5}`,
-      manageUrl: `/manage-apps/${5}/edit`,
-      imageUrl: "",
-    },
-  ]
 }
