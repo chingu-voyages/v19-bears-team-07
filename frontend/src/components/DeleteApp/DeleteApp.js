@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 
 import {
   Button,
@@ -14,12 +14,18 @@ import doDeleteApp from "../../shared/fetchActions/deleteMyApp"
 
 const DeleteApp = ({ name, appId }) => {
   const [inputText, setInputText] = React.useState("")
-  const [modal, setModal] = React.useState(false)
-  const toggleModal = () => setModal(modal => !modal)
+  const [isAreYouSureModal, setAreYouSureModal] = useState(false)
+  const [isSuccessModal, setSuccessModal] = useState(false)
+  const toggleAreYouSureModal = () =>
+    setAreYouSureModal(isAreYouSureModal => !isAreYouSureModal)
 
   const deleteApp = async () => {
     await doDeleteApp(appId)
-    navigate("manage-apps")
+    setSuccessModal(true)
+    setTimeout(() => {
+      setSuccessModal(false)
+      navigate("manage-apps")
+    }, 1000)
   }
 
   return (
@@ -28,13 +34,13 @@ const DeleteApp = ({ name, appId }) => {
         color={"danger"}
         onClick={() => {
           setInputText("")
-          toggleModal()
+          toggleAreYouSureModal()
         }}
       >
         Delete
       </Button>
-      <Modal isOpen={modal} toggle={toggleModal}>
-        <ModalHeader toggle={toggleModal}>Are you sure?</ModalHeader>
+      <Modal isOpen={isAreYouSureModal} toggle={toggleAreYouSureModal}>
+        <ModalHeader toggle={toggleAreYouSureModal}>Are you sure?</ModalHeader>
         <ModalBody className={"DeleteApp-modalBody"}>
           You can't undo this action. <br /> <br />
           Enter in the name of this app,
@@ -52,15 +58,20 @@ const DeleteApp = ({ name, appId }) => {
             disabled={inputText !== name}
             onClick={() => {
               deleteApp()
-              toggleModal()
+              toggleAreYouSureModal()
             }}
           >
             Confirm
           </Button>
-          <Button color={"secondary"} onClick={toggleModal}>
+          <Button color={"secondary"} onClick={toggleAreYouSureModal}>
             Cancel
           </Button>
         </ModalFooter>
+      </Modal>
+      <Modal isOpen={isSuccessModal} centered={true}>
+        <ModalBody style={{ fontSize: "3em", textAlign: "center" }}>
+          Deleted successfully
+        </ModalBody>
       </Modal>
     </React.Fragment>
   )
