@@ -13,7 +13,6 @@ const FavoriteAppGrid = () => {
     ;(async () => {
       const apps = (await getMyFavoriteApps()).map(app => {
         const convertedApp = forFrontend.convertApp(app)
-        convertedApp.isFavorite = true
         return convertedApp
       })
       setApps(apps)

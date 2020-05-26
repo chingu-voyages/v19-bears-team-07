@@ -7,9 +7,11 @@ import PaginatedComments from "../../components/Comments/PaginatedComments"
 import * as forFrontend from "../../shared/convertForFrontend"
 import getSingleApp from "../../shared/fetchActions/getSingleApp"
 import FavoriteButton from "../../components/AppGrid/FavoriteAppGrid/FavoriteButton"
+import UserContext from "../../shared/UserContext"
 
 export const SingleApp = ({ appId }) => {
   const [app, setApp] = React.useState(null)
+  const { loggedIn } = React.useContext(UserContext)
 
   React.useEffect(() => {
     ;(async () => {
@@ -29,7 +31,12 @@ export const SingleApp = ({ appId }) => {
             <h1 className="display-3">{name}</h1>
             <p className="lead">{description}</p>
             <ShareSocial></ShareSocial>
-            <FavoriteButton appId={id} isFavorite={isFavorite}></FavoriteButton>
+            {loggedIn ? (
+              <FavoriteButton
+                appId={id}
+                isFavorite={isFavorite}
+              ></FavoriteButton>
+            ) : null}
           </Container>
         </Jumbotron>
         <PaginatedComments comments={exampleComments}></PaginatedComments>

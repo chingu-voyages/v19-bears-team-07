@@ -6,7 +6,11 @@ const getMyFavoriteApps = async () => {
     method: "GET",
     credentials: "include",
   })
-  return await fetchJsonAndParse(req)
+  const apps = await fetchJsonAndParse(req)
+  return apps.map(app => {
+    app.is_favorite = true
+    return app
+  })
 }
 
 export default getMyFavoriteApps
