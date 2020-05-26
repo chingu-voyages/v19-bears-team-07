@@ -57,6 +57,8 @@ const devsMenu = [
 export const asDeveloperMenus = [
   { title: "Basic", items: basicMenu },
   { title: "Developer", items: developerMenu },
+  { title: "apps", items: appsMenu },
+  { title: "devs", items: devsMenu },
 ]
 export const asLoggedOutMenus = [
   { title: "apps", items: appsMenu },
