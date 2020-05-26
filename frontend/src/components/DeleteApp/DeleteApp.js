@@ -12,7 +12,7 @@ import { navigate } from "gatsby"
 
 import doDeleteApp from "../../shared/fetchActions/deleteMyApp"
 
-const DeleteApp = ({ name, appId }) => {
+const DeleteApp = ({ name, appId, setAppList }) => {
   const [inputText, setInputText] = React.useState("")
   const [isAreYouSureModal, setAreYouSureModal] = useState(false)
   const [isSuccessModal, setSuccessModal] = useState(false)
@@ -22,6 +22,7 @@ const DeleteApp = ({ name, appId }) => {
   const deleteApp = async () => {
     await doDeleteApp(appId)
     setSuccessModal(true)
+    setAppList(appList => appList.filter(app => app.id !== appId))
     setTimeout(() => {
       setSuccessModal(false)
       navigate("manage-apps")

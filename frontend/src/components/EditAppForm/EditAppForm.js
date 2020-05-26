@@ -7,7 +7,7 @@ import separateTags from "./separateTags"
 
 import AppForm from "../AppForm/AppForm"
 
-const EditApp = ({ app, getAppData }) => {
+const EditApp = ({ app, getAppData, ...rest }) => {
   app.github = app.githubUrl
   const submitData = async values => {
     try {
@@ -23,6 +23,13 @@ const EditApp = ({ app, getAppData }) => {
       console.log(e)
     }
   }
-  return <AppForm formMode="edit" initialValues={app} submitForm={submitData} />
+  return (
+    <AppForm
+      formMode="edit"
+      initialValues={app}
+      submitForm={submitData}
+      {...rest}
+    />
+  )
 }
 export default EditApp

@@ -20,8 +20,9 @@ const ManageAppsPage = () => {
       const appData = await getMyApps()
       const apps = appData.map(forFrontend.convertApp)
       setApps(apps)
+      console.log("got apps")
     })()
-  }, [userId])
+  }, [userId, apps])
 
   if (!userId || !loggedIn) {
     return (
@@ -38,7 +39,7 @@ const ManageAppsPage = () => {
       <h1>manage apps</h1>
       <Router basepath={"/manage-apps"}>
         <RenderApps path={"/"} apps={apps}></RenderApps>
-        <SingleAppEdit path={"/:appId/edit"} />
+        <SingleAppEdit path={"/:appId/edit"} setAppList={setApps} />
       </Router>
     </Layout>
   )
