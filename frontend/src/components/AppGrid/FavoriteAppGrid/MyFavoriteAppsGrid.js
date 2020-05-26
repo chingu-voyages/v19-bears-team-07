@@ -6,15 +6,12 @@ import FavAppGrid from "./FavAppGrid"
 
 /* Implements an app grid with a favorite button that is connected to the db
  */
-const FavoriteAppGrid = () => {
+const MyFavoriteAppsGrid = () => {
   const [apps, setApps] = React.useState([])
 
   React.useEffect(() => {
     ;(async () => {
-      const apps = (await getMyFavoriteApps()).map(app => {
-        const convertedApp = forFrontend.convertApp(app)
-        return convertedApp
-      })
+      const apps = (await getMyFavoriteApps()).map(forFrontend.convertApp)
       setApps(apps)
     })()
   }, [])
@@ -22,4 +19,4 @@ const FavoriteAppGrid = () => {
   const appUrls = apps.map(app => app.url)
   return <FavAppGrid apps={apps} appUrls={appUrls}></FavAppGrid>
 }
-export default FavoriteAppGrid
+export default MyFavoriteAppsGrid
