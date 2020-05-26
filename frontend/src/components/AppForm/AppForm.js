@@ -4,7 +4,6 @@ import { FormGroup, Col, Container, Button, Modal, ModalBody } from "reactstrap"
 
 import NameInput from "../formInputs/NameInput/NameInput"
 import ImageInput from "../formInputs/ImageInput/ImageInput"
-import TagsInput from "../formInputs/TagsInput/TagsInput"
 import DescriptionInput from "../formInputs/DescriptionInput/DescriptionInput"
 import AppUrlInput from "../formInputs/AppUrlInput/AppUrlInput"
 import Github from "../formInputs/GithubInput/GithubInput"
@@ -53,8 +52,6 @@ const AppForm = ({ formMode, initialValues, submitForm, ...rest }) => {
                 errors={errors.image}
                 touched={touched.image}
               />
-              <br />
-              <TagsInput error={errors.tags} touched={touched.tags} />
               <br />
               <DescriptionInput
                 error={errors.description}
