@@ -12,11 +12,15 @@ Rails.application.routes.draw do
   # Done as part of setup for Devise auth
   root to: "test_login#index"
 
-  # CRUD for Apps, Users, Tags, Catgories
-  resources :users, :tags, except: [:new, :edit]
+  # CRUD for Users, Apps, Comments, Tags and Catgories
+  resources :users, except: [:new, :edit]
 
   resources :apps, except: [:new, :edit] do 
     resources :comments, except: [:new, :edit]
+  end
+
+  resources :apps, except: [:new, :edit] do 
+    resources :tags, except: [:new, :edit]
   end
 
   resources :categories, except: [:new, :edit] do 

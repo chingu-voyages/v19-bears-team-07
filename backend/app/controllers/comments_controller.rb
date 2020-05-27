@@ -26,8 +26,23 @@ class CommentsController < ApplicationController
     end
 
     # GET apps/:app_id/comments/:id
+    def show
+     json_response(@comment)
+    end
 
-    # PATCH apps/:app_id/comments/:id
+    # PATCH or PUT apps/:app_id/comments/:id
+    def update
+       if @app && @comment
+         @comment.update(comment_params)
+         if @comment.valid?
+           head :no_content
+         else
+           head :bad_request
+        end
+      else
+        head :not_found
+      end
+    end
   
     # DELETE apps/:app_id/comments/:id
     def destroy
