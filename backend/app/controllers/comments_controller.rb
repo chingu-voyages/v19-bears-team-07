@@ -1,12 +1,7 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!, except: [:index]
-    before_action :set_app, only: [:show, :update, :destroy]
-    
-    #GET /comments
-    def default
-      @comments = Comment.all 
-      json_response(@comments)
-    end
+    before_action :set_app 
+    before_action :set_comment, except: [:index, :create]
     
     # GET apps/:app_id/comments
     def index
@@ -14,8 +9,8 @@ class CommentsController < ApplicationController
         @comments = Comment.where(app: @app).order(created_at: :desc)
         json_response(@comments)
       else
-        puts "NOT FOUND"
         head :not_found    
+      end
     end  
   
     # POST apps/:app_id/comments
@@ -29,6 +24,10 @@ class CommentsController < ApplicationController
         head :bad_request
       end
     end
+
+    # GET apps/:app_id/comments/:id
+
+    # PATCH apps/:app_id/comments/:id
   
     # DELETE apps/:app_id/comments/:id
     def destroy
@@ -40,6 +39,7 @@ class CommentsController < ApplicationController
     end
   
     private 
+
     def comment_params
       # whitelist params
       params.permit(:title, :description, :app_id)
@@ -48,6 +48,9 @@ class CommentsController < ApplicationController
     def set_app
       @app = App.find(params[:app_id])
     end
-  end
+
+    def set_comment
+      @comment = Comment.find(params[:id])
+    end 
 end
 
