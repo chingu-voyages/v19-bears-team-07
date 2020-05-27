@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 names = [
   'Developer Tools', 
   'Games', 
@@ -26,7 +18,7 @@ names = [
     dev_github: "https://github.com/chingu-voyages/v19-bears-team-07",
     dev_linkedin: "https://www.linkedin.com/in/rbranson/?originalSubdomain=vg",
     dev_portfolio: "https://github.com/chingu-voyages",
-    email: "user#{i}@cool.com", 
+    email: "user#{i}@seed.com", 
     password: "password"
   )
 
@@ -42,11 +34,7 @@ names = [
     category: category
   )
 
-end
-
-
-
-5.times do |i|
   tag = Tag.create!(name: "Games #{i}", description: "This is fun", app: app)
   comment = Comment.create!(title: "comment #{i}", description: "This is a great app #{i}!", app: app)
+
 end
