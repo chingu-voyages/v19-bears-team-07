@@ -6,6 +6,7 @@ import ShareSocial from "../../components/share-social"
 import PaginatedComments from "../../components/Comments/PaginatedComments"
 import * as forFrontend from "../../shared/convertForFrontend"
 import getSingleApp from "../../shared/fetchActions/getSingleApp"
+import ViewRating from "../../components/Ratings/Rating"
 
 export const SingleApp = ({ appId }) => {
   const [app, setApp] = React.useState(null)
@@ -14,12 +15,13 @@ export const SingleApp = ({ appId }) => {
     ;(async () => {
       const appData = await getSingleApp(appId)
       const app = forFrontend.convertApp(appData)
+      console.log(app)
       setApp(app)
     })()
   }, [appId])
 
   if (app) {
-    const { name, description } = app
+    const { name, description, score, ratings } = app
     return (
       <div className="AnAppPage-container">
         <AppCarousel items={[app]} />
@@ -29,6 +31,7 @@ export const SingleApp = ({ appId }) => {
             <p className="lead">{description}</p>
             <ShareSocial></ShareSocial>
           </Container>
+          <ViewRating value={score} distribution={ratings}></ViewRating>
         </Jumbotron>
         <PaginatedComments comments={exampleComments}></PaginatedComments>
       </div>

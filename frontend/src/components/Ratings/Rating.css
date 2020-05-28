@@ -1,0 +1,122 @@
+.ViewRating-container {
+  position: relative;
+  display: flex;
+  flex: auto;
+  width: auto;
+  height: auto;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.ViewRating-starsContainer {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.ViewRating-more {
+  margin: 0 10px 0 10px;
+  align-self: flex-end;
+  padding-bottom: 3px;
+}
+
+.RatingDistribution-containerHide {
+  display: none;
+}
+
+.RatingDistribution-containerShow {
+  display: flex;
+  position: absolute;
+  top: 130%;
+  left: -50%;
+}
+
+.RatingDistribution-container {
+  background-color: white;
+  border-color: lightgrey;
+  border-style: solid;
+  border-width: 1px;
+  padding: 15px;
+  flex-direction: column;
+  z-index: 1000;
+  border-radius: 8px;
+  width: 300px;
+}
+
+.RatingDistribution-containerShowCaret {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: calc(50% - 1px);
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent lightgrey transparent;
+  z-index: 500;
+}
+
+.RatingDistribution-containerShow::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  border-width: 7px;
+  border-style: solid;
+  border-color: transparent transparent white transparent;
+  z-index: 1000;
+}
+
+.RatingDistribution-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.RatingDistribution-ratingStars {
+  margin-right: 20px;
+}
+
+.RatingDistribution-ratingText {
+  font-weight: bold;
+  align-self: flex-end;
+}
+
+.RatingDistribution-ratingCount {
+  margin: 8px 0 8px 0;
+}
+
+.RatingDistribution-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.RatingDistribution-percentContainer {
+  display: flex;
+  width: 100px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  background-color: lightgrey;
+  border-radius: 3px;
+  box-shadow: inset 0px 1px 3px 0px rgba(150, 150, 150, 0.8);
+}
+
+.RatingDistribution-percentChild {
+  background: linear-gradient(to bottom, rgb(255, 196, 0), gold);
+  border-radius: 3px;
+  border-style: solid;
+  border-color: rgb(255, 190, 0);
+  border-width: 1px;
+}
+
+.RatingDistribution-stars {
+  margin-right: 20px;
+}
+
+.RatingDistribution-percent {
+  width: 50px;
+  text-align: right;
+}

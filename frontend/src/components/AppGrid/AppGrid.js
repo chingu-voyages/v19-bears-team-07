@@ -1,6 +1,13 @@
 import React from "react"
 import { navigate } from "gatsby"
-import { Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap"
+import {
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardText,
+  CardFooter,
+} from "reactstrap"
 import "./AppGrid.css"
 
 const AppGrid = ({ apps, appUrls }) => {
@@ -28,6 +35,7 @@ const RenderSingleApp = ({
         <CardTitle>{name}</CardTitle>
         <CardText>{description}</CardText>
       </CardBody>
+      <CardFooter></CardFooter>
     </Card>
   )
 }
