@@ -1,26 +1,26 @@
 const basicMenu = [
   {
-    title: "Favorite Apps",
-    target: "/favorite-apps",
+    title: "favorite Apps",
+    target: "favorite-apps",
   },
   {
-    title: "Settings",
-    target: "/settings",
+    title: "settings",
+    target: "settings",
   },
 ]
 
 const developerMenu = [
   {
-    title: "Profile page",
-    target: "/profile",
+    title: "profile page",
+    target: "profile",
   },
   {
-    title: "Manage apps",
-    target: "/manage-apps",
+    title: "manage apps",
+    target: "manage-apps",
   },
   {
-    title: "+ New App",
-    target: "/add-app",
+    title: "+ new app",
+    target: "add-app",
   },
 ]
 
@@ -55,8 +55,10 @@ const devsMenu = [
 ]
 
 export const asDeveloperMenus = [
-  { title: "Basic", items: basicMenu },
-  { title: "Developer", items: developerMenu },
+  { title: "basic", items: basicMenu },
+  { title: "developer", items: developerMenu },
+  { title: "apps", items: appsMenu },
+  { title: "devs", items: devsMenu },
 ]
 export const asLoggedOutMenus = [
   { title: "apps", items: appsMenu },
