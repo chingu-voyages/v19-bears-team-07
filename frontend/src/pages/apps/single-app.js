@@ -20,7 +20,6 @@ export const SingleApp = ({ appId }) => {
     ;(async () => {
       const appData = await getSingleApp(appId)
       const app = forFrontend.convertApp(appData)
-      console.log(app)
       setApp(app)
     })()
   }, [appId])
@@ -52,20 +51,11 @@ export const SingleApp = ({ appId }) => {
 
 export default SingleApp
 
-// TODO : It looks like it doesn't work to maintain the distribution locally, since on mount
-// TODO : All the data is really held above at the page level. This means that on
-// TODO : Any re-mounts, which will typically happen as we navigate from apps to apps/:id,
-// TODO : The old data gets reloaded, leading to weird bugs
-// TODO : A CONTEXT should be used to hold the logic to modify and refetch the data
-
+// This allows the user to rate the app and view the app's ratings
 const RatingControl = ({ distribution, appId, initialRating }) => {
   const [ratings, setRatings] = React.useState(distribution)
   const [userRating, setUserRating] = React.useState(initialRating)
   const { count, average } = calcStats(ratings)
-  console.log(count)
-
-  console.log("rerendering")
-  console.log(ratings)
 
   const onChangeRating = async (oldRating, newRating) => {
     if (userRating <= 0) {

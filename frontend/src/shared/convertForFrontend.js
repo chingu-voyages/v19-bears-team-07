@@ -12,13 +12,6 @@ export const convertApp = ({
   name,
   description,
   ratings,
-  /*ratings: {
-    1: 0,
-    2: 1,
-    3: 5,
-    4: 3,
-    5: 1,
-  },*/
   image: img,
   appUrl: app_url,
   githubUrl: github_url,
