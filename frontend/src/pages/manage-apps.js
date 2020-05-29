@@ -14,15 +14,17 @@ const ManageAppsPage = () => {
   const { userId, loggedIn } = React.useContext(UserContext)
   const [apps, setApps] = React.useState([])
 
+  const refreshApps = async () => {
+    const appData = await getMyApps()
+    const apps = appData.map(forFrontend.convertApp)
+    setApps(apps)
+    console.log("got apps")
+  }
+
   React.useEffect(() => {
     // Fetches all the apps that are authenticated for this user.
-    ;(async () => {
-      const appData = await getMyApps()
-      const apps = appData.map(forFrontend.convertApp)
-      setApps(apps)
-      console.log("got apps")
-    })()
-  }, [userId, apps])
+    refreshApps()
+  }, [userId])
 
   if (!userId || !loggedIn) {
     return (
@@ -39,7 +41,7 @@ const ManageAppsPage = () => {
       <h1>manage apps</h1>
       <Router basepath={"/manage-apps"}>
         <RenderApps path={"/"} apps={apps}></RenderApps>
-        <SingleAppEdit path={"/:appId/edit"} setAppList={setApps} />
+        <SingleAppEdit path={"/:appId/edit"} refreshApps={refreshApps} />
       </Router>
     </Layout>
   )
