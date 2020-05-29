@@ -8,6 +8,7 @@ export const TAGS = `${BACKEND_HOST}/tags`
 export const MY_APPS = `${BACKEND_HOST}/me/apps`
 
 export const myApp = appId => `${BACKEND_HOST}/me/apps/${appId}`
+export const myAppRatings = appId => `${BACKEND_HOST}/me/rated_apps/${appId}`
 export const singleApp = appId => `${BACKEND_HOST}/apps/${appId}`
 export const singlePortfolio = userId =>
   `${BACKEND_HOST}/users/${userId}/portfolio`

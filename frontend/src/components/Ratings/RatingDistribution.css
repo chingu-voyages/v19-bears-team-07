@@ -1,26 +1,3 @@
-.ViewRating-container {
-  position: relative;
-  display: flex;
-  flex: auto;
-  width: auto;
-  height: auto;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-end;
-}
-
-.ViewRating-starsContainer {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-}
-
-.ViewRating-more {
-  margin: 0 10px 0 10px;
-  align-self: flex-end;
-  padding-bottom: 3px;
-}
-
 .RatingDistribution-containerHide {
   display: none;
 }
@@ -41,7 +18,7 @@
   flex-direction: column;
   z-index: 1000;
   border-radius: 8px;
-  width: 300px;
+  width: 200%;
 }
 
 .RatingDistribution-containerShowCaret {
@@ -49,7 +26,7 @@
   position: absolute;
   bottom: 100%;
   left: calc(50% - 1px);
-  border-width: 8px;
+  border-width: 11px;
   border-style: solid;
   border-color: transparent transparent lightgrey transparent;
   z-index: 500;
@@ -60,7 +37,7 @@
   position: absolute;
   bottom: 100%;
   left: 50%;
-  border-width: 7px;
+  border-width: 10px;
   border-style: solid;
   border-color: transparent transparent white transparent;
   z-index: 1000;
@@ -95,7 +72,7 @@
 
 .RatingDistribution-percentContainer {
   display: flex;
-  width: 100px;
+  flex: 1;
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
@@ -113,10 +90,11 @@
 }
 
 .RatingDistribution-stars {
-  margin-right: 20px;
+  width: 80px;
+  text-align: left;
 }
 
 .RatingDistribution-percent {
-  width: 50px;
+  width: 65px;
   text-align: right;
 }

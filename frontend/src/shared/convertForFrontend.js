@@ -8,20 +8,21 @@ export const convertApp = ({
   ratings,
   score,
 }) => ({
+  id,
   name,
   description,
-  //ratings,
-  ratings: {
+  ratings,
+  /*ratings: {
     1: 0,
     2: 1,
     3: 5,
     4: 3,
     5: 1,
-  },
+  },*/
   image: img,
   appUrl: app_url,
   githubUrl: github_url,
-  score,
+  rating: score,
 
   url: `/apps/${id}`,
   manageUrl: `/manage-apps/${id}/edit`,

@@ -6,7 +6,12 @@ import ShareSocial from "../../components/share-social"
 import PaginatedComments from "../../components/Comments/PaginatedComments"
 import * as forFrontend from "../../shared/convertForFrontend"
 import getSingleApp from "../../shared/fetchActions/getSingleApp"
-import ViewRating from "../../components/Ratings/Rating"
+import Rating from "../../components/Ratings/Rating"
+import {
+  Distribution,
+  calcStats,
+} from "../../components/Ratings/RatingDistribution"
+import "./single-app.css"
 
 export const SingleApp = ({ appId }) => {
   const [app, setApp] = React.useState(null)
@@ -21,7 +26,7 @@ export const SingleApp = ({ appId }) => {
   }, [appId])
 
   if (app) {
-    const { name, description, score, ratings } = app
+    const { id, name, description, rating, ratings: distribution } = app
     return (
       <div className="AnAppPage-container">
         <AppCarousel items={[app]} />
@@ -31,8 +36,12 @@ export const SingleApp = ({ appId }) => {
             <p className="lead">{description}</p>
             <ShareSocial></ShareSocial>
           </Container>
-          <ViewRating value={score} distribution={ratings}></ViewRating>
         </Jumbotron>
+        <RatingControl
+          appId={id}
+          distribution={distribution}
+          initialRating={rating}
+        ></RatingControl>
         <PaginatedComments comments={exampleComments}></PaginatedComments>
       </div>
     )
@@ -42,6 +51,61 @@ export const SingleApp = ({ appId }) => {
 }
 
 export default SingleApp
+
+// TODO : It looks like it doesn't work to maintain the distribution locally, since on mount
+// TODO : All the data is really held above at the page level. This means that on
+// TODO : Any re-mounts, which will typically happen as we navigate from apps to apps/:id,
+// TODO : The old data gets reloaded, leading to weird bugs
+// TODO : A CONTEXT should be used to hold the logic to modify and refetch the data
+
+const RatingControl = ({ distribution, appId, initialRating }) => {
+  const [ratings, setRatings] = React.useState(distribution)
+  const [userRating, setUserRating] = React.useState(initialRating)
+  const { count, average } = calcStats(ratings)
+  console.log(count)
+
+  console.log("rerendering")
+  console.log(ratings)
+
+  const onChangeRating = async (oldRating, newRating) => {
+    if (userRating <= 0) {
+      // If the user hasn't rated this before
+      setRatings(ratings => {
+        setUserRating(newRating)
+        ratings[newRating] = ratings[newRating] + 1
+        return ratings
+      })
+    } else {
+      setRatings(ratings => {
+        setUserRating(newRating)
+        ratings[newRating] = ratings[newRating] + 1
+        ratings[oldRating] = Math.max(ratings[oldRating] - 1, 0)
+        return ratings
+      })
+    }
+  }
+
+  return (
+    <div className={"RatingControl-container"}>
+      <div className={"RatingControl-header"}>
+        <Rating
+          className={"RatingControl-stars"}
+          appId={appId}
+          rating={userRating ? userRating : average}
+          onChangeRating={onChangeRating}
+        ></Rating>
+        <span className={"RatingControl-average"}>
+          {count === 0 ? null : `${average} out of 5`}
+        </span>
+      </div>
+      {userRating > 0 ? (
+        <span className={"RatingControl-thanks"}>Thanks for rating!</span>
+      ) : null}
+      <span className={"RatingControl-count"}>{count} ratings</span>
+      <Distribution distribution={ratings}></Distribution>
+    </div>
+  )
+}
 
 let ex = [
   {

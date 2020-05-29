@@ -9,6 +9,7 @@ import {
   CardFooter,
 } from "reactstrap"
 import "./AppGrid.css"
+import ViewRating from "../Ratings/ViewRating"
 
 const AppGrid = ({ apps, appUrls }) => {
   return (
@@ -25,7 +26,7 @@ const AppGrid = ({ apps, appUrls }) => {
 }
 
 const RenderSingleApp = ({
-  app: { image, imageUrl, name, description },
+  app: { image, imageUrl, name, description, ratings },
   appUrl,
 }) => {
   return (
@@ -35,7 +36,9 @@ const RenderSingleApp = ({
         <CardTitle>{name}</CardTitle>
         <CardText>{description}</CardText>
       </CardBody>
-      <CardFooter></CardFooter>
+      <CardFooter>
+        <ViewRating distribution={ratings}></ViewRating>
+      </CardFooter>
     </Card>
   )
 }
