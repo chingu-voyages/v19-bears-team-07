@@ -36,7 +36,9 @@ export const convertUser = userData => {
 
   return {
     name: name ? name : "",
-    image: img ? img : "",
+    image: img
+      ? img
+      : "https://2e8ram2s1li74atce18qz5y1-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/Hipster-Developer-Dice.jpg",
     dev: is_dev ? is_dev : "",
     bio: dev_bio ? dev_bio : "",
     twitter: dev_twitter ? dev_twitter : "",

@@ -2,7 +2,7 @@ import fetchJsonAndParse from "./fetchJsonAndParse"
 import * as Url from "../urls"
 
 const getAllUsers = async () => {
-  const request = new Request(Url.ALL_USERS, {
+  const request = new Request(Url.USERS, {
     method: "GET",
     credentials: "include",
   })

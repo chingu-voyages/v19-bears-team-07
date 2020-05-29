@@ -18,7 +18,6 @@ const ManageAppsPage = () => {
     // Fetches all the apps that are authenticated for this user.
     ;(async () => {
       const appData = await getMyApps()
-      console.log(appData)
       const apps = appData.map(forFrontend.convertApp)
       setApps(apps)
     })()
