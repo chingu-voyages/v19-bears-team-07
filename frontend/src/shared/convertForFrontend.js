@@ -6,13 +6,16 @@ export const convertApp = ({
   img,
   app_url,
   github_url,
+  is_favorite,
   id,
 }) => ({
+  id,
   name,
   description,
   image: img,
   appUrl: app_url,
   githubUrl: github_url,
+  isFavorite: is_favorite,
 
   url: `/apps/${id}`,
   manageUrl: `/manage-apps/${id}/edit`,
