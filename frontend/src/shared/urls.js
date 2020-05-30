@@ -14,3 +14,4 @@ export const singleApp = appId => `${BACKEND_HOST}/apps/${appId}`
 export const singlePortfolio = userId =>
   `${BACKEND_HOST}/users/${userId}/portfolio`
 export const singleUser = userId => `${BACKEND_HOST}/users/${userId}`
+export const userSkillsList = userId => `${BACKEND_HOST}/users/${userId}/skills`
