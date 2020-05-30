@@ -4,12 +4,29 @@ import * as classNames from "classnames"
 import "./AntRate.css"
 import "./RatingDistribution.css"
 
-const RatingDistribution = ({ distribution, classes }) => {
+const RatingDistributionPopup = ({
+  distribution,
+  above = false,
+  show = false,
+}) => {
   const { count, average } = calcStats(distribution)
 
+  const containerClasses = {
+    ["RatingDistribution-containerHide"]: !show,
+    ["RatingDistribution-containerShowAbove"]: show && above,
+    ["RatingDistribution-containerShowBelow"]: show && !above,
+  }
+
+  const caretClasses = {
+    ["RatingDistribution-containerShowCaretAbove"]: above,
+    ["RatingDistribution-containerShowCaretBelow"]: !above,
+  }
+
   return (
-    <div className={classNames("RatingDistribution-container", classes)}>
-      <span className={"RatingDistribution-containerShowCaret"}></span>
+    <div
+      className={classNames("RatingDistribution-container", containerClasses)}
+    >
+      <span className={classNames(caretClasses)}></span>
       <div className={"RatingDistribution-header"}>
         <Rate
           className={"RatingDistribution-ratingStars"}
@@ -30,7 +47,7 @@ const RatingDistribution = ({ distribution, classes }) => {
     </div>
   )
 }
-export default RatingDistribution
+export default RatingDistributionPopup
 
 export const Distribution = ({ distribution }) => {
   const { count, average } = calcStats(distribution)

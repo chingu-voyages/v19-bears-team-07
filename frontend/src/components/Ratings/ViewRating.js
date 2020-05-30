@@ -4,24 +4,38 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
 import "./AntRate.css"
 import "./ViewRating.css"
-import RatingDistribution, { calcStats } from "./RatingDistribution"
+import RatingDistributionPopup, { calcStats } from "./RatingDistribution"
 
 const ViewRating = ({
   distribution, // object from score keys to counts of ratings in that score
 }) => {
   const [showDistribution, setShowDistribution] = React.useState(false)
+  const [showDistributionAbove, setShowDistributionAbove] = React.useState(
+    false
+  )
   const { count, average } = calcStats(distribution)
 
-  const distributionClasses = {
-    ["RatingDistribution-containerHide"]: !showDistribution,
-    ["RatingDistribution-containerShow"]: showDistribution,
+  const distanceFromBottom = event => {
+    var windowHeight =
+      window.innerHeight ||
+      document.documentElement.clientHeight ||
+      document.body.clientHeight
+    var distanceFromTop = event.target.getBoundingClientRect().top
+    console.log(windowHeight)
+    console.log(distanceFromTop)
+    return Math.abs(windowHeight - distanceFromTop)
   }
 
   return (
     <div className={"ViewRating-container"}>
       <div
         className="ViewRating-starsContainer"
-        onMouseEnter={() => {
+        onMouseEnter={event => {
+          if (distanceFromBottom(event) < 180) {
+            setShowDistributionAbove(true)
+          } else {
+            setShowDistributionAbove(false)
+          }
           setShowDistribution(true)
         }}
         onMouseLeave={() => {
@@ -43,10 +57,11 @@ const ViewRating = ({
           className={"ViewRating-more"}
           icon={faChevronDown}
         ></FontAwesomeIcon>
-        <RatingDistribution
+        <RatingDistributionPopup
           distribution={distribution}
-          classes={distributionClasses}
-        ></RatingDistribution>
+          above={showDistributionAbove}
+          show={showDistribution}
+        ></RatingDistributionPopup>
       </div>
       <span>{count} ratings</span>
     </div>
