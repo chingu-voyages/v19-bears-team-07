@@ -19,6 +19,7 @@ const ManageAppsPage = () => {
     ;(async () => {
       const appData = await getMyApps()
       const apps = appData.map(forFrontend.convertApp)
+      console.log(apps)
       setApps(apps)
     })()
   }, [userId])

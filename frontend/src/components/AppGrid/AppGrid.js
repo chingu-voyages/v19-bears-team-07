@@ -37,7 +37,11 @@ const RenderSingleApp = ({
         <CardText>{description}</CardText>
       </CardBody>
       <CardFooter>
-        <ViewRating distribution={ratings}></ViewRating>
+        {
+          // If the server didn't send ratings, that's okay. We don't expect that all pages will provide
+          // valid ratings
+          ratings ? <ViewRating distribution={ratings}></ViewRating> : null
+        }
       </CardFooter>
     </Card>
   )
