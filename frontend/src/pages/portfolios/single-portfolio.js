@@ -3,11 +3,12 @@ import AppGrid from "../../components/AppGrid/PublicAppGrid"
 import getSinglePortfolio from "../../shared/fetchActions/getSinglePortfolio"
 import * as forFrontend from "../../shared/convertForFrontend"
 import getSingleUser from "../../shared/fetchActions/getSingleUser"
+import getUserSkills from "../../shared/fetchActions/getUserSkills"
 
 const SinglePortfolio = ({ userId }) => {
   const [apps, setApps] = React.useState([])
-
   const [user, setUser] = React.useState([])
+  const [skills, setSkills] = React.useState([])
 
   React.useEffect(() => {
     ;(async () => {
@@ -18,6 +19,10 @@ const SinglePortfolio = ({ userId }) => {
       const userData = await getSingleUser(userId)
       const user = forFrontend.convertUser(userData)
       setUser(user)
+
+      const { skills: skillsData } = await getUserSkills(userId)
+      const skills = skillsData.map(name => name)
+      setSkills(skills)
     })()
   }, [userId])
 
@@ -46,10 +51,9 @@ const SinglePortfolio = ({ userId }) => {
 
       <h2>Skills</h2>
       <ul>
-        <li>javascript</li>
-        <li>react</li>
-        <li>ruby</li>
-        <li>rails</li>
+        {skills.map(skill => (
+          <li>{skill.name}</li>
+        ))}
       </ul>
 
       <h2>Teams</h2>
