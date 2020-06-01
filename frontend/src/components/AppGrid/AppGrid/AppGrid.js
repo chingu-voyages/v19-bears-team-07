@@ -9,7 +9,7 @@ import {
   CardFooter,
 } from "reactstrap"
 import "./AppGrid.css"
-import ViewRating from "../Ratings/ViewRating"
+import ViewRating from "../../Ratings/ViewRating"
 
 const AppGrid = ({ apps, appUrls }) => {
   return (
