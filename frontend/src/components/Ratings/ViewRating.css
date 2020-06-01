@@ -1,0 +1,22 @@
+.ViewRating-container {
+  position: relative;
+  display: flex;
+  flex: auto;
+  width: auto;
+  height: auto;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.ViewRating-starsContainer {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.ViewRating-more {
+  margin: 0 10px 0 10px;
+  align-self: flex-end;
+  padding-bottom: 3px;
+}

@@ -8,6 +8,7 @@ export const MY_APPS = `${BACKEND_HOST}/me/apps`
 export const MY_FAVORITE_APPS = `${BACKEND_HOST}/me/favorite_apps`
 
 export const myApp = appId => `${BACKEND_HOST}/me/apps/${appId}`
+export const myAppRatings = appId => `${BACKEND_HOST}/me/rated_apps/${appId}`
 export const myFavoriteApp = appId =>
   `${BACKEND_HOST}/me/favorite_apps/${appId}`
 export const singleApp = appId => `${BACKEND_HOST}/apps/${appId}`

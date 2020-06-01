@@ -1,0 +1,129 @@
+.RatingDistribution-containerHide {
+  display: none;
+}
+
+.RatingDistribution-containerShowAbove {
+  display: flex;
+  position: absolute;
+  bottom: 130%;
+  left: -50%;
+}
+
+.RatingDistribution-containerShowBelow {
+  display: flex;
+  position: absolute;
+  top: 130%;
+  left: -50%;
+}
+
+.RatingDistribution-container {
+  background-color: white;
+  border-color: lightgrey;
+  border-style: solid;
+  border-width: 1px;
+  padding: 15px;
+  flex-direction: column;
+  z-index: 1000;
+  border-radius: 8px;
+  width: 200%;
+}
+
+.RatingDistribution-containerShowCaretAbove {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: calc(50% - 1px);
+  border-width: 11px;
+  border-style: solid;
+  border-color: lightgrey transparent transparent transparent;
+  z-index: 500;
+}
+
+.RatingDistribution-containerShowCaretBelow {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: calc(50% - 1px);
+  border-width: 11px;
+  border-style: solid;
+  border-color: transparent transparent lightgrey transparent;
+  z-index: 500;
+}
+
+.RatingDistribution-containerShowBelow::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent white transparent;
+  z-index: 1000;
+}
+
+.RatingDistribution-containerShowAbove::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border-width: 10px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+  z-index: 1000;
+}
+
+.RatingDistribution-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.RatingDistribution-ratingStars {
+  margin-right: 20px;
+}
+
+.RatingDistribution-ratingText {
+  font-weight: bold;
+  align-self: flex-end;
+}
+
+.RatingDistribution-ratingCount {
+  margin: 8px 0 8px 0;
+}
+
+.RatingDistribution-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.RatingDistribution-percentContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  background-color: lightgrey;
+  border-radius: 3px;
+  box-shadow: inset 0px 1px 3px 0px rgba(150, 150, 150, 0.8);
+}
+
+.RatingDistribution-percentChild {
+  background: linear-gradient(to bottom, rgb(255, 196, 0), gold);
+  border-radius: 3px;
+  border-style: solid;
+  border-color: rgb(255, 190, 0);
+  border-width: 1px;
+}
+
+.RatingDistribution-stars {
+  width: 80px;
+  text-align: left;
+}
+
+.RatingDistribution-percent {
+  width: 65px;
+  text-align: right;
+}

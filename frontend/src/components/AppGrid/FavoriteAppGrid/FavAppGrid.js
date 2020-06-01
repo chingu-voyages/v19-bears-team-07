@@ -10,6 +10,7 @@ import {
 } from "reactstrap"
 import "./FavAppGrid.css"
 import FavoriteButton from "./FavoriteButton"
+import ViewRating from "../../Ratings/ViewRating"
 
 const FavAppGrid = ({ apps, appUrls }) => {
   return (
@@ -23,7 +24,7 @@ const FavAppGrid = ({ apps, appUrls }) => {
 export default FavAppGrid
 
 const RenderSingleApp = ({
-  app: { image, imageUrl, name, description, id, isFavorite },
+  app: { image, imageUrl, name, description, id, isFavorite, ratings },
   index,
   appUrl,
 }) => {
@@ -44,6 +45,11 @@ const RenderSingleApp = ({
       </CardBody>
       <CardFooter>
         <FavoriteButton appId={id} isFavorite={isFavorite} />
+        {
+          // If the server didn't send ratings, that's okay. We don't expect that all pages will provide
+          // valid ratings
+          ratings ? <ViewRating distribution={ratings}></ViewRating> : null
+        }
       </CardFooter>
     </Card>
   )

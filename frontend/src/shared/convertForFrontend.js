@@ -1,5 +1,3 @@
-// use `import * as forFrontend from "./convertForFrontend"
-
 export const convertApp = ({
   name,
   description,
@@ -8,13 +6,17 @@ export const convertApp = ({
   github_url,
   is_favorite,
   id,
+  ratings,
+  score,
 }) => ({
   id,
   name,
   description,
+  ratings,
   image: img,
   appUrl: app_url,
   githubUrl: github_url,
+  rating: score,
   isFavorite: is_favorite,
 
   url: `/apps/${id}`,

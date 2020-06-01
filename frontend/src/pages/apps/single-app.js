@@ -6,6 +6,12 @@ import ShareSocial from "../../components/share-social"
 import PaginatedComments from "../../components/Comments/PaginatedComments"
 import * as forFrontend from "../../shared/convertForFrontend"
 import getSingleApp from "../../shared/fetchActions/getSingleApp"
+import Rating from "../../components/Ratings/Rating"
+import {
+  Distribution,
+  calcStats,
+} from "../../components/Ratings/RatingDistribution"
+import "./single-app.css"
 import FavoriteButton from "../../components/AppGrid/FavoriteAppGrid/FavoriteButton"
 import UserContext from "../../shared/UserContext"
 
@@ -22,7 +28,14 @@ export const SingleApp = ({ appId }) => {
   }, [appId])
 
   if (app) {
-    const { name, description, id, isFavorite } = app
+    const {
+      id,
+      name,
+      description,
+      isFavorite,
+      rating,
+      ratings: distribution,
+    } = app
     return (
       <div className="AnAppPage-container">
         <AppCarousel items={[app]} />
@@ -39,6 +52,11 @@ export const SingleApp = ({ appId }) => {
             ) : null}
           </Container>
         </Jumbotron>
+        <RatingControl
+          appId={id}
+          distribution={distribution}
+          initialRating={rating}
+        ></RatingControl>
         <PaginatedComments comments={exampleComments}></PaginatedComments>
       </div>
     )
@@ -48,6 +66,52 @@ export const SingleApp = ({ appId }) => {
 }
 
 export default SingleApp
+
+// This allows the user to rate the app and view the app's ratings
+const RatingControl = ({ distribution, appId, initialRating }) => {
+  const [ratings, setRatings] = React.useState(distribution)
+  const [userRating, setUserRating] = React.useState(initialRating)
+  const { count, average } = calcStats(ratings)
+
+  const onChangeRating = async (oldRating, newRating) => {
+    if (userRating <= 0) {
+      // If the user hasn't rated this before
+      setRatings(ratings => {
+        setUserRating(newRating)
+        ratings[newRating] = ratings[newRating] + 1
+        return ratings
+      })
+    } else {
+      setRatings(ratings => {
+        setUserRating(newRating)
+        ratings[newRating] = ratings[newRating] + 1
+        ratings[oldRating] = Math.max(ratings[oldRating] - 1, 0)
+        return ratings
+      })
+    }
+  }
+
+  return (
+    <div className={"RatingControl-container"}>
+      <div className={"RatingControl-header"}>
+        <Rating
+          className={"RatingControl-stars"}
+          appId={appId}
+          rating={userRating ? userRating : average}
+          onChangeRating={onChangeRating}
+        ></Rating>
+        <span className={"RatingControl-average"}>
+          {count === 0 ? null : `${average} out of 5`}
+        </span>
+      </div>
+      {userRating > 0 ? (
+        <span className={"RatingControl-thanks"}>Thanks for rating!</span>
+      ) : null}
+      <span className={"RatingControl-count"}>{count} ratings</span>
+      <Distribution distribution={ratings}></Distribution>
+    </div>
+  )
+}
 
 let ex = [
   {

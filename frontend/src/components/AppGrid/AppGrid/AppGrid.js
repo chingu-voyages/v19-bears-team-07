@@ -1,7 +1,15 @@
 import React from "react"
 import { navigate } from "gatsby"
-import { Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap"
+import {
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardText,
+  CardFooter,
+} from "reactstrap"
 import "./AppGrid.css"
+import ViewRating from "../../Ratings/ViewRating"
 
 const AppGrid = ({ apps, appUrls }) => {
   return (
@@ -20,7 +28,7 @@ const AppGrid = ({ apps, appUrls }) => {
 export default AppGrid
 
 const RenderSingleApp = ({
-  app: { image, imageUrl, name, description },
+  app: { image, imageUrl, name, description, ratings },
   appUrl,
 }) => {
   return (
@@ -30,6 +38,13 @@ const RenderSingleApp = ({
         <CardTitle>{name}</CardTitle>
         <CardText>{description}</CardText>
       </CardBody>
+      <CardFooter>
+        {
+          // If the server didn't send ratings, that's okay. We don't expect that all pages will provide
+          // valid ratings
+          ratings ? <ViewRating distribution={ratings}></ViewRating> : null
+        }
+      </CardFooter>
     </Card>
   )
 }
