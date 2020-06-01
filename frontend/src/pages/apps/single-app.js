@@ -12,9 +12,12 @@ import {
   calcStats,
 } from "../../components/Ratings/RatingDistribution"
 import "./single-app.css"
+import FavoriteButton from "../../components/AppGrid/FavoriteAppGrid/FavoriteButton"
+import UserContext from "../../shared/UserContext"
 
 export const SingleApp = ({ appId }) => {
   const [app, setApp] = React.useState(null)
+  const { loggedIn } = React.useContext(UserContext)
 
   React.useEffect(() => {
     ;(async () => {
@@ -25,7 +28,14 @@ export const SingleApp = ({ appId }) => {
   }, [appId])
 
   if (app) {
-    const { id, name, description, rating, ratings: distribution } = app
+    const {
+      id,
+      name,
+      description,
+      isFavorite,
+      rating,
+      ratings: distribution,
+    } = app
     return (
       <div className="AnAppPage-container">
         <AppCarousel items={[app]} />
@@ -34,6 +44,12 @@ export const SingleApp = ({ appId }) => {
             <h1 className="display-3">{name}</h1>
             <p className="lead">{description}</p>
             <ShareSocial></ShareSocial>
+            {loggedIn ? (
+              <FavoriteButton
+                appId={id}
+                isFavorite={isFavorite}
+              ></FavoriteButton>
+            ) : null}
           </Container>
         </Jumbotron>
         <RatingControl

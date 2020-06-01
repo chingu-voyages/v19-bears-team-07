@@ -4,7 +4,7 @@ import Layout from "../components/Layout/Layout"
 import SEO from "../components/Seo/Seo"
 import "bootstrap/dist/css/bootstrap.min.css"
 
-import AppGrid from "../components/AppGrid/AppGrid"
+import AppGrid from "../components/AppGrid/PublicAppGrid"
 import AppCarousel from "../components/AppCarousel/AppCarousel"
 import getAllApps from "../shared/fetchActions/getAllApps"
 import * as forFrontend from "../shared/convertForFrontend"

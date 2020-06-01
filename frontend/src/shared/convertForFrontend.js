@@ -4,6 +4,7 @@ export const convertApp = ({
   img,
   app_url,
   github_url,
+  is_favorite,
   id,
   ratings,
   score,
@@ -16,6 +17,7 @@ export const convertApp = ({
   appUrl: app_url,
   githubUrl: github_url,
   rating: score,
+  isFavorite: is_favorite,
 
   url: `/apps/${id}`,
   manageUrl: `/manage-apps/${id}/edit`,
