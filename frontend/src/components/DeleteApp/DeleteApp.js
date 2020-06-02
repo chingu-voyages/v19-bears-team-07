@@ -1,35 +1,47 @@
-import React from "react"
+import React, { useState } from "react"
 
 import {
   Button,
   Modal,
   ModalHeader,
   ModalBody,
-  Row,
   Input,
   ModalFooter,
 } from "reactstrap"
+import { navigate } from "gatsby"
 
-import "./DeleteApp.css"
+import doDeleteApp from "../../shared/fetchActions/deleteMyApp"
 
-const DeleteApp = ({ name, deleteApp }) => {
-  const [input, setInput] = React.useState("")
-  const [modal, setModal] = React.useState(false)
-  const toggleModal = () => setModal(modal => !modal)
+const DeleteApp = ({ name, appId, refreshApps }) => {
+  const [inputText, setInputText] = React.useState("")
+  const [isAreYouSureModal, setAreYouSureModal] = useState(false)
+  const [isSuccessModal, setSuccessModal] = useState(false)
+  const toggleAreYouSureModal = () =>
+    setAreYouSureModal(isAreYouSureModal => !isAreYouSureModal)
+
+  const deleteApp = async () => {
+    await doDeleteApp(appId)
+    setSuccessModal(true)
+    refreshApps()
+    setTimeout(() => {
+      setSuccessModal(false)
+      navigate("manage-apps")
+    }, 1000)
+  }
 
   return (
     <React.Fragment>
       <Button
         color={"danger"}
         onClick={() => {
-          setInput("")
-          toggleModal()
+          setInputText("")
+          toggleAreYouSureModal()
         }}
       >
         Delete
       </Button>
-      <Modal isOpen={modal} toggle={toggleModal}>
-        <ModalHeader toggle={toggleModal}>Are you sure?</ModalHeader>
+      <Modal isOpen={isAreYouSureModal} toggle={toggleAreYouSureModal}>
+        <ModalHeader toggle={toggleAreYouSureModal}>Are you sure?</ModalHeader>
         <ModalBody className={"DeleteApp-modalBody"}>
           You can't undo this action. <br /> <br />
           Enter in the name of this app,
@@ -37,25 +49,30 @@ const DeleteApp = ({ name, deleteApp }) => {
           , to confirm that you really want this. <br /> <br />
           <Input
             type="text"
-            value={input}
-            onChange={event => setInput(event.target.value)}
+            value={inputText}
+            onChange={event => setInputText(event.target.value)}
           ></Input>
         </ModalBody>
         <ModalFooter>
           <Button
             color={"danger"}
-            disabled={input !== name}
+            disabled={inputText !== name}
             onClick={() => {
               deleteApp()
-              toggleModal()
+              toggleAreYouSureModal()
             }}
           >
             Confirm
           </Button>
-          <Button color={"secondary"} onClick={toggleModal}>
+          <Button color={"secondary"} onClick={toggleAreYouSureModal}>
             Cancel
           </Button>
         </ModalFooter>
+      </Modal>
+      <Modal isOpen={isSuccessModal} centered={true}>
+        <ModalBody style={{ fontSize: "3em", textAlign: "center" }}>
+          Deleted successfully
+        </ModalBody>
       </Modal>
     </React.Fragment>
   )

@@ -16,7 +16,7 @@ export const ShareSocial = ({ shareUrl }) => {
   const href = shareUrl ? shareUrl : location.href
 
   return (
-    <div class={"ShareSocial-Container"}>
+    <div className={"ShareSocial-Container"}>
       <FacebookShareButton url={href}>
         <FacebookIcon round></FacebookIcon>
       </FacebookShareButton>
