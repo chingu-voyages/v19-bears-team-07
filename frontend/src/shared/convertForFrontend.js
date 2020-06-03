@@ -75,11 +75,13 @@ export const convertSearch = searchData => {
         text: data.name,
         substrings: findMatches(stats.matches, "name", data.name),
       },
+      url: `portfolios/${data.id}`,
     },
-    apps: apps,
+    apps: apps.map(convertAppForSearch),
     score: stats.score,
   }
 
+  console.log("MAPPED")
   console.log(mapped)
 
   return mapped
@@ -102,7 +104,8 @@ export const convertSearch = searchData => {
   }
 
   // This function takes an array of found matches, and maps them over the entire text
-  function toSubstrings(foundMatches, text) {
+  function toSubstrings(foundMatches, originalText) {
+    const text = originalText.replace(/\s+/, "\u00A0")
     const sortedMatches = foundMatches.sort((a, b) => a.begin - b.begin)
     const substrings = []
     let start = 0
@@ -134,5 +137,22 @@ export const convertSearch = searchData => {
     }
 
     return substrings
+  }
+
+  function convertAppForSearch({ data, stats, rating }) {
+    console.log("DATA FOR APP")
+    console.log(data)
+    return {
+      name: {
+        text: data.name,
+        substrings: findMatches(stats.matches, "name", data.name),
+      },
+      description: {
+        text: data.description,
+        substrings: findMatches(stats.matches, "description", data.description),
+      },
+      image: data.img ? data.img : "WHAT",
+      rating: rating,
+    }
   }
 }

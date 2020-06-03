@@ -5,9 +5,10 @@ import SEO from "../components/Seo/Seo"
 import { useLocation } from "@reach/router"
 import * as forFrontend from "../shared/convertForFrontend"
 import getSearchResults from "../shared/fetchActions/getSearchResults"
-import { Col, Row } from "reactstrap"
+import { Col, Row, Card, CardImg, CardBody, CardFooter } from "reactstrap"
 import ViewRating from "../components/Ratings/ViewRating"
 import "./search.css"
+import { navigate } from "gatsby"
 
 const queryString = require("query-string")
 
@@ -57,32 +58,45 @@ const SearchResults = () => {
 const SearchResult = ({ dev, apps }) => {
   // These are the lines of the bio, name, and image that are meant to be displayed, together
   // with the location of the match
-  const { bio, name, image } = dev
+  const { bio, name, image, url } = dev
 
   return (
     <div>
-      <Row>
-        <Col className={"SearchResult-profile"}>
-          <img src={image} width={"50px"} height={"50px"}></img>
-          <RenderAsText
-            text={name.text}
-            substrings={name.substrings}
-          ></RenderAsText>
+      <Row className={"SearchResult-row"}>
+        <Col xs={6} sm={6} md={6} lg={3} xl={3}>
+          <div
+            className={"SearchResult-profileContainer"}
+            onClick={() => {
+              navigate(url)
+            }}
+          >
+            <img src={image} width={"70%"} height={"70%"}></img>
+            <div className={"SearchResult-profileName"}>
+              <RenderAsText
+                text={name.text}
+                substrings={name.substrings}
+              ></RenderAsText>
+            </div>
+          </div>
         </Col>
-        <Col className={"SearchResult-biography"}>
+        <Col xs={6} sm={6} md={6} lg={9} xl={9}>
           <RenderAsText substrings={bio.substrings}></RenderAsText>
         </Col>
       </Row>
       <Row>
-        {null &&
-          apps.map(({ name, description, ratings }, index) => (
+        <Col xs={6} sm={6} md={6} lg={6} xl={6}></Col>
+        <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+          {apps.map(({ name, description, rating, url, image }, index) => (
             <RenderApp
               name={name}
               description={description}
-              ratings={ratings}
+              rating={rating}
               key={index}
+              url={url}
+              image={image}
             ></RenderApp>
           ))}
+        </Col>
       </Row>
     </div>
   )
@@ -114,10 +128,22 @@ const RenderAsText = ({ substrings }) => {
   )
 }
 
-const RenderApp = ({ name, description, ratings }) => {
+const RenderApp = ({ url, name, description, image, rating }) => {
+  console.log("IMAGE: " + image)
   return (
     <Col className={"AppResult-column"}>
-      <ViewRating distribution={ratings} />
+      <Card>
+        <CardImg top width={"100%"} src={image} alt={name.text}></CardImg>
+        <CardBody>
+          <RenderAsText
+            text={name.text}
+            substrings={name.substrings}
+          ></RenderAsText>
+        </CardBody>
+        <CardFooter>
+          <ViewRating distribution={rating} />
+        </CardFooter>
+      </Card>
     </Col>
   )
 }
