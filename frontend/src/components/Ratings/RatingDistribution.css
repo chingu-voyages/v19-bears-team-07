@@ -25,7 +25,7 @@
   flex-direction: column;
   z-index: 1000;
   border-radius: 8px;
-  width: 200%;
+  width: 300px;
 }
 
 .RatingDistribution-containerShowCaretAbove {
