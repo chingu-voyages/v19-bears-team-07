@@ -61,8 +61,8 @@ const SearchResult = ({ dev, apps }) => {
   const { bio, name, image, url } = dev
 
   return (
-    <div>
-      <Row className={"SearchResult-row"}>
+    <div className={"SearchResult-Container"}>
+      <Row className={"SearchResult-DevRow"}>
         <Col xs={6} sm={6} md={6} lg={3} xl={3}>
           <div
             className={"SearchResult-profileContainer"}
@@ -83,19 +83,21 @@ const SearchResult = ({ dev, apps }) => {
           <RenderAsText substrings={bio.substrings}></RenderAsText>
         </Col>
       </Row>
-      <Row>
-        <Col xs={6} sm={6} md={6} lg={6} xl={6}></Col>
-        <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-          {apps.map(({ name, description, rating, url, image }, index) => (
-            <RenderApp
-              name={name}
-              description={description}
-              rating={rating}
-              key={index}
-              url={url}
-              image={image}
-            ></RenderApp>
-          ))}
+      <Row className={"SearchResult-AppsRow"}>
+        <Col xs={0} sm={0} md={0} lg={3} xl={3}></Col>
+        <Col xs={12} sm={12} md={12} lg={9} xl={9}>
+          <Row>
+            {apps.map(({ name, description, rating, url, image }, index) => (
+              <RenderApp
+                name={name}
+                description={description}
+                rating={rating}
+                key={index}
+                url={url}
+                image={image}
+              ></RenderApp>
+            ))}
+          </Row>
         </Col>
       </Row>
     </div>
@@ -131,9 +133,9 @@ const RenderAsText = ({ substrings }) => {
 const RenderApp = ({ url, name, description, image, rating }) => {
   console.log("IMAGE: " + image)
   return (
-    <Col className={"AppResult-column"}>
-      <Card>
-        <CardImg top width={"100%"} src={image} alt={name.text}></CardImg>
+    <Col className={"AppResult-column"} xs={12} sm={12} md={6} lg={4} xl={4}>
+      <Card className={"AppResult-Card"}>
+        <CardImg top height={"100px"} src={image} alt={name.text}></CardImg>
         <CardBody>
           <RenderAsText
             text={name.text}
@@ -141,7 +143,7 @@ const RenderApp = ({ url, name, description, image, rating }) => {
           ></RenderAsText>
         </CardBody>
         <CardFooter>
-          <ViewRating distribution={rating} />
+          <ViewRating distribution={rating} displayFull={false} />
         </CardFooter>
       </Card>
     </Col>

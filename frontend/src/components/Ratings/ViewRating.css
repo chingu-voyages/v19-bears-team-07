@@ -15,6 +15,30 @@
   position: relative;
 }
 
+@media (min-width: 900px) {
+  .ViewRating-stars {
+    font-size: calc(0.5em + 0.3vw);
+  }
+}
+
+@media (min-width: 900px) {
+  .ViewRating-stars {
+    font-size: calc(1em);
+  }
+}
+
+@media (min-width: 400px) and (max-width: 750px) {
+  .ViewRating-stars {
+    font-size: calc(1em);
+  }
+}
+
+@media (max-width: 400px) {
+  .ViewRating-stars {
+    font-size: calc(1em);
+  }
+}
+
 .ViewRating-more {
   margin: 0 10px 0 10px;
   align-self: flex-end;

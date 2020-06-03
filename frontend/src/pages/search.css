@@ -1,3 +1,12 @@
+.SearchResult-Container {
+  border-width: 1px;
+  border-style: solid;
+  border-color: lightgrey;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 20px 25px 20px 25px;
+}
+
 .SearchResult-profileContainer {
   display: flex;
   flex-direction: column;
@@ -29,9 +38,20 @@
 .SearchResult-text {
 }
 
-.SearchResult-row {
+.SearchResult-DevRow {
   margin: 30px 0 30px 0;
 }
 
+.SearchResult-AppImage {
+}
+
+.SearchResult-AppsRow {
+}
+
 .AppResult-column {
+}
+
+.AppResult-Card {
+  height: 200px;
+  margin-bottom: 20px;
 }
