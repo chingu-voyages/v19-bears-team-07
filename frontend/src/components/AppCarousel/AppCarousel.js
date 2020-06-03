@@ -6,6 +6,7 @@ import {
   CarouselControl,
   CarouselIndicators,
   CarouselCaption,
+  Tooltip,
 } from "reactstrap"
 
 import "./AppCarousel.css"
@@ -13,6 +14,9 @@ import "./AppCarousel.css"
 export const AppCarousel = ({ items }) => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [animating, setAnimating] = useState(false)
+  const [tooltipOpen, setTooltipOpen] = useState(false)
+
+  const toggle = () => setTooltipOpen(!tooltipOpen)
 
   const next = () => {
     if (animating) return
@@ -41,10 +45,19 @@ export const AppCarousel = ({ items }) => {
         onClick={() => navigate(url)}
       >
         <img
+          id="tooltipItem"
           src={image ? image : imageUrl}
           alt={name}
           className="AppCarousel-ItemImage"
         />
+        <Tooltip
+          placement="top"
+          isOpen={tooltipOpen}
+          target="tooltipItem"
+          toggle={toggle}
+        >
+          Click to find out more!
+        </Tooltip>
         <CarouselCaption
           captionText={description}
           captionHeader={name}
