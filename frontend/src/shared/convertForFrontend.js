@@ -62,3 +62,10 @@ export const convertSearch = searchData => {
 
   return {}
 }
+
+export const convertRating = ratingData => {
+  const { score } = ratingData 
+  return {
+    score: score ? score: 0, 
+  }
+}
