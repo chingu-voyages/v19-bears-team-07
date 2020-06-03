@@ -129,11 +129,20 @@ const RenderAsText = ({ substrings }) => {
   )
 }
 
-const RenderApp = ({ url, name, description, image, rating }) => {
+const RenderApp = ({ url, name, image, rating }) => {
   return (
     <Col className={"AppResult-column"} xs={12} sm={12} md={6} lg={4} xl={4}>
       <Card className={"AppResult-Card"}>
-        <CardImg top height={"100px"} src={image} alt={name.text}></CardImg>
+        <CardImg
+          className={"AppResult-Image"}
+          top
+          height={"100px"}
+          src={image}
+          alt={name.text}
+          onClick={() => {
+            navigate(url)
+          }}
+        ></CardImg>
         <CardBody>
           <RenderAsText
             text={name.text}

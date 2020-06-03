@@ -146,6 +146,7 @@ export const convertSearch = searchData => {
       },
       image: data.img ? data.img : "WHAT",
       rating: rating,
+      url: `apps/${data.id}`,
     }
   }
 }

@@ -55,3 +55,7 @@
   height: 200px;
   margin-bottom: 20px;
 }
+
+.AppResult-Image:hover {
+  cursor: pointer;
+}
