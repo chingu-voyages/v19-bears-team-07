@@ -1,0 +1,8 @@
+.DeveloperIcon-Image {
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.DeveloperIcon-Image:hover {
+  cursor: pointer;
+}

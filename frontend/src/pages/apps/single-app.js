@@ -1,11 +1,12 @@
 import React from "react"
 import AppCarousel from "../../components/AppCarousel/AppCarousel"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { Jumbotron, Container } from "reactstrap"
+import { Jumbotron, Container, Row, Col } from "reactstrap"
 import ShareSocial from "../../components/share-social"
 import PaginatedComments from "../../components/Comments/PaginatedComments"
 import * as forFrontend from "../../shared/convertForFrontend"
 import getSingleApp from "../../shared/fetchActions/getSingleApp"
+import DeveloperIcons from "../../components/DeveloperIcons/DeveloperIcons"
 import Rating from "../../components/Ratings/Rating"
 import {
   Distribution,

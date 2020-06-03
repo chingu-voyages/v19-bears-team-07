@@ -6,6 +6,7 @@ export const convertApp = ({
   github_url,
   is_favorite,
   id,
+  user_id,
   ratings,
   score,
 }) => ({
@@ -16,6 +17,7 @@ export const convertApp = ({
   image: img,
   appUrl: app_url,
   githubUrl: github_url,
+  userId: user_id,
   rating: score,
   isFavorite: is_favorite,
 
@@ -43,7 +45,7 @@ export const convertUser = userData => {
     name: name ? name : "",
     image: img
       ? img
-      : "https://2e8ram2s1li74atce18qz5y1-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/Hipster-Developer-Dice.jpg",
+      : "https://www.kirkleescollege.ac.uk/wp-content/uploads/2015/09/default-avatar.png",
     dev: is_dev ? is_dev : "",
     bio: dev_bio ? dev_bio : "",
     twitter: dev_twitter ? dev_twitter : "",
