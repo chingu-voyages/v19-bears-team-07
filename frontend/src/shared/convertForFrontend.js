@@ -55,3 +55,10 @@ export const convertUser = userData => {
     url: `portfolios/${id}`,
   }
 }
+
+export const convertSearch = searchData => {
+  console.log(searchData)
+  const {} = searchData
+
+  return {}
+}
