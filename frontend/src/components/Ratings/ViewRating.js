@@ -22,8 +22,6 @@ const ViewRating = ({
       document.documentElement.clientHeight ||
       document.body.clientHeight
     var distanceFromTop = event.target.getBoundingClientRect().top
-    console.log(windowHeight)
-    console.log(distanceFromTop)
     return Math.abs(windowHeight - distanceFromTop)
   }
 

@@ -60,7 +60,6 @@ export const convertUser = userData => {
 }
 
 export const convertSearch = searchData => {
-  console.log(searchData)
   const { apps, stats, data } = searchData
 
   const mapped = {
@@ -81,9 +80,6 @@ export const convertSearch = searchData => {
     score: stats.score,
   }
 
-  console.log("MAPPED")
-  console.log(mapped)
-
   return mapped
 
   // This function looks through a `matches` object
@@ -99,7 +95,6 @@ export const convertSearch = searchData => {
         }
       })
     })
-    console.log(foundMatches)
     return toSubstrings(foundMatches, text)
   }
 
@@ -140,8 +135,6 @@ export const convertSearch = searchData => {
   }
 
   function convertAppForSearch({ data, stats, rating }) {
-    console.log("DATA FOR APP")
-    console.log(data)
     return {
       name: {
         text: data.name,
@@ -158,8 +151,8 @@ export const convertSearch = searchData => {
 }
 
 export const convertRating = ratingData => {
-  const { score } = ratingData 
+  const { score } = ratingData
   return {
-    score: score ? score: 0, 
+    score: score ? score : 0,
   }
 }

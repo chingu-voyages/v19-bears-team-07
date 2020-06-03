@@ -35,7 +35,6 @@ const SearchResults = () => {
       forFrontend.convertSearch
     )
     setResults(results)
-    console.log(results)
   }
 
   React.useEffect(() => {
@@ -131,7 +130,6 @@ const RenderAsText = ({ substrings }) => {
 }
 
 const RenderApp = ({ url, name, description, image, rating }) => {
-  console.log("IMAGE: " + image)
   return (
     <Col className={"AppResult-column"} xs={12} sm={12} md={6} lg={4} xl={4}>
       <Card className={"AppResult-Card"}>
