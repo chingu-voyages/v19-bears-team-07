@@ -1,13 +1,15 @@
 import React from "react"
 import { Input, Button } from "reactstrap"
 import { navigate } from "gatsby"
+import "./Search.css"
 
-const Searches = () => {
+const Search = () => {
   const [searchParams, setSearchParams] = React.useState("")
 
   return (
     <div className={"Search-container"}>
       <form
+        className={"Search-form"}
         onSubmit={event => {
           event.preventDefault()
           const params = searchParams.trim().replace(/\s+/, "+")
@@ -21,14 +23,14 @@ const Searches = () => {
         <Input
           value={searchParams}
           onChange={event => {
-            console.log(event.target.value)
             setSearchParams(event.target.value)
           }}
+          className={"Search-bar"}
+          placeholder={"Search"}
         ></Input>
-        <Input type={"submit"}>Search</Input>
       </form>
     </div>
   )
 }
 
-export default Searches
+export default Search
