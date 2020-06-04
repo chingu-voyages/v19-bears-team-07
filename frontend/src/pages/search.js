@@ -5,7 +5,15 @@ import SEO from "../components/Seo/Seo"
 import { useLocation } from "@reach/router"
 import * as forFrontend from "../shared/convertForFrontend"
 import getSearchResults from "../shared/fetchActions/getSearchResults"
-import { Col, Row, Card, CardImg, CardBody, CardFooter } from "reactstrap"
+import {
+  Col,
+  Row,
+  Card,
+  CardImg,
+  CardBody,
+  CardFooter,
+  Table,
+} from "reactstrap"
 import ViewRating from "../components/Ratings/ViewRating"
 import "./search.css"
 import { navigate } from "gatsby"
@@ -83,7 +91,24 @@ const SearchResult = ({ dev, apps }) => {
         </Col>
       </Row>
       <Row className={"SearchResult-AppsRow"}>
-        <Col xs={0} sm={0} md={0} lg={3} xl={3}></Col>
+        <Col xs={0} sm={0} md={0} lg={3} xl={3}>
+          <Table responsive className={"SearchResultl-AppsTable"}>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>% Match</th>
+              </tr>
+            </thead>
+            <tbody>
+              {apps.map(({ name, score }, index) => (
+                <tr key={name + index.toString()}>
+                  <td>{name.text}</td>
+                  <td>{+(100 * score).toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Col>
         <Col xs={12} sm={12} md={12} lg={9} xl={9}>
           <Row>
             {apps.map(({ name, description, rating, url, image }, index) => (

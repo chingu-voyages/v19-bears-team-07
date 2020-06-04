@@ -15,25 +15,25 @@
   position: relative;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 992px) {
   .ViewRating-stars {
-    font-size: calc(0.5em + 0.3vw);
+    font-size: calc(0.5em + 0.4vw);
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 768px) and (max-width: 992px) {
+  .ViewRating-stars {
+    font-size: calc(0.7em + 0.3vw);
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
   .ViewRating-stars {
     font-size: calc(1em);
   }
 }
 
-@media (min-width: 400px) and (max-width: 750px) {
-  .ViewRating-stars {
-    font-size: calc(1em);
-  }
-}
-
-@media (max-width: 400px) {
+@media (max-width: 576px) {
   .ViewRating-stars {
     font-size: calc(1em);
   }
