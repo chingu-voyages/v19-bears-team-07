@@ -4,6 +4,7 @@ import { faAlignLeft } from "@fortawesome/free-solid-svg-icons"
 import { Navbar, Button, Nav, NavItem } from "reactstrap"
 
 import LoginLink from "./LoginLink"
+import Search from "./Search"
 
 const Topbar = ({ toggleSidebar }) => (
   <Navbar
@@ -15,6 +16,7 @@ const Topbar = ({ toggleSidebar }) => (
     <Button color="info" onClick={toggleSidebar}>
       <FontAwesomeIcon icon={faAlignLeft} />
     </Button>
+    <Search></Search>
     <Nav className="ml-auto" navbar>
       <NavItem>
         <LoginLink />
