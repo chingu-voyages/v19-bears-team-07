@@ -1,11 +1,12 @@
 import React from "react"
 import AppCarousel from "../../components/AppCarousel/AppCarousel"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { Jumbotron, Container } from "reactstrap"
+import { Jumbotron, Container, Row, Col } from "reactstrap"
 import ShareSocial from "../../components/share-social"
 import PaginatedComments from "../../components/Comments/PaginatedComments"
 import * as forFrontend from "../../shared/convertForFrontend"
 import getSingleApp from "../../shared/fetchActions/getSingleApp"
+import DeveloperIcons from "../../components/DeveloperIcons/DeveloperIcons"
 import Rating from "../../components/Ratings/Rating"
 import {
   Distribution,
@@ -38,20 +39,28 @@ export const SingleApp = ({ appId }) => {
     } = app
     return (
       <div className="AnAppPage-container">
-        <AppCarousel items={[app]} />
-        <Jumbotron fluid>
-          <Container fluid>
-            <h1 className="display-3">Name: {name}</h1>
-            <p className="lead">Description: {description}</p>
-            <ShareSocial></ShareSocial>
-            {loggedIn ? (
-              <FavoriteButton
-                appId={id}
-                isFavorite={isFavorite}
-              ></FavoriteButton>
-            ) : null}
-          </Container>
-        </Jumbotron>
+        <Row>
+          <Col xl={9} lg={9} md={12} sm={12} xs={12}>
+            <AppCarousel items={[app]} />
+            <Jumbotron fluid>
+              <Container fluid>
+                <h1 className="display-3">Name: {name}</h1>
+                <p className="lead">Description: {description}</p>
+                <ShareSocial></ShareSocial>
+                {loggedIn ? (
+                  <FavoriteButton
+                    appId={id}
+                    isFavorite={isFavorite}
+                  ></FavoriteButton>
+                ) : null}
+              </Container>
+            </Jumbotron>
+          </Col>
+          <Col xl={3} lg={3} md={12} sm={12} xs={12}>
+            <h4>Developers</h4>
+            <DeveloperIcons devIds={app.userId ? [app.userId] : []} />
+          </Col>
+        </Row>
         <RatingControl
           appId={id}
           distribution={distribution}
