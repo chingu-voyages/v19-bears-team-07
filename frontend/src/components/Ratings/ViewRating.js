@@ -8,6 +8,7 @@ import RatingDistributionPopup, { calcStats } from "./RatingDistribution"
 
 const ViewRating = ({
   distribution, // object from score keys to counts of ratings in that score
+  displayFull = true,
 }) => {
   const [showDistribution, setShowDistribution] = React.useState(false)
   const [showDistributionAbove, setShowDistributionAbove] = React.useState(
@@ -21,8 +22,6 @@ const ViewRating = ({
       document.documentElement.clientHeight ||
       document.body.clientHeight
     var distanceFromTop = event.target.getBoundingClientRect().top
-    console.log(windowHeight)
-    console.log(distanceFromTop)
     return Math.abs(windowHeight - distanceFromTop)
   }
 
@@ -53,17 +52,19 @@ const ViewRating = ({
           defaultValue={0}
           value={average}
         ></Rate>
-        <FontAwesomeIcon
-          className={"ViewRating-more"}
-          icon={faChevronDown}
-        ></FontAwesomeIcon>
+        {displayFull ? (
+          <FontAwesomeIcon
+            className={"ViewRating-more"}
+            icon={faChevronDown}
+          ></FontAwesomeIcon>
+        ) : null}
         <RatingDistributionPopup
           distribution={distribution}
           above={showDistributionAbove}
           show={showDistribution}
         ></RatingDistributionPopup>
       </div>
-      <span>{count} ratings</span>
+      <span>{displayFull ? `${count} ratings` : null}</span>
     </div>
   )
 }
