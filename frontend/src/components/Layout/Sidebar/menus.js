@@ -25,6 +25,7 @@ const developerMenu = [
 ]
 
 const appsMenu = [
+  { title: "all", target: "apps" },
   {
     title: "games",
     target: "/apps/games",
@@ -40,17 +41,18 @@ const appsMenu = [
 ]
 
 const devsMenu = [
+  { title: "all", target: "portfolios" },
   {
     title: "rails",
-    target: "/devs/rails",
+    target: "/portfolios/rails",
   },
   {
     title: "react",
-    target: "/devs/react",
+    target: "/portfolios/react",
   },
   {
     title: "vue",
-    target: "/devs/vue",
+    target: "/portfolios/vue",
   },
 ]
 
