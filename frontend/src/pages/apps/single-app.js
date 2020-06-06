@@ -55,8 +55,8 @@ export const SingleApp = ({ appId }) => {
             <AppCarousel items={[app]} />
             <Jumbotron fluid>
               <Container fluid>
-                <h1 className="display-3">{name}</h1>
-                <p className="lead">{description}</p>
+                <h1 className="display-3">Name: {name}</h1>
+                <p className="lead">Description: {description}</p>
                 <ShareSocial></ShareSocial>
                 {loggedIn ? (
                   <FavoriteButton

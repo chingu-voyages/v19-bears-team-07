@@ -40,8 +40,8 @@ const RenderSingleApp = ({
         className="FavAppGrid-Image"
       />
       <CardBody>
-        <CardTitle>{name}</CardTitle>
-        <CardText>{description}</CardText>
+        <CardTitle>Name: {name}</CardTitle>
+        <CardText>Description: {description}</CardText>
       </CardBody>
       <CardFooter>
         <FavoriteButton appId={id} isFavorite={isFavorite} />
