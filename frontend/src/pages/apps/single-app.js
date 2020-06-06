@@ -74,7 +74,10 @@ export const SingleApp = ({ appId }) => {
           distribution={distribution}
           initialRating={rating}
         ></RatingControl>
-        <PaginatedComments comments={comments}></PaginatedComments>
+        <PaginatedComments
+          appId={appId}
+          comments={comments}
+        ></PaginatedComments>
       </div>
     )
   }
