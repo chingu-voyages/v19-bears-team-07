@@ -1,6 +1,5 @@
 import React from "react"
 
-import Layout from "../../components/Layout/Layout"
 import SEO from "../../components/Seo/Seo"
 
 import UserGrid from "../../components/UserGrid/UserGrid"
@@ -21,11 +20,11 @@ const VuePage = () => {
   }, [])
 
   return (
-    <Layout>
+    <React.Fragment>
       <SEO title="vue" />
       <h1>vue</h1>
       <UserGrid users={users} />
-    </Layout>
+    </React.Fragment>
   )
 }
 

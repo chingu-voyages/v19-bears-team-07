@@ -8,6 +8,9 @@ import SinglePortfolio from "./portfolios/single-portfolio"
 
 import getAllUsers from "../shared/fetchActions/getAllUsers"
 import * as forFrontend from "../shared/convertForFrontend"
+import RailsPage from "./portfolios/rails"
+import VuePage from "./portfolios/vue"
+import ReactPage from "./portfolios/react"
 
 const PortfolioPage = () => {
   return (
@@ -15,6 +18,9 @@ const PortfolioPage = () => {
       <SEO title="Portfolios" />
       <Router basepath={"/portfolios"}>
         <RenderAllPortfolios path={"/"} />
+        <RailsPage path={"/rails"}></RailsPage>
+        <VuePage path={"/vue"}></VuePage>
+        <ReactPage path={"/react"}></ReactPage>
         <SinglePortfolio path={"/:userId"} />
       </Router>
     </Layout>
