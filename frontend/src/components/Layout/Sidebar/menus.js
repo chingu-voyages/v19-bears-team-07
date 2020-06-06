@@ -1,6 +1,6 @@
 const basicMenu = [
   {
-    title: "favorite Apps",
+    title: "favorite apps",
     target: "favorite-apps",
   },
   {
