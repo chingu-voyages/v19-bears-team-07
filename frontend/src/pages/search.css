@@ -48,6 +48,10 @@
 .SearchResult-AppsRow {
 }
 
+.SearchResult-AppsTable {
+  margin-bottom: 20px;
+}
+
 .AppResult-column {
 }
 
