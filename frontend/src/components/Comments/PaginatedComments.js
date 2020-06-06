@@ -7,7 +7,11 @@ import * as R from "ramda"
 import Comments from "./Comments"
 import AddComment from "./AddComment"
 
-export const PaginatedComments = ({ appId, comments = [] }) => {
+export const PaginatedComments = ({
+  refreshComments,
+  appId,
+  comments = [],
+}) => {
   const pageMax = 3
   const [current, setCurrent] = React.useState(0)
 
@@ -20,7 +24,7 @@ export const PaginatedComments = ({ appId, comments = [] }) => {
   return (
     <div>
       <h3>Comments</h3>
-      <AddComment appId={appId}></AddComment>
+      <AddComment refreshComments={refreshComments} appId={appId}></AddComment>
       <div className={"PaginatedComments-pageContainer"}>
         {renderPageSelectors()}
       </div>

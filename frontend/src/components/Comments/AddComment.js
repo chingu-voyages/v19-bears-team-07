@@ -5,7 +5,7 @@ import UserContext from "../../shared/UserContext"
 import "./AddComment.css"
 import createComment from "../../shared/fetchActions/createComment"
 
-const AddComment = ({ appId }) => {
+const AddComment = ({ refreshComments, appId }) => {
   const { loggedIn, userId } = React.useContext(UserContext)
 
   const [comment, setComment] = React.useState("")
@@ -17,11 +17,15 @@ const AddComment = ({ appId }) => {
   const submit = async event => {
     event.preventDefault()
 
-    return createComment({
+    await createComment({
       userId,
       comment,
       appId,
     })
+
+    setComment("")
+
+    await refreshComments()
   }
 
   return (

@@ -22,17 +22,20 @@ export const SingleApp = ({ appId }) => {
   const [comments, setComments] = React.useState([])
   const { loggedIn } = React.useContext(UserContext)
 
+  const refreshComments = async () => {
+    const comments = (await getCommentsForApp(appId)).map(
+      forFrontend.convertComment
+    )
+    setComments(comments)
+  }
+
   React.useEffect(() => {
     ;(async () => {
       const appData = await getSingleApp(appId)
       const app = forFrontend.convertApp(appData)
       setApp(app)
 
-      const comments = (await getCommentsForApp(appId)).map(
-        forFrontend.convertComment
-      )
-      console.log(comments)
-      setComments(comments)
+      refreshComments()
     })()
   }, [appId])
 
@@ -75,6 +78,7 @@ export const SingleApp = ({ appId }) => {
           initialRating={rating}
         ></RatingControl>
         <PaginatedComments
+          refreshComments={refreshComments}
           appId={appId}
           comments={comments}
         ></PaginatedComments>
