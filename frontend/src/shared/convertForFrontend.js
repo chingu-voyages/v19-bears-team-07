@@ -59,6 +59,29 @@ export const convertUser = userData => {
   }
 }
 
+export const convertComment = commentData => {
+  const {
+    id,
+    title,
+    description,
+    created_at,
+    updated_at,
+    app_id,
+    user_id,
+    img,
+    username,
+  } = commentData
+
+  return {
+    id,
+    username,
+    text: description,
+    timestamp: new Date(created_at),
+    avatar: img,
+    user_id: user_id,
+  }
+}
+
 export const convertSearch = searchData => {
   const { apps, stats, data } = searchData
 

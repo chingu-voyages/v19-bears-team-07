@@ -29,7 +29,7 @@ const SideBar = ({ isOpen, toggle }) => (
         &times;
       </span>
       <h3>
-        <Link to="/">Our app</Link>
+        <Link to="/">DevHub</Link>
       </h3>
     </div>
     <div className="side-menu">

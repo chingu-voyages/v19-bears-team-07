@@ -15,9 +15,11 @@ import {
 import "./single-app.css"
 import FavoriteButton from "../../components/AppGrid/FavoriteAppGrid/FavoriteButton"
 import UserContext from "../../shared/UserContext"
+import getCommentsForApp from "../../shared/fetchActions/getCommentsForApp"
 
 export const SingleApp = ({ appId }) => {
   const [app, setApp] = React.useState(null)
+  const [comments, setComments] = React.useState([])
   const { loggedIn } = React.useContext(UserContext)
 
   React.useEffect(() => {
@@ -25,6 +27,12 @@ export const SingleApp = ({ appId }) => {
       const appData = await getSingleApp(appId)
       const app = forFrontend.convertApp(appData)
       setApp(app)
+
+      const comments = (await getCommentsForApp(appId)).map(
+        forFrontend.convertComment
+      )
+      console.log(comments)
+      setComments(comments)
     })()
   }, [appId])
 
@@ -66,7 +74,7 @@ export const SingleApp = ({ appId }) => {
           distribution={distribution}
           initialRating={rating}
         ></RatingControl>
-        <PaginatedComments comments={exampleComments}></PaginatedComments>
+        <PaginatedComments comments={comments}></PaginatedComments>
       </div>
     )
   }
@@ -121,56 +129,3 @@ const RatingControl = ({ distribution, appId, initialRating }) => {
     </div>
   )
 }
-
-let ex = [
-  {
-    username: "Micah",
-    text: "Left FB for this",
-    timestamp: new Date(),
-    avatar:
-      "https://www.kirkleescollege.ac.uk/wp-content/uploads/2015/09/default-avatar.png",
-    user_id: 2,
-  },
-  {
-    username: "Jeremiah",
-    text: "Left FB for this",
-    timestamp: new Date(),
-    avatar:
-      "https://www.kirkleescollege.ac.uk/wp-content/uploads/2015/09/default-avatar.png",
-    user_id: 2,
-  },
-  {
-    username: "Michael",
-    text: "Left FB for this",
-    timestamp: new Date(),
-    avatar:
-      "https://www.kirkleescollege.ac.uk/wp-content/uploads/2015/09/default-avatar.png",
-    user_id: 2,
-  },
-  {
-    username: "Jeremiad",
-    text: "Left FB for this",
-    timestamp: new Date(),
-    avatar:
-      "https://www.kirkleescollege.ac.uk/wp-content/uploads/2015/09/default-avatar.png",
-    user_id: 2,
-  },
-  {
-    username: "Mica",
-    text: "Left FB for this",
-    timestamp: new Date(),
-    avatar:
-      "https://www.kirkleescollege.ac.uk/wp-content/uploads/2015/09/default-avatar.png",
-    user_id: 2,
-  },
-  {
-    username: "Jeremy",
-    text: "Left FB for this",
-    timestamp: new Date(),
-    avatar:
-      "https://www.kirkleescollege.ac.uk/wp-content/uploads/2015/09/default-avatar.png",
-    user_id: 2,
-  },
-]
-
-const exampleComments = ex.concat(ex).concat(ex).concat(ex).concat(ex)
