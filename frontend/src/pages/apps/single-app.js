@@ -57,7 +57,7 @@ export const SingleApp = ({ appId }) => {
               <Container fluid>
                 <h1 className="display-3">Name: {name}</h1>
                 <p className="lead">Description: {description}</p>
-                <ShareSocial></ShareSocial>
+                <ShareSocial imageUrl={app.image}></ShareSocial>
                 {loggedIn ? (
                   <FavoriteButton
                     appId={id}
