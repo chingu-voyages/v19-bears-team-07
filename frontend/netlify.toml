@@ -1,0 +1,5 @@
+[[redirects]]
+    from = "/apps/*"
+    to = "/apps"
+    status = 200
+    force = true
