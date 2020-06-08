@@ -6,7 +6,7 @@ import Content from "./Content/Content"
 import "./Layout.css"
 
 const Layout = props => {
-  const [sidebarIsOpen, setSidebarOpen] = useState(true)
+  const [sidebarIsOpen, setSidebarOpen] = useState(false)
   const toggleSidebar = () => setSidebarOpen(sidebarIsOpen => !sidebarIsOpen)
 
   return (
