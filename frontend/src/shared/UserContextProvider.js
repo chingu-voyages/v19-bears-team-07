@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import UserContext from "./UserContext"
 import getLoggedInUser from "./fetchActions/getLoggedInUser"
 import deleteLogout from "./fetchActions/deleteLogout"
+import { navigate } from "gatsby"
 
 const UserContextProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -31,6 +32,7 @@ const UserContextProvider = ({ children }) => {
   const logout = async () => {
     try {
       await deleteLogout()
+      navigate("/")
       checkLoggedIn()
     } catch (error) {
       console.log(error)
