@@ -106,11 +106,7 @@ li a.dropdown-toggle::after {
   height: 100vh;
 }
 
-@media only screen and (max-width: 500px) {
-  body {
-    overflow: hidden;
-  }
-
+@media only screen and (max-width: 600px) {
   .content.is-open {
     margin-left: 100%;
   }
