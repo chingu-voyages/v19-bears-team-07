@@ -4,6 +4,7 @@ import { NavLink } from "reactstrap"
 import { Link } from "gatsby"
 
 import UserContext from "../../../shared/UserContext"
+import * as Url from "../../../shared/urls"
 
 const LoginLink = () => (
   <UserContext.Consumer>
@@ -15,11 +16,7 @@ const LoginLink = () => (
           </NavLink>
         )
       }
-      return (
-        <NavLink tag={Link} to={"/login"}>
-          sign up / login
-        </NavLink>
-      )
+      return <NavLink href={Url.SIGN_IN}>sign up / login</NavLink>
     }}
   </UserContext.Consumer>
 )
