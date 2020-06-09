@@ -15,6 +15,7 @@ import "./single-app.css"
 import FavoriteButton from "../../components/AppGrid/FavoriteAppGrid/FavoriteButton"
 import UserContext from "../../shared/UserContext"
 import getCommentsForApp from "../../shared/fetchActions/getCommentsForApp"
+import { Link } from "gatsby"
 
 export const SingleApp = ({ appId }) => {
   const [app, setApp] = React.useState(null)
@@ -61,9 +62,15 @@ export const SingleApp = ({ appId }) => {
                 <div className={"AnAppPage-linksContainer"}>
                   <h4 className={"AnAppPage-linksHeader"}>Links</h4>
                   <ul className={"AnAppPage-links"}>
-                    <li>Github</li>
-                    <li>Live App</li>
-                    <li>Developer</li>
+                    <li>
+                      <a href={app.githubUrl}>Github</a>
+                    </li>
+                    <li>
+                      <a href={app.appUrl}>Live App</a>
+                    </li>
+                    <li>
+                      <Link to={`portfolios/${app.userId}`}>Developer</Link>
+                    </li>
                   </ul>
                 </div>
                 <div className={"AnAppPage-socialContainer"}>
