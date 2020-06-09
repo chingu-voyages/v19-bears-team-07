@@ -1,6 +1,6 @@
 import React from "react"
 
-import * as classNames from "classnames"
+import classNames from "classnames"
 
 import { Container, Row, Col, Media } from "reactstrap"
 
