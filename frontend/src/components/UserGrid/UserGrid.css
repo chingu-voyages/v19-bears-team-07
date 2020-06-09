@@ -1,0 +1,40 @@
+.UserGrid-Card {
+  max-height: 80vh;
+}
+
+.UserGrid-Body {
+  overflow: hidden;
+  margin-bottom: 20px;
+  text-overflow: clip;
+}
+
+@media (max-width: 850px) {
+  .UserGrid-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: 1vw;
+    row-gap: 20px;
+  }
+}
+
+@media (min-width: 850px) and (max-width: 1200px) {
+  .UserGrid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1vw;
+    row-gap: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .UserGrid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1vw;
+    row-gap: 20px;
+  }
+}
+
+.UserGrid-Image:hover {
+  cursor: pointer;
+}
