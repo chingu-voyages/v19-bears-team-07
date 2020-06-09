@@ -1,3 +1,13 @@
+.AppGrid-Card {
+  max-height: 80vh;
+}
+
+.AppGrid-Body {
+  overflow: hidden;
+  margin-bottom: 20px;
+  text-overflow: clip;
+}
+
 @media (max-width: 850px) {
   .AppGrid-container {
     display: grid;

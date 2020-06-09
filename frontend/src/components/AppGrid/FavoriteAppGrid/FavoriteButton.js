@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
 import updateMyFavoriteApp from "../../../shared/fetchActions/updateMyFavoriteApp"
 import "./FavoriteButton.css"
+import classNames from "classnames"
 
-const FavoriteButton = ({ appId, isFavorite }) => {
+const FavoriteButton = ({ appId, isFavorite, className }) => {
   const [isFav, setIsFavorite] = React.useState(isFavorite)
 
   const toggleFavorite = () => {
@@ -27,7 +28,7 @@ const FavoriteButton = ({ appId, isFavorite }) => {
         event.preventDefault()
         toggleFavorite()
       }}
-      className={"FavButton-FavIcon"}
+      className={classNames("FavButton-FavIcon", className)}
     ></FontAwesomeIcon>
   )
 }
