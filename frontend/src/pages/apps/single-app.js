@@ -1,5 +1,4 @@
 import React from "react"
-import AppCarousel from "../../components/AppCarousel/AppCarousel"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Jumbotron, Container, Row, Col } from "reactstrap"
 import ShareSocial from "../../components/share-social"
@@ -52,7 +51,6 @@ export const SingleApp = ({ appId }) => {
       <div className="AnAppPage-container">
         <Row>
           <Col xl={9} lg={9} md={12} sm={12} xs={12}>
-            <AppCarousel items={[app]} />
             <Jumbotron fluid>
               <Container fluid>
                 <h1 className="display-3">Name: {name}</h1>
