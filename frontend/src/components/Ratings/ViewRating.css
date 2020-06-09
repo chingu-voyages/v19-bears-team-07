@@ -1,12 +1,13 @@
 .ViewRating-container {
   position: relative;
   display: flex;
-  flex: auto;
   width: auto;
   height: auto;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-end;
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
 
 .ViewRating-starsContainer {
@@ -43,4 +44,9 @@
   margin: 0 10px 0 10px;
   align-self: flex-end;
   padding-bottom: 3px;
+}
+
+.ViewRating-count {
+  align-self: flex-end;
+  margin-bottom: -3px;
 }

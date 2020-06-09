@@ -1,4 +1,4 @@
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   .AppGrid-container {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -7,7 +7,7 @@
   }
 }
 
-@media (min-width: 800px) and (max-width: 1000px) {
+@media (min-width: 850px) and (max-width: 1200px) {
   .AppGrid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -16,7 +16,7 @@
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1200px) {
   .AppGrid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
