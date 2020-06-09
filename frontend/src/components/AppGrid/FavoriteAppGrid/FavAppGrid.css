@@ -1,3 +1,13 @@
+.FavAppGrid-Card {
+  max-height: 80vh;
+}
+
+.FavAppGrid-Body {
+  overflow: hidden;
+  margin-bottom: 20px;
+  text-overflow: clip;
+}
+
 @media (max-width: 850px) {
   .FavAppGrid-container {
     display: grid;

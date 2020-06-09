@@ -39,7 +39,7 @@ const RenderSingleApp = ({
         }}
         className="FavAppGrid-Image"
       />
-      <CardBody>
+      <CardBody className="FavAppGrid-Body">
         <CardTitle>Name: {name}</CardTitle>
         <CardText>Description: {description}</CardText>
       </CardBody>
