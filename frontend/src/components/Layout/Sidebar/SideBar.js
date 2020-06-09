@@ -46,7 +46,7 @@ const SideBar = ({ isOpen, toggle }) => {
           &times;
         </span>
         <h3>
-          <Link to="/" onClick={closeSideBar}>
+          <Link to="/" onClick={closeSideBar} state={{ closeSidebar: true }}>
             DevHub
           </Link>
         </h3>

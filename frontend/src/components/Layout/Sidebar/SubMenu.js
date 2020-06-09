@@ -22,7 +22,12 @@ const SubMenu = ({ closeSideBar, title, items }) => {
       >
         {items.map((item, index) => (
           <NavItem key={index} className="pl-4">
-            <NavLink tag={Link} to={item.target} onClick={closeSideBar}>
+            <NavLink
+              tag={Link}
+              to={item.target}
+              onClick={closeSideBar}
+              state={{ closeSidebar: true }}
+            >
               {item.title}
             </NavLink>
           </NavItem>
