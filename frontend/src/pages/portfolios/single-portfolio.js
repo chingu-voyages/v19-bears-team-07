@@ -57,8 +57,6 @@ const SinglePortfolio = ({ userId }) => {
         ))}
       </ul>
 
-      <h2>Teams</h2>
-
       <h2>Apps</h2>
       <AppGrid apps={apps} appUrls={appUrls}></AppGrid>
     </div>
