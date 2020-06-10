@@ -53,7 +53,6 @@ const SideBar = ({ isOpen, toggle }) => {
       </div>
       <div className="side-menu">
         <Nav vertical className="list-unstyled pb-3">
-          <p>Dashboard</p>
           <RenderSubMenus closeSideBar={closeSideBar} />
         </Nav>
       </div>

@@ -3,10 +3,6 @@ const basicMenu = [
     title: "favorite apps",
     target: "favorite-apps",
   },
-  {
-    title: "settings",
-    target: "settings",
-  },
 ]
 
 const developerMenu = [
