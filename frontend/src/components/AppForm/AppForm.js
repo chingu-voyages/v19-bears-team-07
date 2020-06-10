@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react"
 import { Formik, Form } from "formik"
-import { FormGroup, Col, Container, Button, Modal, ModalBody } from "reactstrap"
+import { FormGroup, Col, Container, Button, Modal } from "reactstrap"
 
 import NameInput from "../formInputs/NameInput/NameInput"
 import ImageInput from "../formInputs/ImageInput/ImageInput"
@@ -47,9 +47,7 @@ const AppForm = ({ formMode, initialValues, submitForm, ...rest }) => {
                 backdrop={false}
               >
                 <img
-                  src={
-                    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.gifer.com%2F54vL.gif&f=1&nofb=1"
-                  }
+                  src={"https://i.gifer.com/54vL.gif"}
                   alt={"fireworks"}
                   width={"200vw"}
                   height={"auto"}
