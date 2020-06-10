@@ -24,9 +24,11 @@ const EditDevForm = ({ initialValues, userId, refreshUserData }) => {
           const updatedUser = await forBackend.convertUser(values)
           await updateProfile(updatedUser, userId)
 
-          const formData = new FormData()
-          formData.append("image", values.image)
-          await updateUserImage(userId, formData)
+          if (values.image && typeof values.image !== "string") {
+            const formData = new FormData()
+            formData.append("image", values.image)
+            await updateUserImage(userId, formData)
+          }
         } catch (e) {
           console.log(e)
         }
