@@ -1,6 +1,7 @@
 import * as Url from "../urls"
 
 const updateProfile = async (values, userId) => {
+  console.log(values)
   const req = new Request(Url.singleUser(userId), {
     method: "PATCH",
     credentials: "include",

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react"
 import { Formik, Form } from "formik"
-import { FormGroup, Col, Container, Button, Modal, ModalBody } from "reactstrap"
+import { FormGroup, Col, Container, Button, Modal } from "reactstrap"
 
 import NameInput from "../formInputs/NameInput/NameInput"
 import ImageInput from "../formInputs/ImageInput/ImageInput"
@@ -9,6 +9,7 @@ import AppUrlInput from "../formInputs/AppUrlInput/AppUrlInput"
 import Github from "../formInputs/GithubInput/GithubInput"
 import validationSchema from "./validationSchema"
 import DeleteApp from "../DeleteApp/DeleteApp"
+import "./AppForm.css"
 
 const AppForm = ({ formMode, initialValues, submitForm, ...rest }) => {
   const [successModal, setSucessModal] = useState(false)
@@ -30,7 +31,7 @@ const AppForm = ({ formMode, initialValues, submitForm, ...rest }) => {
         setSubmitting(false)
         setTimeout(() => {
           setSucessModal(false)
-        }, 700)
+        }, 3000)
       }}
     >
       {({ errors, touched, isSubmitting, setFieldValue }) => (
@@ -38,10 +39,19 @@ const AppForm = ({ formMode, initialValues, submitForm, ...rest }) => {
           <FormGroup>
             <Container>
               <input type="hidden" value="for disrupting autocomplete" />
-              <Modal isOpen={successModal} centered={true}>
-                <ModalBody style={{ fontSize: "3em", textAlign: "center" }}>
-                  Submitted
-                </ModalBody>
+              <Modal
+                isOpen={successModal}
+                centered={true}
+                style={{ backgroundColor: "transparent" }}
+                contentClassName={"AppForm-ModalContent"}
+                backdrop={false}
+              >
+                <img
+                  src={"https://i.gifer.com/54vL.gif"}
+                  alt={"fireworks"}
+                  width={"200vw"}
+                  height={"auto"}
+                />
               </Modal>
               <br />
               <NameInput error={errors.name} touched={touched.name} />
