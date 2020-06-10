@@ -6,6 +6,7 @@ import UserContext from "../../shared/UserContext"
 import * as forFrontend from "../../shared/convertForFrontend"
 import getSingleUser from "../../shared/fetchActions/getSingleUser"
 import defaultUserData from "./defaultUserData"
+import "./Profile.css"
 
 const Profile = () => {
   const { userId, loggedIn } = React.useContext(UserContext)
@@ -32,14 +33,9 @@ const Profile = () => {
     <React.Fragment>
       {loggedIn && userId && (
         <React.Fragment>
-          <Container>
+          <Container className={"Profile-imageContainer"}>
             {userData.image && (
-              <img
-                src={userData.image}
-                alt="Your profile"
-                width={200}
-                height={200}
-              />
+              <img src={userData.image} alt="Your profile" width={"30%"} />
             )}
           </Container>
           <div>

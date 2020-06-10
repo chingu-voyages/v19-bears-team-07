@@ -4,6 +4,7 @@ import getSinglePortfolio from "../../shared/fetchActions/getSinglePortfolio"
 import * as forFrontend from "../../shared/convertForFrontend"
 import getSingleUser from "../../shared/fetchActions/getSingleUser"
 import getUserSkills from "../../shared/fetchActions/getUserSkills"
+import "./single-portfolio.css"
 
 const SinglePortfolio = ({ userId }) => {
   const [apps, setApps] = React.useState([])
@@ -30,7 +31,7 @@ const SinglePortfolio = ({ userId }) => {
   return (
     <div className="APortfolioPage-container">
       <h1>{user.name}</h1>
-      <img src={user.image}></img>
+      <img src={user.image} className={"APortfolioPage-image"}></img>
       <h2>Developer Bio</h2>
       <p>{user.bio}</p>
       <h2>Check out my links!</h2>
@@ -55,8 +56,6 @@ const SinglePortfolio = ({ userId }) => {
           <li>{skill.name}</li>
         ))}
       </ul>
-
-      <h2>Teams</h2>
 
       <h2>Apps</h2>
       <AppGrid apps={apps} appUrls={appUrls}></AppGrid>

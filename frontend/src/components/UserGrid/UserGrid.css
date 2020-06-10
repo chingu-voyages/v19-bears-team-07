@@ -1,15 +1,15 @@
-.FavAppGrid-Card {
+.UserGrid-Card {
   max-height: 80vh;
 }
 
-.FavAppGrid-Body {
+.UserGrid-Body {
   overflow: hidden;
   margin-bottom: 20px;
   text-overflow: clip;
 }
 
 @media (max-width: 850px) {
-  .FavAppGrid-container {
+  .UserGrid-container {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     column-gap: 1vw;
@@ -18,7 +18,7 @@
 }
 
 @media (min-width: 850px) and (max-width: 1200px) {
-  .FavAppGrid-container {
+  .UserGrid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 1vw;
@@ -27,7 +27,7 @@
 }
 
 @media (min-width: 1200px) {
-  .FavAppGrid-container {
+  .UserGrid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 1vw;
@@ -35,13 +35,10 @@
   }
 }
 
-.FavAppGrid-Image:hover {
-  cursor: pointer;
+.card-title {
+  font-size: 1.2em;
 }
 
-.FavAppGrid-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+.UserGrid-Image:hover {
+  cursor: pointer;
 }

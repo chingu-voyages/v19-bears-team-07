@@ -64,7 +64,9 @@ const ViewRating = ({
           show={showDistribution}
         ></RatingDistributionPopup>
       </div>
-      <span>{displayFull ? `${count} ratings` : null}</span>
+      <span className={"ViewRating-count"}>
+        {displayFull ? `${count} ratings` : null}
+      </span>
     </div>
   )
 }

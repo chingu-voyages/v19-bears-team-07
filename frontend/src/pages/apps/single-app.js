@@ -1,7 +1,6 @@
 import React from "react"
-import AppCarousel from "../../components/AppCarousel/AppCarousel"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { Jumbotron, Container, Row, Col } from "reactstrap"
+import { Jumbotron, Container, Row, Col, CardImg } from "reactstrap"
 import ShareSocial from "../../components/share-social"
 import PaginatedComments from "../../components/Comments/PaginatedComments"
 import * as forFrontend from "../../shared/convertForFrontend"
@@ -16,6 +15,7 @@ import "./single-app.css"
 import FavoriteButton from "../../components/AppGrid/FavoriteAppGrid/FavoriteButton"
 import UserContext from "../../shared/UserContext"
 import getCommentsForApp from "../../shared/fetchActions/getCommentsForApp"
+import { Link } from "gatsby"
 
 export const SingleApp = ({ appId }) => {
   const [app, setApp] = React.useState(null)
@@ -52,24 +52,39 @@ export const SingleApp = ({ appId }) => {
       <div className="AnAppPage-container">
         <Row>
           <Col xl={9} lg={9} md={12} sm={12} xs={12}>
-            <AppCarousel items={[app]} />
             <Jumbotron fluid>
               <Container fluid>
-                <h1 className="display-3">Name: {name}</h1>
-                <p className="lead">Description: {description}</p>
-                <ShareSocial imageUrl={app.image}></ShareSocial>
-                {loggedIn ? (
-                  <FavoriteButton
-                    appId={id}
-                    isFavorite={isFavorite}
-                  ></FavoriteButton>
-                ) : null}
+                <h1 className="display-4">{name}</h1>
+                <p className="lead">{description}</p>
+                <div className={"AnAppPage-imageContainer"}>
+                  <img src={app.image} width={"100%"} height={"100%"} />
+                </div>
+                <div className={"AnAppPage-linksContainer"}>
+                  <h4 className={"AnAppPage-linksHeader"}>Links</h4>
+                  <ul className={"AnAppPage-links"}>
+                    <li>
+                      <a href={app.githubUrl}>Github</a>
+                    </li>
+                    <li>
+                      <a href={app.appUrl}>Live App</a>
+                    </li>
+                    <li>
+                      <Link to={`portfolios/${app.userId}`}>Developer</Link>
+                    </li>
+                  </ul>
+                </div>
+                <div className={"AnAppPage-socialContainer"}>
+                  <ShareSocial imageUrl={app.image}></ShareSocial>
+                  {loggedIn ? (
+                    <FavoriteButton
+                      appId={id}
+                      isFavorite={isFavorite}
+                      className={"AnAppPage-favoriteButton"}
+                    ></FavoriteButton>
+                  ) : null}
+                </div>
               </Container>
             </Jumbotron>
-          </Col>
-          <Col xl={3} lg={3} md={12} sm={12} xs={12}>
-            <h4>Developers</h4>
-            <DeveloperIcons devIds={app.userId ? [app.userId] : []} />
           </Col>
         </Row>
         <RatingControl

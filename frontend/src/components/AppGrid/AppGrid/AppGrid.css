@@ -1,4 +1,14 @@
-@media (max-width: 400px) {
+.AppGrid-Card {
+  max-height: 80vh;
+}
+
+.AppGrid-Body {
+  overflow: hidden;
+  margin-bottom: 20px;
+  text-overflow: clip;
+}
+
+@media (max-width: 850px) {
   .AppGrid-container {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -7,7 +17,7 @@
   }
 }
 
-@media (min-width: 400px) and (max-width: 700px) {
+@media (min-width: 850px) and (max-width: 1200px) {
   .AppGrid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -16,7 +26,7 @@
   }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 1200px) {
   .AppGrid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

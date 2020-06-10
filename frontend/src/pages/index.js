@@ -5,7 +5,6 @@ import SEO from "../components/Seo/Seo"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 import AppGrid from "../components/AppGrid/PublicAppGrid"
-import AppCarousel from "../components/AppCarousel/AppCarousel"
 import getAllApps from "../shared/fetchActions/getAllApps"
 import * as forFrontend from "../shared/convertForFrontend"
 
@@ -25,7 +24,6 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <AppCarousel items={apps} />
       <AppGrid apps={apps} appUrls={appUrls} />
     </Layout>
   )

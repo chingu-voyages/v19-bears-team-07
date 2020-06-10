@@ -34,7 +34,7 @@ const RenderSingleApp = ({
   return (
     <Card onClick={() => navigate(appUrl)} className="AppGrid-Card">
       <CardImg src={image ? image : imageUrl} width="100%" />
-      <CardBody>
+      <CardBody className="AppGrid-Body">
         <CardTitle>Name: {name}</CardTitle>
         <CardText>Description: {description}</CardText>
       </CardBody>

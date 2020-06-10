@@ -23,17 +23,11 @@ a:focus {
     SIDEBAR STYLE
 ----------------------------------------------------- */
 .sidebar {
-  min-width: 250px;
-  max-width: 250px;
+  width: 250px;
   background: #7386d5;
   color: #fff;
   margin-left: -250px;
   transition: all 0.5s;
-}
-
-.sidebar.is-open {
-  margin-left: 0;
-  transition: 0.5s;
 }
 
 .sidebar-header {
@@ -100,24 +94,57 @@ li a.dropdown-toggle::after {
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
-.content {
-  padding: 20px;
-  margin-left: 0;
-  height: 100vh;
+
+@media only screen and (min-width: 600px) {
+  .content {
+    padding: 20px;
+    margin-left: 250px;
+    height: 100vh;
+  }
+
+  /*We fix the sidebar while the screen is wide*/
+  .sidebar {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-x: visible;
+    margin-left: 0;
+  }
 }
 
-@media only screen and (max-width: 500px) {
-  body {
-    overflow: hidden;
+@media only screen and (max-width: 600px) {
+  .content {
+    padding: 20px;
+    margin-left: 0px;
+    height: 100vh;
   }
 
   .content.is-open {
-    margin-left: 100%;
+    width: 0;
+    margin-left: 0;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .sidebar {
+    position: static;
+    z-index: 0;
+    height: 100%;
+    overflow-x: visible;
+  }
+
+  .sidebar {
+    width: 250px;
+    background: #7386d5;
+    color: #fff;
+    margin-left: -250px;
+    transition: all 0.5s;
   }
 
   .sidebar.is-open {
-    min-width: 100%;
-    max-width: 100%;
+    width: 100%;
     margin-left: 0;
     transition: all 0.5s, height 0s;
   }

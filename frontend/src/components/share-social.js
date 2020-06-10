@@ -9,6 +9,7 @@ import {
 } from "react-share"
 import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
+import "./share-social.css"
 
 // Share icons will share the current page unless the props override it.
 // TODO: To expand what these social icons do, use the docs at https://github.com/nygardk/react-share
@@ -21,14 +22,14 @@ export const ShareSocial = ({ shareUrl, imageUrl }) => {
       <Helmet>
         <meta property="og:image" content={imageUrl} />
       </Helmet>
-      <FacebookShareButton url={href}>
-        <FacebookIcon round></FacebookIcon>
+      <FacebookShareButton url={href} className={"ShareSocial-Button"}>
+        <FacebookIcon round width={"30px"} height={"30px"}></FacebookIcon>
       </FacebookShareButton>
-      <LinkedinShareButton url={href}>
-        <LinkedinIcon round></LinkedinIcon>
+      <LinkedinShareButton url={href} className={"ShareSocial-Button"}>
+        <LinkedinIcon round width={"30px"} height={"30px"}></LinkedinIcon>
       </LinkedinShareButton>
-      <TwitterShareButton url={href}>
-        <TwitterIcon round></TwitterIcon>
+      <TwitterShareButton url={href} className={"ShareSocial-Button"}>
+        <TwitterIcon round width={"30px"} height={"30px"}></TwitterIcon>
       </TwitterShareButton>
     </div>
   )

@@ -39,17 +39,17 @@ const RenderSingleApp = ({
         }}
         className="FavAppGrid-Image"
       />
-      <CardBody>
+      <CardBody className="FavAppGrid-Body">
         <CardTitle>Name: {name}</CardTitle>
         <CardText>Description: {description}</CardText>
       </CardBody>
-      <CardFooter>
-        <FavoriteButton appId={id} isFavorite={isFavorite} />
+      <CardFooter className={"FavAppGrid-footer"}>
         {
           // If the server didn't send ratings, that's okay. We don't expect that all pages will provide
           // valid ratings
           ratings ? <ViewRating distribution={ratings}></ViewRating> : null
         }
+        <FavoriteButton appId={id} isFavorite={isFavorite} />
       </CardFooter>
     </Card>
   )
