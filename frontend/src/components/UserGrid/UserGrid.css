@@ -35,6 +35,10 @@
   }
 }
 
+.card-title {
+  font-size: 1.2em;
+}
+
 .UserGrid-Image:hover {
   cursor: pointer;
 }

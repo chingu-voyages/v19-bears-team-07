@@ -1,6 +1,6 @@
 .AnAppPage-imageContainer {
   width: 30%;
-  height: 30%;
+  height: auto;
   border-radius: 1vw;
   overflow: hidden;
 }
