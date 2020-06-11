@@ -9,6 +9,7 @@ import RatingDistributionPopup, { calcStats } from "./RatingDistribution"
 const ViewRating = ({
   distribution, // object from score keys to counts of ratings in that score
   displayFull = true,
+  displayPopup = true,
 }) => {
   const [showDistribution, setShowDistribution] = React.useState(false)
   const [showDistributionAbove, setShowDistributionAbove] = React.useState(
@@ -58,11 +59,13 @@ const ViewRating = ({
             icon={faChevronDown}
           ></FontAwesomeIcon>
         ) : null}
-        <RatingDistributionPopup
-          distribution={distribution}
-          above={showDistributionAbove}
-          show={showDistribution}
-        ></RatingDistributionPopup>
+        {displayPopup ? (
+          <RatingDistributionPopup
+            distribution={distribution}
+            above={showDistributionAbove}
+            show={showDistribution}
+          ></RatingDistributionPopup>
+        ) : null}
       </div>
       <span className={"ViewRating-count"}>
         {displayFull ? `${count} ratings` : null}

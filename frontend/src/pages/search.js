@@ -17,6 +17,7 @@ import {
 import ViewRating from "../components/Ratings/ViewRating"
 import "./search.css"
 import { navigate } from "gatsby"
+import classNames from "classnames"
 
 const queryString = require("query-string")
 
@@ -100,7 +101,7 @@ const SearchResult = ({ dev, apps }) => {
         </Col>
       </Row>
       <Row className={"SearchResult-AppsRow"}>
-        <Col xs={0} sm={0} md={0} lg={3} xl={3}>
+        <Col xs={0} sm={0} md={0} lg={4} xl={4}>
           <Table responsive className={"SearchResultl-AppsTable"}>
             <thead>
               <tr>
@@ -118,7 +119,7 @@ const SearchResult = ({ dev, apps }) => {
             </tbody>
           </Table>
         </Col>
-        <Col xs={12} sm={12} md={12} lg={9} xl={9}>
+        <Col xs={12} sm={12} md={12} lg={8} xl={8}>
           <Row>
             {apps.map(({ name, description, rating, url, image }, index) => (
               <RenderApp
@@ -128,6 +129,7 @@ const SearchResult = ({ dev, apps }) => {
                 key={index}
                 url={url}
                 image={image}
+                index={index}
               ></RenderApp>
             ))}
           </Row>
@@ -163,30 +165,51 @@ const RenderAsText = ({ substrings }) => {
   )
 }
 
-const RenderApp = ({ url, name, image, rating }) => {
+const RenderApp = ({ url, name, image, rating, index }) => {
+  const displayClasses = {
+    ["d-none"]: index > 0,
+    ["d-sm-block"]: index <= 0,
+    ["d-md-block"]: index <= 1,
+    ["d-lg-block"]: index <= 1,
+    ["d-xl-block"]: index <= 2,
+  }
+
   return (
-    <Col className={"AppResult-column"} xs={12} sm={12} md={6} lg={4} xl={4}>
-      <Card className={"AppResult-Card"}>
-        <CardImg
-          className={"AppResult-Image"}
-          top
-          height={"100px"}
-          src={image}
-          alt={name.text}
-          onClick={() => {
-            navigate(url)
-          }}
-        ></CardImg>
-        <CardBody>
-          <RenderAsText
-            text={name.text}
-            substrings={name.substrings}
-          ></RenderAsText>
-        </CardBody>
-        <CardFooter>
-          <ViewRating distribution={rating} displayFull={false} />
-        </CardFooter>
-      </Card>
+    <Col
+      className={classNames("AppResult-column", displayClasses)}
+      xs={12}
+      sm={12}
+      md={6}
+      lg={6}
+      xl={4}
+    >
+      <div className={"AppResult-CardRatio"}>
+        <Card className={"AppResult-Card"}>
+          <CardImg
+            className={"AppResult-Image"}
+            top
+            height={"60%"}
+            src={image}
+            alt={name.text}
+            onClick={() => {
+              navigate(url)
+            }}
+          ></CardImg>
+          <CardBody>
+            <RenderAsText
+              text={name.text}
+              substrings={name.substrings}
+            ></RenderAsText>
+          </CardBody>
+          <CardFooter>
+            <ViewRating
+              distribution={rating}
+              displayFull={false}
+              displayPopup={false}
+            />
+          </CardFooter>
+        </Card>
+      </div>
     </Col>
   )
 }
