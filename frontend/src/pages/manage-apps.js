@@ -18,7 +18,6 @@ const ManageAppsPage = () => {
     const appData = await getMyApps()
     const apps = appData.map(forFrontend.convertApp)
     setApps(apps)
-    console.log("got apps")
   }
 
   React.useEffect(() => {
