@@ -36,4 +36,4 @@ First, make sure the `gatsby` package is installed globally via NPM, and install
 
 You will then also have to build and deploy the [backend repo](https://github.com/chingu-voyages/v19-bears-team-07-be) by following its README instructions.
 
-After that, visit `http://localhost:9000` to use the application.
+After that, visit `http://localhost:8000` to use the application.
