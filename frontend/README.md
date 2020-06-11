@@ -32,7 +32,7 @@ Prerequisites:
 - Node >= 10.18.1
 - NPM >= 6.13.4
 
-First, make sure the `gatsby` package is installed globally via NPM, and install all libraries with `npm install`. Run `gatsby build` to generate the production build, and then `gatsby serve` to deploy at `http://localhost:9000`.
+First, make sure the `gatsby` package is installed globally via NPM, and install all libraries with `npm install`. Run `gatsby develop` to deploy the application at `http://localhost:8000`. Deploying the production build requires additional configuration for the backend repo.
 
 You will then also have to build and deploy the [backend repo](https://github.com/chingu-voyages/v19-bears-team-07-be) by following its README instructions.
 
