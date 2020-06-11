@@ -49,17 +49,26 @@ const SearchResults = () => {
     refreshResults()
   }, [location])
 
-  return (
-    <div>
-      {results.map((result, index) => (
-        <SearchResult
-          key={index}
-          dev={result.dev}
-          apps={result.apps}
-        ></SearchResult>
-      ))}
-    </div>
-  )
+  if (results.length > 0) {
+    return (
+      <div>
+        <h5>{`Showing ${results.length} of ${results.length} results`}</h5>
+        {results.map((result, index) => (
+          <SearchResult
+            key={index}
+            dev={result.dev}
+            apps={result.apps}
+          ></SearchResult>
+        ))}
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <h5>Your search did not return any results</h5>
+      </div>
+    )
+  }
 }
 
 const SearchResult = ({ dev, apps }) => {
