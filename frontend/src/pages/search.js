@@ -88,14 +88,23 @@ const SearchResult = ({ dev, apps }) => {
   return (
     <div className={"SearchResult-Container"}>
       <Row className={"SearchResult-DevRow"}>
-        <Col xs={6} sm={6} md={6} lg={4} xl={4} className={"align-items-start"}>
+        <Col
+          xs={12}
+          sm={12}
+          md={6}
+          lg={4}
+          xl={4}
+          className={"SearchResult-profileColumn"}
+        >
           <div
             className={"SearchResult-profileContainer"}
             onClick={() => {
               navigate(url)
             }}
           >
-            <img src={image} width={"70%"} height={"70%"}></img>
+            <div className={"SearchResult-avatarContainer"}>
+              <img src={image} width={"100%"} height={"100%"}></img>
+            </div>
             <div className={"SearchResult-profileName"}>
               <RenderAsText
                 text={name.text}
@@ -105,8 +114,8 @@ const SearchResult = ({ dev, apps }) => {
           </div>
         </Col>
         <Col
-          xs={6}
-          sm={6}
+          xs={12}
+          sm={12}
           md={6}
           lg={8}
           xl={8}

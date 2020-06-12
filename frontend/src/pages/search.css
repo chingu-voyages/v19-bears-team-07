@@ -7,31 +7,46 @@
   padding: 20px 25px 20px 25px;
 }
 
+.SearchResult-profileColumn {
+  padding: 0;
+}
+
 .SearchResult-profileContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding: 0 20px 0 0;
+  margin: 0 0 20px 0;
 }
 
 .SearchResult-profileContainer:hover {
   cursor: pointer;
 }
 
+.SearchResult-avatarContainer {
+  overflow: hidden;
+  border-radius: 10px;
+  border-color: lightgrey;
+  border-width: 1px;
+  border-style: solid;
+}
+
 .SearchResult-profileName {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   align-items: center;
+  padding: 10px;
 }
 
 .SearchResult-biographyContainer {
-  border-width: 10px 0px 10px 10px;
+  border-width: 0 10px 10px 0px;
   border-color: transparent;
   border-bottom-color: #7386d5;
   border-style: ridge;
-  padding: 0;
+  padding: 0 0 10px 0;
 }
 
 .SearchResult-matchedText {
