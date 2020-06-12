@@ -37,6 +37,7 @@ const SearchResults = () => {
   const location = useLocation()
 
   const [results, setResults] = React.useState([])
+  const [loaded, setLoaded] = React.useState(false)
 
   const refreshResults = async () => {
     const parsed = queryString.parse(location.search)
@@ -47,8 +48,15 @@ const SearchResults = () => {
   }
 
   React.useEffect(() => {
-    refreshResults()
+    ;(async () => {
+      await refreshResults()
+      setLoaded(true)
+    })()
   }, [location])
+
+  if (!loaded) {
+    return null
+  }
 
   if (results.length > 0) {
     return (
@@ -80,7 +88,7 @@ const SearchResult = ({ dev, apps }) => {
   return (
     <div className={"SearchResult-Container"}>
       <Row className={"SearchResult-DevRow"}>
-        <Col xs={6} sm={6} md={6} lg={3} xl={3}>
+        <Col xs={6} sm={6} md={6} lg={4} xl={4} className={"align-items-start"}>
           <div
             className={"SearchResult-profileContainer"}
             onClick={() => {
@@ -96,13 +104,25 @@ const SearchResult = ({ dev, apps }) => {
             </div>
           </div>
         </Col>
-        <Col xs={6} sm={6} md={6} lg={9} xl={9}>
+        <Col
+          xs={6}
+          sm={6}
+          md={6}
+          lg={8}
+          xl={8}
+          className={"SearchResult-biographyContainer"}
+        >
           <RenderAsText substrings={bio.substrings}></RenderAsText>
         </Col>
       </Row>
       <Row className={"SearchResult-AppsRow"}>
         <Col xs={0} sm={0} md={0} lg={4} xl={4}>
-          <Table responsive className={"SearchResultl-AppsTable"}>
+          <Table
+            responsive
+            bordered
+            striped
+            className={"SearchResult-AppsTable"}
+          >
             <thead>
               <tr>
                 <th>Name</th>

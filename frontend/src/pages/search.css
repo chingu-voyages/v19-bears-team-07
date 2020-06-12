@@ -12,11 +12,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
 }
 
-.SearchResult-profileContainer {
+.SearchResult-profileContainer:hover {
   cursor: pointer;
 }
 
@@ -29,6 +27,11 @@
 }
 
 .SearchResult-biographyContainer {
+  border-width: 10px 0px 10px 10px;
+  border-color: transparent;
+  border-bottom-color: #7386d5;
+  border-style: ridge;
+  padding: 0;
 }
 
 .SearchResult-matchedText {
