@@ -58,7 +58,7 @@ const EditDevForm = ({ initialValues, userId, refreshUserData }) => {
                 backdrop={false}
               >
                 <img
-                  src={"https://i.gifer.com/54vL.gif"}
+                  src={"http://i.gifer.com/54vL.gif"}
                   alt={"fireworks"}
                   width={"200vw"}
                   height={"auto"}

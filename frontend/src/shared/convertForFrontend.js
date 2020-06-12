@@ -27,11 +27,11 @@ export const convertApp = ({
   manageUrl: `/manage-apps/${id}/edit`,
   imageUrl: img
     ? ""
-    : "https://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
+    : "http://brandthunder.com/wp/wp-content/uploads/2012/07/Facebook-skins-post.png",
 })
 
 const defaultAvatar =
-  "https://www.kirkleescollege.ac.uk/wp-content/uploads/2015/09/default-avatar.png"
+  "http://www.kirkleescollege.ac.uk/wp-content/uploads/2015/09/default-avatar.png"
 
 export const convertUser = userData => {
   const {
