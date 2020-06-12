@@ -10,7 +10,7 @@ const ShoppingPage = () => {
   React.useEffect(() => {
     ;(async () => {
       const appsData = await getAllApps({
-        category: 4,
+        category: 3,
       })
       const apps = appsData.map(forFrontend.convertApp)
       setApps(apps)

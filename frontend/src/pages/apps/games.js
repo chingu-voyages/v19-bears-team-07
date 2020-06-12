@@ -10,7 +10,7 @@ const GamesPage = () => {
   React.useEffect(() => {
     ;(async () => {
       const appsData = await getAllApps({
-        category: 2,
+        category: 1,
       })
       const apps = appsData.map(forFrontend.convertApp)
       setApps(apps)

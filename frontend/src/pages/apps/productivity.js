@@ -10,7 +10,7 @@ const ProductivityPage = () => {
   React.useEffect(() => {
     ;(async () => {
       const appsData = await getAllApps({
-        category: 4,
+        category: 2,
       })
       const apps = appsData.map(forFrontend.convertApp)
       setApps(apps)
